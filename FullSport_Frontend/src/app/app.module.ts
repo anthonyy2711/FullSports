@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { GamesComponent } from './components/games/games.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComparePasswordsDirective } from './directives/compare-passwords.directive';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,14 @@ import { GamesComponent } from './components/games/games.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    GamesComponent
+    GamesComponent,
+    ComparePasswordsDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

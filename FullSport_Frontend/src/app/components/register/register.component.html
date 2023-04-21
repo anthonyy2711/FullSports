@@ -2,34 +2,61 @@
     <div class="col-sm-10 col-lg-5 border border-secondary rounded p-5">
         <div class="">
             <span><a href="" class="text-decoration-none">&lt;- Volver</a></span>
-            <form action="" class="row g-4 justify-content-center text-center">
+            <form action="" [formGroup]="registerForm" class="row g-4 justify-content-center text-center"  (ngSubmit)="submit()" method="post">
                 <h3>Unete a nosotros</h3>
                 <!-- Nombre y Apellido -->
                 <div class="col-6">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Nombre">
+                        <input type="text" class="form-control" placeholder="Nombre" id="name" name="name" formControlName="name">
+                        <span *ngIf="this.registerForm.get('name')?.errors?.['required'] && this.registerForm.get('name')?.touched" class="text-danger">
+                            * Campo requerido
+                        </span>
+                        <span *ngIf="this.registerForm.get('name')?.errors?.['pattern'] && this.registerForm.get('name')?.touched" class="text-danger">
+                            * Solo letras
+                        </span>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Apellidos">
+                        <input type="text" class="form-control" placeholder="Apellidos" id="last_name" name="last_name" formControlName="lastname">
+                        <span *ngIf="this.registerForm.get('lastname')?.errors?.['required'] && this.registerForm.get('lastname')?.touched" class="text-danger">
+                            * Campo requerido
+                        </span>
+                        <span *ngIf="this.registerForm.get('lastname')?.errors?.['pattern'] && this.registerForm.get('lastname')?.touched" class="text-danger">
+                            * Solo letras
+                        </span>
                     </div>
                 </div>
                 <!-- Email -->
                 <div class="col-12">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Email">
+                        <input type="text" class="form-control" placeholder="Email" id="email" name="email" formControlName="email">
+                        <span *ngIf="this.registerForm.get('email')?.errors?.['required'] && this.registerForm.get('email')?.touched" class="text-danger">
+                            * Campo requerido
+                        </span>
+                        <span *ngIf="this.registerForm.get('email')?.errors?.['pattern'] && this.registerForm.get('email')?.touched" class="text-danger">
+                            * Formato de email incorrecto
+                        </span>
                     </div>
                 </div>
                 <!-- Contraseña y Repetir Contraseña -->
                 <div class="col-6">
                     <div class="input-group">
-                        <input type="password" class="form-control" placeholder="Contraseña">
+                        <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+                        <span *ngIf="this.registerForm.get('password')?.errors?.['required'] && this.registerForm.get('password')?.touched" class="text-danger">
+                            * Campo requerido
+                        </span>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="input-group">
-                        <input type="password" class="form-control" placeholder="Repite Contraseña">
+                        <input type="password" class="form-control" placeholder="Repite Contraseña" formControlName="repeatpassword" comparar [parametro]="this.registerForm.value.password">
+                        <span *ngIf="this.registerForm.get('repeatpassword')?.errors?.['required'] && this.registerForm.get('repeatpassword')?.touched" class="text-danger">
+                            * Campo requerido
+                        </span>
+                        <span *ngIf="this.registerForm.get('repeatpassword')?.errors?.['custom'] && this.registerForm.get('repeatpassword')?.touched" class="text-danger">
+                            Debe coincidir con las contraseña
+                        </span>
                     </div>
                 </div>
 

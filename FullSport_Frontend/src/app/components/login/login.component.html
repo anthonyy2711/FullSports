@@ -2,17 +2,23 @@
     <div class="col-sm-10 col-lg-5 border border-secondary rounded p-5">
         <div class="">
             <span><a href="" class="text-decoration-none">&lt;- Volver</a></span>
-            <form action="" class="row g-4 justify-content-center text-center">
+            <form action="" class="row g-4 justify-content-center text-center" [formGroup]="login" (ngSubmit)="submit()">
                 <h3>Login</h3>
                 <div class="col-12">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Email">
+                        <input type="text" class="form-control" formControlName="email" placeholder="Email">
+                        <div *ngIf="this.login.get('email')?.errors?.['required'] && this.login.get('email')?.touched" class="text-danger mt-2">
+                            Este campo es obligatorio*
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="input-group">
-                        <input type="password" class="form-control" placeholder="Contraseña">
+                        <input type="password" formControlName="pass" class="form-control" placeholder="Contraseña">
+                        <div *ngIf="this.login.get('pass')?.errors?.['required'] && this.login.get('pass')?.touched" class="text-danger mt-2">
+                            Este campo es obligatorio*
+                        </div>
                     </div>
                 </div>
 
