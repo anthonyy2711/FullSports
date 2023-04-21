@@ -1,0 +1,35 @@
+--EQUIPO CASA NOMBRE:
+$result = $result["response"][6]['teams']['home']['name'];
+--EQUIPO CASA LOGO:
+$result = $result["response"][6]['teams']['home']['logo'];
+--EQUIPO CASA RESULTADO:
+$result = $result["response"][6]['teams']['home']['winner'];
+*******************************************************
+--EQUIPO VISITANTE NOMBRE:
+$result = $result["response"][6]['teams']['away']['name'];
+--EQUIPO VISITANTE LOGO:
+$result = $result["response"][6]['teams']['away']['logo'];
+--EQUIPO VISITANTE RESULTADO:
+$result = $result["response"][6]['teams']['away']['winner'];
+*******************************************************
+--ESTADO DEL PARTIDO:
+$result = $result["response"][6]['fixture']['status']['long'];
+--DURACIÓN DEL PARTIDO:
+$result = $result["response"][6]['fixture']['status']['elapsed'];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////HISTORIAL COMANDOS LARAVEL///////////
+php artisan make:model Fixtures -mcr

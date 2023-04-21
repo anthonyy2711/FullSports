@@ -22,7 +22,7 @@ Route::get('getIndicators', function()
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => 'https://v3.football.api-sports.io/{endpoint}',
+    CURLOPT_URL => 'https://v3.football.api-sports.io/fixtures?league=140&season=2022',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
     CURLOPT_MAXREDIRS => 10,
@@ -31,7 +31,7 @@ Route::get('getIndicators', function()
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => 'GET',
     CURLOPT_HTTPHEADER => array(
-        'x-rapidapi-key: XxXxXxXxXxXxXxXxXxXxXxXx',
+        'x-rapidapi-key: 921b1cce7a8768cad03ee068118ab9fa',
         'x-rapidapi-host: v3.football.api-sports.io'
     ),
     ));
@@ -39,5 +39,11 @@ Route::get('getIndicators', function()
     $response = curl_exec($curl);
 
     curl_close($curl);
-    echo $response;
+    $result = json_decode($response, true);
+
+    // echo $result["response"];
+    $result = json_decode($response, true);
+
+    $result = $result["response"][6]['teams']['away']['name'];
+    var_dump($result) ;
 });
