@@ -11,9 +11,14 @@ class FixturesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function getGames()
     {
         //
+        $fixtures=Fixtures::all();
+        return response()->json([
+            'status'=> 'success',
+            'fixtures'=> $fixtures,
+        ]);
     }
 
     /**
@@ -74,7 +79,7 @@ class FixturesController extends Controller
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_HTTPHEADER => array(
-            'x-rapidapi-key: c1e96b2cc7a54f81154a7a986d5ccc7d',
+            'x-rapidapi-key: 921b1cce7a8768cad03ee068118ab9fa',
             'x-rapidapi-host: v3.football.api-sports.io'
         ),
         ));
@@ -89,7 +94,7 @@ class FixturesController extends Controller
          //dd($result);
 
         // $all = $result["results"];
-        for ($i=0; $i < 300; $i++){
+        for ($i=0; $i < 20; $i++){
         $fixtures = new Fixtures();
         $fixtures->name_league = $result["response"][$i]['league']['name'];
         $fixtures->logo_league = $result["response"][$i]['league']['logo'];

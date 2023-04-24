@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+//use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+/* 
 Route::get('/', function () {
     return view('welcome');
 });
@@ -47,3 +47,4 @@ Route::get('getIndicators', function()
     $result = $result["response"][6]['teams']['away']['name'];
     var_dump($result) ;
 });
+ */
