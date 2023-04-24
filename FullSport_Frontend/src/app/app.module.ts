@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { GamesComponent } from './components/games/games.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComparePasswordsDirective } from './directives/compare-passwords.directive';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ComparePasswordsDirective } from './directives/compare-passwords.direct
     ComparePasswordsDirective
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

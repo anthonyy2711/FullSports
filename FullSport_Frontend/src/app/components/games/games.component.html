@@ -23,9 +23,28 @@
     <!-- logo competicion desde la base de datos -->
     <img src="" alt="">
     <h6>nombre competicion</h6>
-    <div class="row">
-        <div class="col">
-            prueba
-        </div>
-    </div>
+    <table class="table table-light my-5">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+
+        <tbody>
+           <tr *ngFor="let item of Fixtures[1]; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <div class="card">
+                <img src="{{item.logo_home}}" height="50" width="50">
+                <div class="card-body">
+                  <p class="card-text">{{item.name_home}}</p>
+                </div>
+              </div>
+              <td>{{item.name_away}}</td>
+              <td>{{item.status}}</td>
+              <td>{{item.name_league}}</td>
+            </tr> 
+        </tbody>
+    </table>
 </div>
