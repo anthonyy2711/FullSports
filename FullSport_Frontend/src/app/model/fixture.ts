@@ -85,7 +85,7 @@ export class Fixture{
         return this.#_goals_away;
     }
 
-    public get satus(){
+    public get status(){
         return this.#_status;
     }
 

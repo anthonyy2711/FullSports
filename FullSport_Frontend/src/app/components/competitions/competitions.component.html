@@ -1,0 +1,29 @@
+<div class="container">
+    <table>
+        <thead class="thead-light ">
+            <tr>
+                <th class="text-center">Posición</th>
+                <th></th>
+                <th>Equipo</th>
+                <th>PJ</th>
+                <th>PG</th>
+                <th>PE</th>
+                <th>PP</th>
+                <th>Puntos</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of Competitions[1];">
+                <td class="text-center">{{item.position}}</td>
+                <td><img src="{{item.team_logo}}" alt="" height="30" width="30"></td>
+                <td>{{item.name_team}}</td>
+                <td>{{item.played_games}}</td>
+                <td>{{item.games_win}}</td>
+                <td>{{item.games_draw}}</td>
+                <td>{{item.games_lost}}</td>
+                <td>{{item.points}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
