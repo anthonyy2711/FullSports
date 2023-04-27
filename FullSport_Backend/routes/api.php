@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompetitionsController;
 use App\Http\Controllers\FixturesController;
+use App\Http\Controllers\NewsController;
 use App\Models\Fixtures;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +38,9 @@ Route::post('standings','pushCompetitions');
 
 
 
+//Route::apiResource('news',NewsController::class);
+Route::controller(NewsController::class)-> group(function(){
+
+    Route::get('news','getNews');
+    
+});
