@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompetitionsController;
 use App\Http\Controllers\FixturesController;
 use App\Models\Fixtures;
 use Illuminate\Http\Request;
@@ -21,6 +22,18 @@ Route::controller(FixturesController::class)-> group(function(){
 
 Route::get('games','getGames');
 
+
 Route::post('games','pushGames');
 
 });
+
+Route::controller(CompetitionsController::class)-> group(function(){
+    
+Route::get('standings','getCompetitions');
+
+Route::post('standings','pushCompetitions');
+    
+});
+
+
+
