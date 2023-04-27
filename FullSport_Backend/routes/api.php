@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Models\Fixtures;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,21 +20,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::apiResource('fixtures',FixturesController::class);
-Route::controller(FixturesController::class)-> group(function(){
 
-Route::get('games','getGames');
+// Route::controller(FixturesController::class)-> group(function(){
+
+// Route::get('games','getGames');
+
+
+// Route::post('games','pushGames');
+
+// });
+
+Route::middleware(['role:admin'])->group(function () {
+    Route::controller(FixturesController::class)-> group(function(){
+
+        Route::get('games','getGames');
 
 
 Route::post('games','pushGames');
 
+    });
 });
 
+
 Route::controller(CompetitionsController::class)-> group(function(){
-    
+
 Route::get('standings','getCompetitions');
 
 Route::post('standings','pushCompetitions');
-    
+
 });
 
 
@@ -42,5 +56,13 @@ Route::post('standings','pushCompetitions');
 Route::controller(NewsController::class)-> group(function(){
 
     Route::get('news','getNews');
-    
+
+});
+
+Route::controller(AuthController::class)->group(function () {
+    Route::post('login', 'login');
+    Route::post('register', 'register');
+    Route::post('logout', 'logout');
+    Route::post('refresh', 'refresh');
+
 });

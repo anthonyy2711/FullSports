@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         news::factory(5)->create();//create fake news
-
+        $this->call(RoleSeeder::class);
+        $this->call(AdminSeeder::class);
     }
 }

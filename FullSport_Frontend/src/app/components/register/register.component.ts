@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { UserService } from './../../services/user.service';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit{
 
 
-  constructor(){}
+  constructor(private router: Router, private user:UserService, private ngZone: NgZone){}
 
   registerForm = new FormGroup({
     name: new FormControl('', [
@@ -33,11 +34,29 @@ export class RegisterComponent implements OnInit{
   })
 
   ngOnInit(): void {
-    
+
   }
 
   submit(){
+    var name      = this.registerForm.get('name')?.value;
+    var last_name = this.registerForm.get('lastname')?.value;
+    var email     = this.registerForm.get('email')?.value;
+    var pass      = this.registerForm.get('password')?.value;
 
+
+    var data = {
+      "name":      name,
+      "last_name": last_name,
+      "email":     email,
+      "password":  pass,
+    }
+
+    this.user.addUser(data)
+    .subscribe(() => {
+        this.ngZone.run(() => this.router.navigate(['login']))
+      }, (err) => {
+
+    });
   }
 
 }
