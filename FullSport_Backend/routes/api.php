@@ -21,4 +21,6 @@ Route::controller(FixturesController::class)-> group(function(){
 
 Route::get('games','getGames');
 
+Route::post('games','pushGames');
+
 });

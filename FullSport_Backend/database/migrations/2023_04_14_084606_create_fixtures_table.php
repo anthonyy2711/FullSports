@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name_league');
             $table->string('logo_league');
+            $table->string('round');
             $table->string('date_event');
             $table->string('name_home');
             $table->string('name_away');
@@ -23,7 +24,6 @@ return new class extends Migration
             $table->string('goals_home');
             $table->string('goals_away');
             $table->string('status');
-            $table->string('duration');
             $table->timestamps();
         });
     }

@@ -11,11 +11,11 @@ class Fixtures extends Model
     protected $fillable = [
         'name_home',
         'name_away',
+        'round',
         'logo_home',
         'logo_away',
         'winner',
         'status',
-        'duration',
     ];
 
     use HasFactory;

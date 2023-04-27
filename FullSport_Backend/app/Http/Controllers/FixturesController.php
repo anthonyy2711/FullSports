@@ -65,12 +65,12 @@ class FixturesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function pushGames(Request $request)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://v3.football.api-sports.io/fixtures?league=140&season=2022',
+        CURLOPT_URL => 'http://api.football-data.org/v4/competitions/PD/matches',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -79,8 +79,8 @@ class FixturesController extends Controller
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_HTTPHEADER => array(
-            'x-rapidapi-key: 921b1cce7a8768cad03ee068118ab9fa',
-            'x-rapidapi-host: v3.football.api-sports.io'
+            //"X-RapidAPI-Host: heisenbug-la-liga-live-scores-v1.p.rapidapi.com",
+		    "X-Auth-Token: bfc8d231996a4c8f8a9ca3a9350d404b",
         ),
         ));
 
@@ -90,23 +90,23 @@ class FixturesController extends Controller
         curl_close($curl);
         $result = json_decode($response, true);
 
-        // $result = $result["response"][6]['teams']['away']['name'];
-         //dd($result);
+        //$result = $result['matches'];
+        //var_dump($result);
 
         // $all = $result["results"];
         for ($i=0; $i < 20; $i++){
         $fixtures = new Fixtures();
-        $fixtures->name_league = $result["response"][$i]['league']['name'];
-        $fixtures->logo_league = $result["response"][$i]['league']['logo'];
-        $fixtures->date_event = $result["response"][$i]['fixture']['date'];
-        $fixtures->name_home = $result["response"][$i]['teams']['home']['name'];
-        $fixtures->name_away = $result["response"][$i]['teams']['away']['name'];
-        $fixtures->logo_home =$result["response"][$i]['teams']['home']['logo'];
-        $fixtures->logo_away =$result["response"][$i]['teams']['away']['logo'];
-        $fixtures->goals_home =$result["response"][$i]['goals']['home'];
-        $fixtures->goals_away =$result["response"][$i]['goals']['away'];
-        $fixtures->status =$result["response"][$i]['fixture']['status']['long'];
-        $fixtures->duration =$result["response"][$i]['fixture']['status']['elapsed'];
+        $fixtures->name_league = $result['competition']['name'];
+        $fixtures->logo_league = $result['competition']['emblem'];
+        $fixtures->round = $result['matches'][$i]['matchday'];
+        $fixtures->date_event = $result['matches'][$i]['utcDate'];
+        $fixtures->name_home = $result['matches'][$i]['homeTeam']['name'];
+        $fixtures->name_away = $result['matches'][$i]['awayTeam']['name'];;
+        $fixtures->logo_home =$result['matches'][$i]['homeTeam']['crest'];
+        $fixtures->logo_away =$result['matches'][$i]['awayTeam']['crest'];
+        $fixtures->goals_home =$result['matches'][$i]['score']['fullTime']['home'];
+        $fixtures->goals_away =$result['matches'][$i]['score']['fullTime']['away'];
+        $fixtures->status =$result['matches'][$i]['status'];
         $fixtures->save();
         }
         // $fixtures = new Fixtures();
