@@ -12,6 +12,7 @@ export class GamesComponent implements OnInit{
   Fixtures:any=[];
   itemsNumber = 1;
 
+  logo:any;
   itemFormulario!:any;
 
 

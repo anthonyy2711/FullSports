@@ -20,31 +20,23 @@
 
 <div class="container">
     <h5>Partidos de hoy</h5>
-    <!-- logo competicion desde la base de datos -->
-    <img src="" alt="">
-    <h6>nombre competicion</h6>
-    <table class="table table-light my-5">
-        <thead class="thead-light">
-            <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Fecha</th>
-            </tr>
-        </thead>
-
-        <tbody>
-           <tr *ngFor="let item of Fixtures[1]; let i = index">
-              <th scope="row">{{i+1}}</th>
-              <div class="card">
-                <img src="{{item.logo_home}}" height="50" width="50">
-                <div class="card-body">
-                  <p class="card-text">{{item.name_home}}</p>
+    
+            <!-- <img src="" alt=""> --> 
+            <!-- <h3>Primera Division</h3> -->
+            <div class="col-md-6 my-5" *ngFor="let item of Fixtures[1]">
+              <img src="{{item.logo_league}}" height="90" width="90" class="p-3 linea">
+              <h4 class="linea">{{item.name_league}}</h4>
+              <h6>Jornada {{item.round}}</h6>
+                <div class="row">
+                    <div class="col-2 text-center">
+                        <img src="{{item.logo_home}}" height="50" width="50">
+                        <h5 class="mt-2">{{item.goals_home}}</h5>
+                    </div>
+                    <div class="col-2 text-center mt-3">{{item.status}}</div>
+                    <div class="col-2 text-center">
+                        <img src="{{item.logo_away}}" height="50" width="50">
+                        <h5 class="mt-2">{{item.goals_away}}</h5>
+                    </div>
                 </div>
-              </div>
-              <td>{{item.name_away}}</td>
-              <td>{{item.status}}</td>
-              <td>{{item.name_league}}</td>
-            </tr> 
-        </tbody>
-    </table>
-</div>
+            </div>
+        

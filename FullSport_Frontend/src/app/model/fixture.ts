@@ -1,10 +1,8 @@
 export class Fixture{
     #_id:number;
-
     #_name_league:string;
-    
     #_logo_league:string;
-    
+    #_round:number;
     #_date_event:Date; 	
     #_name_home:string;
     #_name_away:string;	
@@ -13,13 +11,13 @@ export class Fixture{
     #_goals_home:number;
     #_goals_away:number;
     #_status:string;
-    #_duration:number;
 
 
     constructor(
         id:number,
         name_league:string,
         logo_league:string,
+        round:number,
         date_event:Date, 	
         name_home:string,
         name_away:string,	
@@ -28,11 +26,11 @@ export class Fixture{
         goals_home:number,
         goals_away:number,
         status:string,
-        duration:number,
     ){
         this.#_id=id; 
         this.#_name_league=name_league;
         this.#_logo_league=logo_league;
+        this.#_round=round;
         this.#_date_event=date_event;
         this.#_name_home=name_home;
         this.#_name_away=name_away;
@@ -40,8 +38,7 @@ export class Fixture{
         this.#_logo_away=logo_away;
         this.#_goals_home=goals_home;
         this.#_goals_away=goals_away;
-        this.#_status=status;
-        this.#_duration=duration;           
+        this.#_status=status;          
     }
 
     public get id(){
@@ -54,6 +51,10 @@ export class Fixture{
 
     public get logo_league(){
         return this.#_logo_league;
+    }
+
+    public get round(){
+        return this.#_round;
     }
 
     public get date_event(){
@@ -88,9 +89,6 @@ export class Fixture{
         return this.#_status;
     }
 
-    public get duration(){
-        return this.#_duration;
-    }
 
     public set id(value:number){
         this.#_id=value;
@@ -102,6 +100,10 @@ export class Fixture{
 
     public set logo_league(value:string){
         this.#_logo_league=value;
+    }
+
+    public set round(value:number){
+        this.#_round=value;
     }
 
     public set date_event(value:Date){
@@ -136,9 +138,6 @@ export class Fixture{
         this.#_status=value;
     }
 
-    public set duration(value:number){
-        this.#_duration=value;
-    }
 
 
 
