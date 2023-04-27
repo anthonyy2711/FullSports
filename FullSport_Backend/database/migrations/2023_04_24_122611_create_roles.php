@@ -12,9 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Role::create(['name' => 'admin']);
+        /* Role::create(['name' => 'admin']);
         Role::create(['name' => 'journalist']);
-        Role::create(['name' => 'registered']);
+        Role::create(['name' => 'registered']); */
     }
 
     /**
