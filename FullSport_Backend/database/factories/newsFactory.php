@@ -26,10 +26,10 @@ class NewsFactory extends Factory
         $faker = Faker::create('es_ES');//Change faker generated text
         return [
 
-            'new_img'         => $this->faker->image('public/img',640,480),
+            'new_img'         => $this->faker->imageUrl(640,480),
             'new_title'       => $faker->realText(20),
             'new_description' => $faker->realText(50),
-            'author_img'      => $this->faker->image('public/img',300,300),
+            'author_img'      => $this->faker->imageUrl(300,300),
             'author_name'     => $rand_author,
             'new_date'        => $this->faker->dateTimeBetween('-30 days', '+30 days'),
 
