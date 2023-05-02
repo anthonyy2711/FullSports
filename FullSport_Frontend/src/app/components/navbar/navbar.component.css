@@ -1,3 +1,7 @@
 .bg-cyan{
     background-color: #7DD3FC;
 }
+
+.dropdown-menu{
+    width: max-content;
+}
