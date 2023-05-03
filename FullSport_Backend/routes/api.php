@@ -30,17 +30,25 @@ use App\Http\Controllers\Api\AuthController;
 
 // });
 
-Route::middleware(['role:admin'])->group(function () {
+/* Route::middleware(['role:admin'])->group(function () {
     Route::controller(FixturesController::class)-> group(function(){
 
         Route::get('games','getGames');
 
 
 Route::post('games','pushGames');
+Route::get('games','getGamesByDate');
 
     });
-});
+}); */
 
+Route::controller(FixturesController::class)-> group(function(){
+
+    Route::get('games','getGames');
+    Route::post('games','pushGames');
+    //Route::get('games','getGamesByDate');
+
+});
 
 Route::controller(CompetitionsController::class)-> group(function(){
 

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('name_away');
             $table->string('logo_home');
             $table->string('logo_away');
-            $table->string('goals_home');
-            $table->string('goals_away');
+            $table->string('goals_home')->nullable();
+            $table->string('goals_away')->nullable();
             $table->string('status');
             $table->timestamps();
         });

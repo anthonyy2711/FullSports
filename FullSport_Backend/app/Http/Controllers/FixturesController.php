@@ -21,6 +21,13 @@ class FixturesController extends Controller
         ]);
     }
 
+    public function getGamesByDate($date_event)
+    {
+        $fixtures = Fixtures::find($date_event);
+
+        return $fixtures;
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -94,7 +101,7 @@ class FixturesController extends Controller
         //var_dump($result);
 
         // $all = $result["results"];
-        for ($i=0; $i < 20; $i++){
+        for ($i=0; $i < 380; $i++){
         $fixtures = new Fixtures();
         $fixtures->name_league = $result['competition']['name'];
         $fixtures->logo_league = $result['competition']['emblem'];

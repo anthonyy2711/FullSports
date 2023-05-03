@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PruebaComponent } from './components/prueba/prueba.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
@@ -14,11 +13,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComparePasswordsDirective } from './directives/compare-passwords.directive';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CompetitionsComponent } from './components/competitions/competitions.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DashboardLaLigaCompetitionComponent } from './components/dashboard-la-liga-competition/dashboard-la-liga-competition.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PruebaComponent,
     NavbarComponent,
     FooterComponent,
     HomeComponent,
@@ -26,14 +26,16 @@ import { CompetitionsComponent } from './components/competitions/competitions.co
     RegisterComponent,
     GamesComponent,
     ComparePasswordsDirective,
-    CompetitionsComponent
+    CompetitionsComponent,
+    DashboardLaLigaCompetitionComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
