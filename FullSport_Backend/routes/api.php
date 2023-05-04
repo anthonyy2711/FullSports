@@ -7,6 +7,7 @@ use App\Models\Fixtures;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,8 @@ Route::controller(NewsController::class)-> group(function(){
     Route::get('news','getNews');
 
 });
+
+Route::apiResource('posts',PostController::class);
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'login');

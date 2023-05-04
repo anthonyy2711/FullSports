@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComparePasswordsDirective } from './directives/compare-passwords.directive';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CompetitionsComponent } from './components/competitions/competitions.component';
+import { SocialComponent } from './components/social/social.component';
+import { SocialAddComponent } from './components/social-add/social-add.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { CompetitionsComponent } from './components/competitions/competitions.co
     RegisterComponent,
     GamesComponent,
     ComparePasswordsDirective,
-    CompetitionsComponent
+    CompetitionsComponent,
+    SocialComponent,
+    SocialAddComponent
   ],
   imports: [
     HttpClientModule,

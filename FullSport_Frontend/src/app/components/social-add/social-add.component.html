@@ -1,0 +1,17 @@
+<section>
+  <form [formGroup]="postForm" class="w-25" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <input class="form-control" type="text" id="title" name="title" formControlName="title">
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <textarea class="form-control" type="text" id="body" name="body" formControlName="body" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Default file input example</label>
+      <input class="form-control" type="file" id="image" name="image" formControlName="image" accept="image/*">
+    </div>
+    <button type="submit" class="btn btn-primary form-control mt-3 col-4">Añadir Post</button>
+  </form>
+</section>

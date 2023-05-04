@@ -1,3 +1,5 @@
+import { SocialAddComponent } from './components/social-add/social-add.component';
+import { SocialComponent } from './components/social/social.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CompetitionsComponent } from './components/competitions/competitions.component';
@@ -26,6 +28,14 @@ const routes: Routes = [
 {
   path:'standings',
   component:CompetitionsComponent
+},
+{
+  path:'social',
+  component:SocialComponent
+},
+{
+  path:'social-add',
+  component:SocialAddComponent
 },
 {
   path:'',
