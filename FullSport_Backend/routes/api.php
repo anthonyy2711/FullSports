@@ -46,6 +46,8 @@ Route::controller(FixturesController::class)-> group(function(){
 
     Route::get('games','getGames');
     Route::post('games','pushGames');
+
+    Route::put('games','update');
     //Route::get('games','getGamesByDate');
 
 });
@@ -55,6 +57,8 @@ Route::controller(CompetitionsController::class)-> group(function(){
 Route::get('standings','getCompetitions');
 
 Route::post('standings','pushCompetitions');
+
+Route::put('standings','update');
 
 });
 

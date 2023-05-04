@@ -18,6 +18,10 @@ export class CompetitionsService {
     return this.httpClient.get<Competition>("http://127.0.0.1:8000/api/standings");
   }
 
+  PostCompetition(): Observable<any> {
+    return this.httpClient.put<any>("http://127.0.0.1:8000/api/standings",{});
+  }
+
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';

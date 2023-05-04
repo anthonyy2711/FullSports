@@ -30,4 +30,14 @@ export class CompetitionsComponent implements OnInit{
     this.Competitions = Object.values(res);
     });
   }
+
+  actualizar(){
+    this.competitionsService.PostCompetition().subscribe(res => {
+    
+      console.log(res);
+      
+      //this.Competitions = Object.values(res);
+    });
+  }
 }
+

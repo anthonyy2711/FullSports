@@ -19,6 +19,14 @@ export class FixturesService {
     return this.httpClient.get<Fixture>("http://127.0.0.1:8000/api/games");
   }
 
+  PutFixtures(): Observable<Fixture> {
+    return this.httpClient.put<Fixture>("http://127.0.0.1:8000/api/games",{});
+  }
+
+  /* PutFixtures(): Observable<Fixture> {
+    return this.httpClient.put<Fixture>("http://127.0.0.1:8000/api/games"), new Fixture();
+  } */
+
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';

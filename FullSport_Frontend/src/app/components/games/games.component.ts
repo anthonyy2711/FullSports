@@ -31,4 +31,11 @@ export class GamesComponent implements OnInit{
     this.Fixtures = Object.values(res);
     });
   }
+  actualizar(){
+    this.fixtureService.PutFixtures().subscribe(res => {
+    
+      console.log(res);
+  });
+}
+
 }
