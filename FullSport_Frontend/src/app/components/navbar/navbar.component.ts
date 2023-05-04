@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { faFutbol } from '@fortawesome/free-solid-svg-icons';
+import { faBasketball } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  faFutbol=faFutbol;
+  faBasketball=faBasketball;
 }

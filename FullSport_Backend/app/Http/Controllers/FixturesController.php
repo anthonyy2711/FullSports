@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Fixtures;
 use FFI;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class FixturesController extends Controller
 {
@@ -19,6 +21,13 @@ class FixturesController extends Controller
             'status'=> 'success',
             'fixtures'=> $fixtures,
         ]);
+    }
+
+    public function getGamesByDate($date_event)
+    {
+        $fixtures = Fixtures::find($date_event);
+
+        return $fixtures;
     }
 
     /**
@@ -94,7 +103,7 @@ class FixturesController extends Controller
         //var_dump($result);
 
         // $all = $result["results"];
-        for ($i=0; $i < 20; $i++){
+        for ($i=0; $i < 380; $i++){
         $fixtures = new Fixtures();
         $fixtures->name_league = $result['competition']['name'];
         $fixtures->logo_league = $result['competition']['emblem'];
@@ -143,10 +152,56 @@ class FixturesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Fixtures $fixtures)
+    public function update(Request $request, Fixtures $fixtures,)
     {
-        //
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'http://api.football-data.org/v4/competitions/PD/matches',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+            //"X-RapidAPI-Host: heisenbug-la-liga-live-scores-v1.p.rapidapi.com",
+		    "X-Auth-Token: bfc8d231996a4c8f8a9ca3a9350d404b",
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+
+        curl_close($curl);
+        $result = json_decode($response, true);
+
+
+        if (Schema::hasTable('fixtures')) {
+            DB::table('fixtures')->truncate();
+        }
+        
+
+        for ($i=0; $i < 380; $i++){
+            $fixtures = new Fixtures();
+            $fixtures->name_league = $result['competition']['name'];
+            $fixtures->logo_league = $result['competition']['emblem'];
+            $fixtures->round = $result['matches'][$i]['matchday'];
+            $fixtures->date_event = $result['matches'][$i]['utcDate'];
+            $fixtures->name_home = $result['matches'][$i]['homeTeam']['name'];
+            $fixtures->name_away = $result['matches'][$i]['awayTeam']['name'];;
+            $fixtures->logo_home =$result['matches'][$i]['homeTeam']['crest'];
+            $fixtures->logo_away =$result['matches'][$i]['awayTeam']['crest'];
+            $fixtures->goals_home =$result['matches'][$i]['score']['fullTime']['home'];
+            $fixtures->goals_away =$result['matches'][$i]['score']['fullTime']['away'];
+            $fixtures->status =$result['matches'][$i]['status'];
+            $fixtures->save();
+            }
     }
+
+
 
     /**
      * Remove the specified resource from storage.

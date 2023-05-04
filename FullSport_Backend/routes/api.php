@@ -31,23 +31,35 @@ use App\Http\Controllers\PostController;
 
 // });
 
-Route::middleware(['role:admin'])->group(function () {
+/* Route::middleware(['role:admin'])->group(function () {
     Route::controller(FixturesController::class)-> group(function(){
 
         Route::get('games','getGames');
 
 
 Route::post('games','pushGames');
+Route::get('games','getGamesByDate');
 
     });
-});
+}); */
 
+Route::controller(FixturesController::class)-> group(function(){
+
+    Route::get('games','getGames');
+    Route::post('games','pushGames');
+
+    Route::put('games','update');
+    //Route::get('games','getGamesByDate');
+
+});
 
 Route::controller(CompetitionsController::class)-> group(function(){
 
 Route::get('standings','getCompetitions');
 
 Route::post('standings','pushCompetitions');
+
+Route::put('standings','update');
 
 });
 
@@ -69,3 +81,10 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('refresh', 'refresh');
 
 });
+
+//return File::get(public_path() . '/to new folder name/index.html');
+
+/* Route::get('image/{filename}',function(){
+    $path = public_path().'/uploads/images/'.$fileName;
+    return Response::download($path);  
+}); */
