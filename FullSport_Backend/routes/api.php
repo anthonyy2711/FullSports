@@ -78,3 +78,10 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('refresh', 'refresh');
 
 });
+
+//return File::get(public_path() . '/to new folder name/index.html');
+
+/* Route::get('image/{filename}',function(){
+    $path = public_path().'/uploads/images/'.$fileName;
+    return Response::download($path);  
+}); */
