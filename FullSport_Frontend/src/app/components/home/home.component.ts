@@ -15,7 +15,7 @@ export class HomeComponent {
   }
 
   listNews(){
-    this.newsService.GetFixtures().subscribe(res => {
+    this.newsService.GetNews().subscribe(res => {
     
     console.log(res);
     

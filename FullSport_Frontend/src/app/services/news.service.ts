@@ -13,7 +13,7 @@ export class NewsService {
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private httpClient: HttpClient) { }
 
-  GetFixtures(): Observable<News> {
+  GetNews(): Observable<News> {
     return this.httpClient.get<News>("http://127.0.0.1:8000/api/news");
   }
 
