@@ -1,4 +1,4 @@
-<div class="container">
+<div class=" margen container">
     <!-- Banner -->
     <div>
         <img src="" alt="">
@@ -6,38 +6,43 @@
 
     <!--Noticias-->
     <!--Noticias principal-->
-    <div class="container col-11">
-        
-        <div *ngFor="let item of News[1]; let i = index">
-            <!--Noticia grande-->
-            <div *ngIf="i === 0" class="card mb-3" style="max-width: 100%;">
-                <a href="http://" target="_blank" rel="noopener noreferrer">
-                    <div class="row g-0">
-                        <div class="col-md-6">
-                            <img src="{{item.new_img}}" class="img-fluid rounded-start">
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">{{item.new_title}}</h5>
-                                <p class="card-text pt-5">{{item.new_description}}</p>
-                                <p class="card-text"><small class="text-muted">Last updated: {{item.new_date}}</small></p>
-                                <p><img src="{{item.author_img}}" height="30">&nbsp;<small>{{item.author_name}}</small></p>
+    <div class="row">
+        <div class="col-12">
+            <div *ngFor="let item of News[1]; let i = index">
+                <!--Noticia grande-->
+                <div *ngIf="i === 0" class="card mb-3" style="max-width: 100%;">
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="{{item.new_img}}" class="img-fluid rounded-start">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{item.new_title}}</h5>
+                                    <p class="card-text pt-5">{{item.new_description}}</p>
+                                    <p class="card-text"><small class="text-muted">Last updated: {{item.new_date}}</small></p>
+                                    <p><img src="{{item.author_img}}" height="30">&nbsp;<small>{{item.author_name}}</small></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+
+        </div>
+    </div>
+</div> 
             <!--Noticia pequeños-->
-            <div *ngIf="i != 0" class="row">
+
+    <div class="row">
+        <div *ngFor="let item of News[1]; let i = index" class=" col-4">
+            <div *ngIf="i >= 0">    
                 <a href="http://" target="_blank" rel="noopener noreferrer">
-                    <div class="card m-5 col-3">
                         <img src="{{item.new_img}}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">{{item.new_title}}</h5>
                             <p class="card-text"><small class="text-muted">Last updated: {{item.new_date}}</small></p>
                             <p><img src="{{item.author_img}}" height="30">&nbsp;<small>{{item.author_name}}</small></p>
                         </div>
-                    </div>
                 </a>
             </div>
             
@@ -51,16 +56,16 @@
     <div class="container p-5">
         <div class="row text-center justify-content-center">
             <div class="col-1">
-                <h1 class="bi bi-instagram"></h1>
+                <h1><fa-icon [icon]="faTwitter"></fa-icon></h1>
             </div>
             <div class="col-1">
-                <h1 class="bi bi-twitter"></h1>
+                <h1 class="bi bi-twitter"><fa-icon [icon]="faFacebook"></fa-icon></h1>
             </div>
             <div class="col-1">
-                <h1 class="bi bi-facebook"></h1>
+                <h1 class="bi bi-facebook"><fa-icon [icon]="faInstagram"></fa-icon></h1>
             </div>
             <div class="col-1">
-                <h1 class="bi bi-tiktok"></h1>
+                <h1 class="bi bi-tiktok"><fa-icon [icon]="faTiktok"></fa-icon></h1>
             </div>
         </div>
     </div>

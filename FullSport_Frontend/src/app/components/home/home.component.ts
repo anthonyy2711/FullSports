@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NewsService } from 'src/app/services/news.service';
+import { faTwitter,  faFacebookF, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
+import { faBasketball } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,6 +9,11 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class HomeComponent {
   News:any=[];
+
+  faTwitter=faTwitter;
+  faFacebook=faFacebookF;
+  faInstagram=faInstagram;
+  faTiktok=faTiktok;
 
   constructor(private newsService: NewsService){}
 

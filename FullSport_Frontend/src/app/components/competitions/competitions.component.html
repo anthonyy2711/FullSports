@@ -1,7 +1,7 @@
 <app-dashboard-la-liga-competition></app-dashboard-la-liga-competition>
 <div class="container">
     <table>
-        <thead class="thead-light ">
+        <thead class="thead-light">
             <tr>
                 <th class="text-center">Posición</th>
                 <th></th>
@@ -21,11 +21,12 @@
                 <td>{{item.name_team}}</td>
                 <td>{{item.played_games}}</td>
                 <td>{{item.games_win}}</td>
-                <td>{{item.games_draw}}</td>
-                <td>{{item.games_lost}}</td>
-                <td>{{item.points}}</td>
+                <td class="ps-1">{{item.games_draw}}</td>
+                <td class="ps-1">{{item.games_lost}}</td>
+                <td class="ps-3">{{item.points}}</td>
             </tr>
         </tbody>
     </table>
+    <br>
     <button type="submit" (click)="actualizar()">Actualizar</button>
 </div>

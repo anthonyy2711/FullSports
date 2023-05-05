@@ -16,7 +16,7 @@ export class GamesComponent implements OnInit{
   itemFormulario!:any;
 
 
-  constructor(private fixtureService: FixturesService){}
+  constructor(private fixtureService: FixturesService, private router: Router, private ngZone: NgZone){}
 
   ngOnInit(): void {
     this.listFixtures();
@@ -35,6 +35,8 @@ export class GamesComponent implements OnInit{
     this.fixtureService.PutFixtures().subscribe(res => {
     
       console.log(res);
+
+      this.ngZone.run(() => this.router.navigate(['games']))
   });
 }
 
