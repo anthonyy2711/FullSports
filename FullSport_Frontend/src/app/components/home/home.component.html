@@ -11,7 +11,7 @@
             <div *ngFor="let item of News[1]; let i = index">
                 <!--Noticia grande-->
                 <div *ngIf="i === 0" class="card mb-3" style="max-width: 100%;">
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a href="http://" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-black">
                         <div class="row g-0">
                             <div class="col-md-6">
                                 <img src="{{item.new_img}}" class="img-fluid rounded-start">
@@ -21,7 +21,7 @@
                                     <h5 class="card-title text-center">{{item.new_title}}</h5>
                                     <p class="card-text pt-5">{{item.new_description}}</p>
                                     <p class="card-text"><small class="text-muted">Last updated: {{item.new_date}}</small></p>
-                                    <p><img src="{{item.author_img}}" height="30">&nbsp;<small>{{item.author_name}}</small></p>
+                                    <p><img src="{{item.author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{item.author_name}}</small></p>
                                 </div>
                             </div>
                         </div>
@@ -36,12 +36,12 @@
     <div class="row">
         <div *ngFor="let item of News[1]; let i = index" class=" col-4">
             <div *ngIf="i >= 0">    
-                <a href="http://" target="_blank" rel="noopener noreferrer">
+                <a href="http://" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-black">
                         <img src="{{item.new_img}}" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title">{{item.new_title}}</h5>
+                            <h5 class="card-title pt-2">{{item.new_title}}</h5>
                             <p class="card-text"><small class="text-muted">Last updated: {{item.new_date}}</small></p>
-                            <p><img src="{{item.author_img}}" height="30">&nbsp;<small>{{item.author_name}}</small></p>
+                            <p><img src="{{item.author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{item.author_name}}</small></p>
                         </div>
                 </a>
             </div>
