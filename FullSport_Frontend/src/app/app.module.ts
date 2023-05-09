@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,6 +18,7 @@ import { SocialComponent } from './components/social/social.component';
 import { SocialAddComponent } from './components/social-add/social-add.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardLaLigaCompetitionComponent } from './components/dashboard-la-liga-competition/dashboard-la-liga-competition.component';
+import { NewsdetailComponent } from './components/newsdetail/newsdetail.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { DashboardLaLigaCompetitionComponent } from './components/dashboard-la-l
     CompetitionsComponent,
     SocialComponent,
     SocialAddComponent,
-    DashboardLaLigaCompetitionComponent
+    DashboardLaLigaCompetitionComponent,
+    NewsdetailComponent
   ],
   imports: [
     HttpClientModule,
@@ -41,7 +44,7 @@ import { DashboardLaLigaCompetitionComponent } from './components/dashboard-la-l
     ReactiveFormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
