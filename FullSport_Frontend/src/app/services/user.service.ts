@@ -30,14 +30,13 @@ export class UserService {
     return this.httpClient.post(API_URL, data)
       .pipe(
         catchError(this.handleError)
-      )
+        )
   }
 
   //register user
   addUser(data:any): Observable<any>{
 
     let API_URL = `${this.REST_API}register`;
-    console.log(data);
     return this.httpClient.post(API_URL, data)
 
       .pipe(

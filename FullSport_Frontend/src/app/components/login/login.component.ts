@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit{
   oculta!:boolean;
   email!:any;
   pass!:any;
+  token!:any;
   constructor(private router: Router, private user:UserService, private ngZone: NgZone) {}
 
   login=new FormGroup({
@@ -38,20 +39,21 @@ export class LoginComponent implements OnInit{
 
     this.user.validateLogin(data)
     .subscribe(res => {
-        if (res == "Credenciales incorrectas") {
+        if (res == "Unauthorized") {
           this.oculta = true;
         }
         else{
           this.oculta = false;
-          localStorage.setItem('usuari',JSON.stringify(res));
+          this.token = localStorage.setItem('token',JSON.stringify(res.authorisation.token));
         }
-
+        console.log(res);
 
 
         this.ngZone.run(() => this.router.navigate(['home'])) // if all good return to home
       }, (err) => {
 
     });
+
   }
 
 }

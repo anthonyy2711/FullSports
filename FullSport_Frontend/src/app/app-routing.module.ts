@@ -1,7 +1,8 @@
+import { AuthGuard } from './auth.guard';
 import { SocialAddComponent } from './components/social-add/social-add.component';
 import { SocialComponent } from './components/social/social.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { CompetitionsComponent } from './components/competitions/competitions.component';
 import { DashboardLaLigaCompetitionComponent } from './components/dashboard-la-liga-competition/dashboard-la-liga-competition.component';
 import { GamesComponent } from './components/games/games.component';
@@ -36,7 +37,8 @@ const routes: Routes = [
 },
 {
   path:'social-add',
-  component:SocialAddComponent
+  component:SocialAddComponent,
+  canActivate: [AuthGuard]
 },
 {
   path:'Laliga',
