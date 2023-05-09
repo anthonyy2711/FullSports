@@ -24,7 +24,8 @@ export class GamesComponent implements OnInit{
 
 
   listFixtures(){
-    this.fixtureService.GetFixtures().subscribe(res => {
+    this.fixtureService.GetFixtures().subscribe(
+      res => {
     
     console.log(res);
     

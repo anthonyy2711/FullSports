@@ -1,15 +1,19 @@
 <app-dashboard-la-liga-competition></app-dashboard-la-liga-competition>
 
 <div class="container">
-  <!-- <h5>Partidos de hoy</h5> -->
   <button type="submit" (click)="actualizar()">Actualizar</button>
-  <div class="row">
-    <div class="col-md-4 my-5" *ngFor="let item of Fixtures[1]; let i = index">
-      <div *ngIf="i % 10 == 0"><h6> Jornada {{item.round}}</h6></div>
-      <img src="{{ item.logo_league }}" height="90" width="90" class="p-3 linea"/>
-      <h4 class="linea">{{ item.name_league }}</h4>
-      <!-- <h6>Jornada {{ item.round }}</h6> -->
-      <div class="row">
+  
+    <div *ngFor="let item of Fixtures[1]; let i = index"> 
+      
+     
+     
+        <div class="row" *ngIf="i== 0">
+          <img class="col-1" src="{{ item.logo_league }}" height="90" width="90" />
+          <h4 class="col-3 mt-5">{{ item.name_league }}</h4> 
+          </div>
+        <div *ngIf="i % 10 == 0" class="pt-3"><h6> Jornada {{item.round}}</h6> </div> 
+      <div class="row" >
+        
         <div class="col-4 text-center">
           <img src="{{ item.logo_home }}" height="50" width="50" />
           <h5 class="mt-2">{{ item.goals_home }}</h5>
@@ -19,7 +23,8 @@
           <img src="{{ item.logo_away }}" height="50" width="50" />
           <h5 class="mt-2">{{ item.goals_away }}</h5>
         </div>
-      </div>
+      </div> 
     </div>
   </div>
-</div>
+ 
+

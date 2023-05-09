@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fixtures;
-use FFI;
+//use FFI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +17,8 @@ class FixturesController extends Controller
     {
         //
         $fixtures=Fixtures::all();
+        //$fixtures=DB::table('fixtures')->count();
+       
         return response()->json([
             'status'=> 'success',
             'fixtures'=> $fixtures,
