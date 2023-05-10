@@ -15,6 +15,8 @@ export class CompetitionsComponent implements OnInit{
   itemFormulario!:any;
 
 
+
+
   constructor(private competitionsService: CompetitionsService){}
 
   ngOnInit(): void {

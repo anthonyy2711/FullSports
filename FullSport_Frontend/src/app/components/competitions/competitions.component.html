@@ -1,6 +1,6 @@
 <app-dashboard-la-liga-competition></app-dashboard-la-liga-competition>
 <div class="container">
-    <table>
+    <table class="table">
         <thead class="thead-light">
             <tr>
                 <th class="text-center">Posición</th>
@@ -16,14 +16,18 @@
 
         <tbody>
             <tr *ngFor="let item of Competitions[1];">
-                <td class="text-center p-2">{{item.position}}</td>
-                <td><img src="{{item.team_logo}}" alt="" height="30" width="30"></td>
+                <td class="text-center py-2" *ngIf="item.position<=4"><span class="badge rounded-pill bg-success fs-5">{{item.position}}</span></td>
+                <td class="text-center py-2" *ngIf="item.position>4 && item.position<=6"><span class="badge rounded-pill bg-primary fs-5">{{item.position}}</span></td>
+                <td class="text-center py-2"  *ngIf="item.position==7"><span class="badge rounded-pill bg-info fs-5">{{item.position}}</span></td>
+                <td class="text-center py-2"  *ngIf="item.position>7 && item.position<=17"><span class="badge rounded-pill bg-dark fs-5">{{item.position}}</span></td>
+                <td class="text-center py-2"  *ngIf="item.position>17 && item.position<=20"><span class="badge rounded-pill bg-danger fs-5">{{item.position}}</span></td>
+                <td class="text-center"><img src="{{item.team_logo}}" alt="" height="30" width="30"></td>
                 <td>{{item.name_team}}</td>
                 <td>{{item.played_games}}</td>
                 <td>{{item.games_win}}</td>
-                <td class="ps-1">{{item.games_draw}}</td>
-                <td class="ps-1">{{item.games_lost}}</td>
-                <td class="ps-3">{{item.points}}</td>
+                <td class="ps-2">{{item.games_draw}}</td>
+                <td class="ps-2">{{item.games_lost}}</td>
+                <td class="ps-4">{{item.points}}</td>
             </tr>
         </tbody>
     </table>
