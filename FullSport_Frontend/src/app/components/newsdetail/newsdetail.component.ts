@@ -44,6 +44,8 @@ export class NewsdetailComponent implements OnInit{
     console.log(res);
     
     this.New = Object.values(res);
+    
+      console.log(this.New);
 
     });
   }
