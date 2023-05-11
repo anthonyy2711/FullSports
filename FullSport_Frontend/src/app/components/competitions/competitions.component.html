@@ -1,5 +1,16 @@
-<app-dashboard-la-liga-competition></app-dashboard-la-liga-competition>
 <div class="container">
+    
+
+
+<div *ngFor="let item of Competitions[1];let i = index">
+    <div *ngIf="i== 0" class="margen">
+        <img class="col-1" src="{{ item.logo_league }}"/>
+          <h4 class="col-3 display-6 linea">{{ item.name_league }}</h4> 
+    </div>
+</div>
+
+<app-dashboard-la-liga-competition></app-dashboard-la-liga-competition>
+
     <table class="table">
         <thead class="thead-light">
             <tr>
@@ -16,11 +27,11 @@
 
         <tbody>
             <tr *ngFor="let item of Competitions[1];">
-                <td class="text-center py-2" *ngIf="item.position<=4"><span class="badge rounded-pill bg-success fs-5">{{item.position}}</span></td>
-                <td class="text-center py-2" *ngIf="item.position>4 && item.position<=6"><span class="badge rounded-pill bg-primary fs-5">{{item.position}}</span></td>
-                <td class="text-center py-2"  *ngIf="item.position==7"><span class="badge rounded-pill bg-info fs-5">{{item.position}}</span></td>
-                <td class="text-center py-2"  *ngIf="item.position>7 && item.position<=17"><span class="badge rounded-pill bg-dark fs-5">{{item.position}}</span></td>
-                <td class="text-center py-2"  *ngIf="item.position>17 && item.position<=20"><span class="badge rounded-pill bg-danger fs-5">{{item.position}}</span></td>
+                <td class="text-center" *ngIf="item.position<=4"><span class="badge rounded-pill bg-success fs-5">{{item.position}}</span></td>
+                <td class="text-center" *ngIf="item.position>4 && item.position<=6"><span class="badge rounded-pill bg-primary fs-5">{{item.position}}</span></td>
+                <td class="text-center" *ngIf="item.position==7"><span class="badge rounded-pill bg-info fs-5">{{item.position}}</span></td>
+                <td class="text-center" *ngIf="item.position>7 && item.position<=17"><span class="badge rounded-pill bg-dark fs-5">{{item.position}}</span></td>
+                <td class="text-center" *ngIf="item.position>17 && item.position<=20"><span class="badge rounded-pill bg-danger fs-5">{{item.position}}</span></td>
                 <td class="text-center"><img src="{{item.team_logo}}" alt="" height="30" width="30"></td>
                 <td>{{item.name_team}}</td>
                 <td>{{item.played_games}}</td>
@@ -32,5 +43,7 @@
         </tbody>
     </table>
     <br>
-    <button type="submit" (click)="actualizar()">Actualizar</button>
+    <div class="p-3">
+        <button type="submit" (click)="actualizar()">Actualizar</button>
+    </div>
 </div>
