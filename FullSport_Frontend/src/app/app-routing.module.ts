@@ -46,7 +46,7 @@ const routes: Routes = [
   component:DashboardLaLigaCompetitionComponent
 },
 {
-  path:'newdetail/:id',
+  path:'newdetail',
   component:NewsdetailComponent
 },
 

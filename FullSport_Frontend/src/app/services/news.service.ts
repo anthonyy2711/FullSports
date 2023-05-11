@@ -17,10 +17,6 @@ export class NewsService {
     return this.httpClient.get<News>("http://127.0.0.1:8000/api/news");
   }
 
-  ShowNews(id:any): Observable<News> {
-    return this.httpClient.get<News>(`http://127.0.0.1:8000/api/news/show/${id}`);
-  }
-
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
