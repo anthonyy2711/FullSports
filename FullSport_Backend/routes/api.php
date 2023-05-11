@@ -69,6 +69,7 @@ Route::put('standings','update');
 Route::controller(NewsController::class)-> group(function(){
 
     Route::get('news','getNews');
+    Route::get('news/show/{id}','show');
 
 });
 
