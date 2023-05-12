@@ -19,10 +19,10 @@ export class HomeComponent {
   constructor(private newsService: NewsService){}
 
   ngOnInit(): void {
-    this.listNews();
+    this.pushNews();
   }
 
-  listNews(){
+  pushNews(){
     this.newsService.GetNews().subscribe(res => {
     
     console.log(res);

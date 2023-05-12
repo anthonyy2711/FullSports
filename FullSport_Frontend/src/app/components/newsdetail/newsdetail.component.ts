@@ -10,7 +10,7 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class NewsdetailComponent implements OnInit{
 
-  New:any=[];
+  News:any=[];
 
   /* @Input() item:News;
 
@@ -43,9 +43,9 @@ export class NewsdetailComponent implements OnInit{
     
     console.log(res);
     
-    this.New = Object.values(res);
+    this.News = Object.values(res);
     
-      console.log(this.New);
+      console.log(this.News);
 
     });
   }
