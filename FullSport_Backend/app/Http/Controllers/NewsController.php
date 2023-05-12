@@ -13,7 +13,7 @@ class NewsController extends Controller
     public function getNews()
     {
         //
-        $news=news::all();
+        $news=news::orderBy('new_date', 'desc')->get();
         return response()->json([
             'status'=> 'success',
             'news'=> $news,
@@ -46,6 +46,11 @@ class NewsController extends Controller
     public function show(string $id)
     {
         //
+        $news = news::find($id);
+        return response()->json([
+            'status'=> 'success',
+            'news'=> $news,
+        ]);
     }
 
     /**

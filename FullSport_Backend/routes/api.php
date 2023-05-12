@@ -92,6 +92,7 @@ Route::controller(PLStandingsController::class)-> group(function(){
 Route::controller(NewsController::class)-> group(function(){
 
     Route::get('news','getNews');
+    Route::get('news/show/{id}','show');
 
 });
 
@@ -109,5 +110,7 @@ Route::controller(AuthController::class)->group(function () {
 
 /* Route::get('image/{filename}',function(){
     $path = public_path().'/uploads/images/'.$fileName;
-    return Response::download($path);  
+    return Response::download($path);
 }); */
+
+Route::get('image/{path}', [PostController::class, 'getImage'])->where('path', '.*');

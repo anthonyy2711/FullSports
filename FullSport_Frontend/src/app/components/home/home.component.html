@@ -11,7 +11,7 @@
             <div *ngFor="let item of News[1]; let i = index" ><!--[item]="item" [i]="i"-->
                 <!--Noticia grande-->
                 <div *ngIf="i === 0" class="card mb-3" style="max-width: 100%;">
-                    <a href="" (click)="openWindow()" rel="noopener noreferrer" class="text-decoration-none text-black">
+                    <a href="" (click)="openWindow(item.id)" rel="noopener noreferrer" class="text-decoration-none text-black">
                         <div class="row g-0">
                             <div class="col-md-6">
                                 <img src="{{item.new_img}}" class="img-fluid rounded-start">
@@ -33,13 +33,13 @@
     <!--Noticia pequeños-->
     <div class="row">
         <div *ngFor="let item of News[1]; let i = index" class="col-4">
-            <div *ngIf="i >= 0">    
-                <a href="" (click)="openWindow()" rel="noopener noreferrer">
+            <div *ngIf="i >= 0" class="card mb-3">    
+                <a href="" (click)="openWindow(item.id)" rel="noopener noreferrer" class="text-decoration-none text-black">
                     <img src="{{item.new_img}}" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">{{item.new_title}}</h5>
                         <p class="card-text"><small class="text-muted">Last updated: {{item.new_date}}</small></p>
-                        <p><img src="{{item.author_img}}" height="30">&nbsp;<small>{{item.author_name}}</small></p>
+                        <p><img src="{{item.author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{item.author_name}}</small></p>
                     </div>
                 </a>
             </div>

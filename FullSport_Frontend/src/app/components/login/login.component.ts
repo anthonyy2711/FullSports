@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit{
   email!:any;
   pass!:any;
   token!:any;
+  role!:any;
+  username!:any;
+  user_id!:any;
   constructor(private router: Router, private user:UserService, private ngZone: NgZone) {}
 
   login=new FormGroup({
@@ -45,9 +48,16 @@ export class LoginComponent implements OnInit{
         else{
           this.oculta = false;
           this.token = localStorage.setItem('token',JSON.stringify(res.authorisation.token));
-        }
-        console.log(res);
+          this.role = localStorage.setItem('role', JSON.stringify(res.roles))
+          this.username = localStorage.setItem('username', JSON.stringify(res.user.name + " "+res.user.last_name))
+          this.user_id = localStorage.setItem('user_id', JSON.stringify(res.user.id))
+          console.log(localStorage.getItem('token'))
+          console.log(localStorage.getItem('role'))
+          console.log(localStorage.getItem('username'))
+          console.log(localStorage.getItem('user_id'))
 
+
+        }
 
         this.ngZone.run(() => this.router.navigate(['home'])) // if all good return to home
       }, (err) => {

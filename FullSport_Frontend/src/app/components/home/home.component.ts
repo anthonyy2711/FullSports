@@ -19,27 +19,30 @@ export class HomeComponent {
   constructor(private newsService: NewsService){}
 
   ngOnInit(): void {
-    this.listNews();
+    this.pushNews();
   }
 
-  listNews(){
+  pushNews(){
     this.newsService.GetNews().subscribe(res => {
     
     console.log(res);
     
     this.News = Object.values(res);
+
     });
   }
 
   //this.windowRef=null;
-  openWindow(){
-    console.log("console en el ts");
+  openWindow(id:any){
+    console.log(id);
     //this.windowRef= window.open("/newdetail","child", "toolbar=no,location=no,directories=no,status=no,menubar=no,titlebar=no,fullscreen=no,scrollbars=1,resizable=no,width=430,height=220,left=500,top=100");
-    this.windowRef= window.open("/newdetail","New Details");
+    this.windowRef= window.open(`/newdetail/${id}`,"New Details");
 
     this.windowRef.addEventListener("message",this.receivemessage.bind(this), false);
+
   }
   receivemessage(evt:any){
     console.log(evt.data);
   }
+
 }
