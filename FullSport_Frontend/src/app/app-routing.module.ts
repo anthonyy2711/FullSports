@@ -10,6 +10,10 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NewsdetailComponent } from './components/newsdetail/newsdetail.component';
+import { PLgamesComponent } from './components/plgames/plgames.component';
+import { PLStandingsComponent } from './components/plstandings/plstandings.component';
+import { LaLigaStandingsComponent } from './components/la-liga-standings/la-liga-standings.component';
+import { PLTopComponent } from './components/pltop/pltop.component';
 
 const routes: Routes = [
 {
@@ -33,9 +37,26 @@ const routes: Routes = [
   component:CompetitionsComponent
 },
 {
+  path:'LaLigaStandings',
+  component:LaLigaStandingsComponent
+},
+{
   path:'social',
   component:SocialComponent
 },
+{
+  path:'PLGames',
+  component:PLgamesComponent
+},
+{
+  path:'PLStandings',
+  component:PLStandingsComponent
+},
+{
+  path:'PLTop',
+  component:PLTopComponent
+},
+
 {
   path:'social-add',
   component:SocialAddComponent,

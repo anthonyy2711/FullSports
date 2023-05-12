@@ -1,0 +1,13 @@
+table{
+    width: 100%;
+}
+
+
+.margen{
+    margin-top: 80px;
+    margin-bottom: -50px;
+}
+
+.linea{
+    display: inline-block;
+}

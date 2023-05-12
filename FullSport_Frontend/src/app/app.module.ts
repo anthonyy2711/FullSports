@@ -19,6 +19,11 @@ import { SocialAddComponent } from './components/social-add/social-add.component
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardLaLigaCompetitionComponent } from './components/dashboard-la-liga-competition/dashboard-la-liga-competition.component';
 import { NewsdetailComponent } from './components/newsdetail/newsdetail.component';
+import { PLgamesComponent } from './components/plgames/plgames.component';
+import { PLStandingsComponent } from './components/plstandings/plstandings.component';
+import { DashboardPLComponent } from './components/dashboard-pl/dashboard-pl.component';
+import { LaLigaStandingsComponent } from './components/la-liga-standings/la-liga-standings.component';
+import { PLTopComponent } from './components/pltop/pltop.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,12 @@ import { NewsdetailComponent } from './components/newsdetail/newsdetail.componen
     SocialComponent,
     SocialAddComponent,
     DashboardLaLigaCompetitionComponent,
-    NewsdetailComponent
+    NewsdetailComponent,
+    PLgamesComponent,
+    PLStandingsComponent,
+    DashboardPLComponent,
+    LaLigaStandingsComponent,
+    PLTopComponent
   ],
   imports: [
     HttpClientModule,

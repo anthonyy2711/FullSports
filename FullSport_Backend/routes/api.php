@@ -7,7 +7,10 @@ use App\Models\Fixtures;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\PLFixturesController;
+use App\Http\Controllers\PLStandingsController;
 use App\Http\Controllers\PostController;
+use App\Models\PLFixtures;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +56,16 @@ Route::controller(FixturesController::class)-> group(function(){
 
 });
 
+Route::controller(PLFixturesController::class)-> group(function(){
+
+    Route::get('PLgames','getGames');
+    Route::post('PLgames','pushGames');
+
+    Route::put('PLgames','update');
+    //Route::get('games','getGamesByDate');
+
+});
+
 Route::controller(CompetitionsController::class)-> group(function(){
 
 Route::get('standings','getCompetitions');
@@ -62,6 +75,16 @@ Route::post('standings','pushCompetitions');
 Route::put('standings','update');
 
 });
+
+Route::controller(PLStandingsController::class)-> group(function(){
+
+    Route::get('PLStandings','getCompetitions');
+    
+    Route::post('PLStandings','pushCompetitions');
+    
+    Route::put('PLStandings','update');
+    
+    });
 
 
 
