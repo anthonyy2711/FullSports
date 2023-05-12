@@ -22,7 +22,7 @@ export class HomeComponent {
     this.pushNews();
   }
 
-  pushNews(){
+  pushNews(){//push news into array News
     this.newsService.GetNews().subscribe(res => {
     
     console.log(res);

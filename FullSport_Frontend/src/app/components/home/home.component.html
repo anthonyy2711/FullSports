@@ -31,7 +31,7 @@
         </div>
     </div> 
     <!--Noticia pequeños-->
-    <div class="row">
+    <div class="row ">       
         <div *ngFor="let item of News[1]; let i = index" class="col-4">
             <div *ngIf="i >= 0" class="card mb-3">    
                 <a href="" (click)="openWindow(item.id)" rel="noopener noreferrer" class="text-decoration-none text-black">
