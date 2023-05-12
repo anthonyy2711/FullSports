@@ -1,3 +1,4 @@
+import { Post } from './../../model/post';
 import { SocialService } from './../../services/social.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class SocialComponent implements OnInit {
   Posts:any=[];
   itemsNumber = 1;
-
+  imageUrl: any;
   logo:any;
   itemFormulario!:any;
 
@@ -23,8 +24,8 @@ export class SocialComponent implements OnInit {
 
   listPosts(){
     this.socialService.GetPosts().subscribe(res => {
-
-    console.log(res);
+      this.Posts = res;
+    console.log(this.Posts);
 
     this.Posts = Object.values(res);
     });

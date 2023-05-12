@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -18,7 +19,7 @@ class PostController extends Controller
         $posts=Post::all();
         return response()->json([
             'status'=> 'success',
-            'competitions'=> $posts,
+            'posts'=> $posts,
         ]);
     }
 
@@ -45,8 +46,13 @@ class PostController extends Controller
         ]);
         //$user = User::find ($request->user_id);
         //$full_name = $user['id'];
+        $file = $request->file('image');
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('storage/posts'), $filename);
+        // $image = new Image;
+        // $image= base64_encode(file_get_contents($request->file('image')));
         $post = Post::create([
-            'image'=>$request->image,
+            'image'=>$filename,
             'title'=>$request->title,
             'body'=>$request->body,
             'user_id'=>$request->user_id,
