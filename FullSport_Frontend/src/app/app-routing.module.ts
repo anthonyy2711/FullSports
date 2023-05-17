@@ -14,6 +14,7 @@ import { PLgamesComponent } from './components/plgames/plgames.component';
 import { PLStandingsComponent } from './components/plstandings/plstandings.component';
 import { LaLigaStandingsComponent } from './components/la-liga-standings/la-liga-standings.component';
 import { PLTopComponent } from './components/pltop/pltop.component';
+import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.component';
 
 const routes: Routes = [
 {
@@ -39,6 +40,10 @@ const routes: Routes = [
 {
   path:'LaLigaStandings',
   component:LaLigaStandingsComponent
+},
+{
+  path:'LaLigaGames',
+  component:LaLigaGamesComponent
 },
 {
   path:'social',

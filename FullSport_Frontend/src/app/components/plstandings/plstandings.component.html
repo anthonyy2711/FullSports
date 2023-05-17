@@ -3,16 +3,48 @@
     <div *ngFor="let item of Competitions[1];let i = index">
         <div *ngIf="i== 0" class="margen">
             <img class="col-1" src="{{ item.logo_league }}"/>
-              <h4 class="col-3 display-6 linea ms-3">{{ item.name_league }}</h4> 
+              <h4 class="col-3 display-6 linea">{{ item.name_league }}</h4> 
         </div>
     </div>
     
     <app-dashboard-pl></app-dashboard-pl>
     
-    <div class="text-center" id="scoreaxis-widget-4bacb" style="border-width:0px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/8?removeBorders=1&amp;lang=es&amp;fontSize=16&amp;autoHeight=0&amp;inst=4bacb" style="width:800px;height:780px;border:none;transition:all 300ms ease; "></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"4bacb"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-4bacb iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
-
-
-   
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th class="text-center">Posicion</th>
+                    <th></th>
+                    <th>Equipo</th>
+                    <th>PJ</th>
+                    <th>PG</th>
+                    <th>PE</th>
+                    <th>PP</th>
+                    <th>Puntos</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                <tr *ngFor="let item of Competitions[1];">
+                    <td class="text-center" *ngIf="item.position<=4"><span class="badge rounded-pill bg-success fs-5">{{item.position}}</span></td>
+                    <td class="text-center" *ngIf="item.position>4 && item.position<=6"><span class="badge rounded-pill bg-primary fs-5">{{item.position}}</span></td>
+                    <td class="text-center" *ngIf="item.position==7"><span class="badge rounded-pill bg-info fs-5">{{item.position}}</span></td>
+                    <td class="text-center" *ngIf="item.position>7 && item.position<=17"><span class="badge rounded-pill bg-dark fs-5">{{item.position}}</span></td>
+                    <td class="text-center" *ngIf="item.position>17 && item.position<=20"><span class="badge rounded-pill bg-danger fs-5">{{item.position}}</span></td>
+                    <td class="text-center"><img src="{{item.team_logo}}" alt="" height="30" width="30"></td>
+                    <td>{{item.name_team}}</td>
+                    <td>{{item.played_games}}</td>
+                    <td>{{item.games_win}}</td>
+                    <td class="ps-2">{{item.games_draw}}</td>
+                    <td class="ps-2">{{item.games_lost}}</td>
+                    <td class="ps-4">{{item.points}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div class="p-3">
+            <button type="submit" (click)="actualizar()">Actualizar</button>
+        </div>
+    </div>
 
 
     

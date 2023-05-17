@@ -1,0 +1,39 @@
+<div class="container">
+
+    <div *ngFor="let item of Fixtures[1];let i = index" style="margin-top: 90px;">
+      <div *ngIf="i== 0">
+          <img class="col-1" src="{{ item.logo_league }}"/>
+            <h4 class="col-3 display-6 linea ms-3">{{ item.name_league }}</h4> 
+      </div>
+  </div>
+  <app-dashboard-la-liga-competition></app-dashboard-la-liga-competition>
+  <br>
+  Jornada
+  <select [(ngModel)]="jornadaFilter">
+    <option *ngFor="let option of jornadas">{{option}}</option>
+  </select>
+  <br>
+  <br>
+    <button type="submit" (click)="actualizar()">Actualizar</button>
+    
+      <div *ngFor="let item of Fixtures[1]; let i = index"> 
+        
+       
+       
+        <div *ngIf="item.round==jornadaFilter" class="row pt-3">
+          
+                <div class="row" >
+                  <div class="col-4 text-center">
+                    <img src="{{ item.logo_home }}" height="50" width="50" />
+                    <h5 class="mt-2">{{ item.goals_home }}</h5>
+                  </div>
+                  <div class="col-4 text-center mt-3">{{ item.status }}</div>
+                  <div class="col-4 text-center">
+                    <img src="{{ item.logo_away }}" height="50" width="50" />
+                    <h5 class="mt-2">{{ item.goals_away }}</h5>
+                  </div>
+                </div>
+              </div> 
+          
+        </div>
+  </div>

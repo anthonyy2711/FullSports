@@ -24,6 +24,7 @@ import { PLStandingsComponent } from './components/plstandings/plstandings.compo
 import { DashboardPLComponent } from './components/dashboard-pl/dashboard-pl.component';
 import { LaLigaStandingsComponent } from './components/la-liga-standings/la-liga-standings.component';
 import { PLTopComponent } from './components/pltop/pltop.component';
+import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { PLTopComponent } from './components/pltop/pltop.component';
     PLStandingsComponent,
     DashboardPLComponent,
     LaLigaStandingsComponent,
-    PLTopComponent
+    PLTopComponent,
+    LaLigaGamesComponent
   ],
   imports: [
     HttpClientModule,

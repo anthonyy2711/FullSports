@@ -64,6 +64,8 @@ Route::controller(PLFixturesController::class)-> group(function(){
     Route::put('PLgames','update');
     //Route::get('games','getGamesByDate');
 
+    // Route::get('PLgames','Fixture');
+
 });
 
 Route::controller(CompetitionsController::class)-> group(function(){
