@@ -37,6 +37,8 @@ export class HomeComponent {
             next = next.nextElementSibling
         }
     });*/
+
+
   }
 
   pushNews(){//push news into array News
@@ -62,6 +64,8 @@ export class HomeComponent {
     console.log(evt.data);
   }
   
-  
+  loadMore(){
+
+  }
 
 }
