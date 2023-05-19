@@ -25,6 +25,7 @@ import { DashboardPLComponent } from './components/dashboard-pl/dashboard-pl.com
 import { LaLigaStandingsComponent } from './components/la-liga-standings/la-liga-standings.component';
 import { PLTopComponent } from './components/pltop/pltop.component';
 import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.component';
+import { NewsaddComponent } from './components/newsadd/newsadd.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.c
     DashboardPLComponent,
     LaLigaStandingsComponent,
     PLTopComponent,
-    LaLigaGamesComponent
+    LaLigaGamesComponent,
+    NewsaddComponent
   ],
   imports: [
     HttpClientModule,
