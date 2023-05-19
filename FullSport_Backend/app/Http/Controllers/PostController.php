@@ -46,9 +46,9 @@ class PostController extends Controller
         ]);
         //$user = User::find ($request->user_id);
         //$full_name = $user['id'];
-        $file = $request->file('image');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path('storage/posts'), $filename);
+        $file = $request->file('image');//recojo la img
+        $filename = time() . '.' . $file->getClientOriginalExtension();//le pongo nombre
+        $file->move(public_path('storage/posts'), $filename);//lo pongo en la carpeta storage
         // $image = new Image;
         // $image= base64_encode(file_get_contents($request->file('image')));
         $post = Post::create([

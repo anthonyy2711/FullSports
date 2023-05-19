@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        news::factory(5)->create();//create fake news
+        //news::factory(5)->create();//create fake news
         $this->call(RoleSeeder::class);
         $this->call(AdminSeeder::class);
     }

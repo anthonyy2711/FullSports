@@ -90,13 +90,15 @@ Route::controller(PLStandingsController::class)-> group(function(){
 
 
 
-//Route::apiResource('news',NewsController::class);
+/* Route::apiResource('news',NewsController::class); */
 Route::controller(NewsController::class)-> group(function(){
 
     Route::get('news','getNews');
     Route::get('news/show/{id}','show');
+    Route::post('news', 'store');
 
 });
+
 
 Route::apiResource('posts',PostController::class);
 

@@ -31,7 +31,8 @@ class NewsFactory extends Factory
             'new_description' => $faker->realText(50),
             'author_img'      => $this->faker->imageUrl(300,300),
             'author_name'     => $rand_author,
-            'new_date'        => $this->faker->dateTimeBetween('-30 days', '+30 days'),
+            
+            //'new_date'        => $this->faker->dateTimeBetween('-30 days', '+30 days'),
 
         ];
     }

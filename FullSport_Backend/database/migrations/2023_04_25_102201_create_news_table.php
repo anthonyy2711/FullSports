@@ -16,10 +16,15 @@ return new class extends Migration
             $table->string('new_img');
             $table->string('new_title');
             $table->string('new_description');
-            $table->string('author_img');
+            $table->string('author_img')->nullable();
             $table->string('author_name');
-            $table->date('new_date');
+            $table->unsignedBigInteger('user_id')->nullable();
+            //$table->date('new_date');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                    ->references('id')->on('users')
+                    ->onDelete('set null');
         });
     }
 
