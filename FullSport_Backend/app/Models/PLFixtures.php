@@ -14,6 +14,7 @@ class PLFixtures extends Model
         'logo_home',
         'logo_away',
         'winner',
+        'currentMatchday',
         'status',
     ];
 

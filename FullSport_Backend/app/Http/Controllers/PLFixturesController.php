@@ -70,6 +70,7 @@ class PLFixturesController extends Controller
             $fixtures->name_league = $result['competition']['name'];
             $fixtures->logo_league = $result['competition']['emblem'];
             $fixtures->round = $result['matches'][$i]['matchday'];
+            $fixtures->currentmatchday = $result['matches'][$i]['season']['currentMatchday'];
             $fixtures->date_event = $result['matches'][$i]['utcDate'];
             $fixtures->name_home = $result['matches'][$i]['homeTeam']['name'];
             $fixtures->name_away = $result['matches'][$i]['awayTeam']['name'];;
@@ -137,8 +138,8 @@ class PLFixturesController extends Controller
         $result = json_decode($response, true);
 
 
-        if (Schema::hasTable('fixtures')) {
-            DB::table('fixtures')->truncate();
+        if (Schema::hasTable('pl_fixtures')) {
+            DB::table('pl_fixtures')->truncate();
         }
         
 
@@ -147,6 +148,7 @@ class PLFixturesController extends Controller
             $fixtures->name_league = $result['competition']['name'];
             $fixtures->logo_league = $result['competition']['emblem'];
             $fixtures->round = $result['matches'][$i]['matchday'];
+            $fixtures->currentMatchday = $result['matches'][$i]['season']['currentMatchday'];
             $fixtures->date_event = $result['matches'][$i]['utcDate'];
             $fixtures->name_home = $result['matches'][$i]['homeTeam']['name'];
             $fixtures->name_away = $result['matches'][$i]['awayTeam']['name'];;
