@@ -20,6 +20,25 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.pushNews();
+    /* carrousel prueba
+    let items = document.querySelectorAll('.carousel .carousel-item');
+    console.log(items);
+    items.forEach((el) => {
+        const minPerSlide = 3
+        let next = el.nextElementSibling
+        for (var i=1; i<minPerSlide; i++) {
+            if (!next) {
+                // wrap carousel by using first child
+              next = items[0]
+            }
+            let cloneChild = next.cloneNode(true)
+            console.log(cloneChild);
+            //el.appendChild(cloneChild.children[0])
+            next = next.nextElementSibling
+        }
+    });*/
+
+
   }
 
   pushNews(){//push news into array News
@@ -43,6 +62,10 @@ export class HomeComponent {
   }
   receivemessage(evt:any){
     console.log(evt.data);
+  }
+  
+  loadMore(){
+
   }
 
 }

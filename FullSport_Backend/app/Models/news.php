@@ -15,7 +15,8 @@ class news extends Model
         'new_description',
         'author_img',
         'author_name',
-        'new_date',
+        'user_id',
+        //'new_date',
     ];
 
     protected $table = 'news';

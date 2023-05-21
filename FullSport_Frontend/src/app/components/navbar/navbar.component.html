@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-cyan fixed-top">
   <div class="container-fluid">
-    <a href="/home">
+    <a routerLink="/home">
       <img src="../../../assets/img/logoPetit.png" class="img-fluid"  width="200">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,15 +9,15 @@
     <div class="collapse navbar-collapse ms-5 " id="navbarSupportedContent ">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/games">Partidos</a>
+          <a class="nav-link active" aria-current="page" routerLink="/games">Partidos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Equipos</a>
+          <a class="nav-link" routerLink="#">Equipos</a>
         </li>
 
 
         <li class="nav-item dropdown dropdown-hover position-static">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+          <a class="nav-link dropdown-toggle" routerLink="#" id="navbarDropdown" role="button"
             data-mdb-toggle="dropdown" aria-expanded="false">
             Competiciones
           </a>
@@ -28,15 +28,15 @@
                 <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
                   <div class="list-group list-group-flush">
                     <h5 class="fa-solid fa-futbol "><fa-icon [icon]="faFutbol"></fa-icon>&nbsp; Futbol</h5>
-                    <a href="/LaLigaGames" class="list-group-item list-group-item-action"><img src="../../../assets/img/laliga-removebg-preview.png" height="30" alt="">&nbsp; LaLiga</a>
-                    <a href="/PLGames" class="list-group-item list-group-item-action"><img src="../../../assets/img/premier.png" height="30" alt="">&nbsp; Premier League</a>
-                    <a href="" class="list-group-item list-group-item-action"><img src="../../../assets/img/champions.png" height="30" alt="">&nbsp; UEFA Champions League</a>
+                    <a routerLink="/LaLigaGames" class="list-group-item list-group-item-action"><img src="../../../assets/img/laliga-removebg-preview.png" height="30" alt="">&nbsp; LaLiga</a>
+                    <a routerLink="/PLGames" class="list-group-item list-group-item-action"><img src="../../../assets/img/premier.png" height="30" alt="">&nbsp; Premier League</a>
+                    <a routerLink="" class="list-group-item list-group-item-action"><img src="../../../assets/img/champions.png" height="30" alt="">&nbsp; UEFA Champions League</a>
                   </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
                   <div class="list-group list-group-flush">
                     <h5 class="fa-solid fa-futbol"><fa-icon [icon]="faBasketball"></fa-icon>&nbsp; Baloncesto</h5>
-                    <a href="/games" class="list-group-item list-group-item-action"><img src="../../../assets/img/nba.png" height="30" alt="">&nbsp; NBA</a>
+                    <a routerLink="/games" class="list-group-item list-group-item-action"><img src="../../../assets/img/nba.png" height="30" alt="">&nbsp; NBA</a>
                   </div>
                 </div>
 
@@ -46,10 +46,10 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/social">Social</a>
+          <a class="nav-link" routerLink="/social">Social</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/login">Unete</a>
+          <a class="nav-link" routerLink="/login">Unete</a>
         </li>
       </ul>
     </div>
