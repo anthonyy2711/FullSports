@@ -1,6 +1,9 @@
 .margen{
     margin-top: 70px;
 }
+.img_height{
+  height: 200px;
+}
 /* carousel prueba
 @media (max-width: 767px) {
     .carousel-inner .carousel-item > div {
