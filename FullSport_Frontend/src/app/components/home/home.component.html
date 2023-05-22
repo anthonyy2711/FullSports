@@ -6,7 +6,7 @@
     <!--add new button-->
     <div class="col py-5">
         <a href="/newsadd" class="btn btn-primary">Crear</a>
-      </div>
+    </div>
     <!--Noticias-->
     <!--Noticias principal-->
     <div class="row">
@@ -24,7 +24,7 @@
                                     <h5 class="card-title text-center">{{item.new_title}}</h5>
                                     <p class="card-text pt-5">{{item.new_description}}</p>
                                     <p class="card-text"><small class="text-muted">Last updated: {{item.created_at | date:'short'}}</small></p>
-                                    <p><img src="{{item.author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{item.author_name | remoneQuotes}}</small></p>
+                                    <p><img src="{{item.author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{item.author_name | removeQuotes}}</small></p>
                                 </div>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{item.new_title}}</h5>
                         <p class="card-text"><small class="text-muted">Last updated: {{item.created_at | date:'short'}}</small></p>
-                        <p><img src="{{item.author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{item.author_name}}</small></p>
+                        <p><img src="{{item.author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{item.author_name | removeQuotes}}</small></p>
                     </div>
                 </a>
             </div>

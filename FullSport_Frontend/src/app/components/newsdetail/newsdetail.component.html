@@ -10,7 +10,7 @@ las noticias en detalle-->
                     <h5 class="card-title">{{News[1].new_title}}</h5>
                     <p class="card-text pt-5">{{News[1].new_description}}</p>
                     <p class="card-text"><small class="text-muted">Last updated: {{News[1].created_at | date:'short'}}</small></p>
-                    <p><img src="{{News[1].author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{News[1].author_name | remoneQuotes}}</small></p>
+                    <p><img src="{{News[1].author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{News[1].author_name | removeQuotes}}</small></p>
                 </div>
             </div>
             <div class="col-md-6">

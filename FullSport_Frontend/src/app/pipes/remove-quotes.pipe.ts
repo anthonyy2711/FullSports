@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'remoneQuotes'
+  name: 'removeQuotes'
 })
-export class RemoneQuotesPipe implements PipeTransform {
+export class RemoveQuotesPipe implements PipeTransform {
 
   transform(value: unknown): string {
     if (typeof value !== 'string') {

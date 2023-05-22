@@ -1,4 +1,4 @@
-import { RemoneQuotesPipe } from './remone-quotes.pipe';
+import { RemoneQuotesPipe } from './remove-quotes.pipe';
 
 describe('RemoneQuotesPipe', () => {
   it('create an instance', () => {
