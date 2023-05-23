@@ -20,40 +20,19 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.pushNews();
-    /* carrousel prueba
-    let items = document.querySelectorAll('.carousel .carousel-item');
-    console.log(items);
-    items.forEach((el) => {
-        const minPerSlide = 3
-        let next = el.nextElementSibling
-        for (var i=1; i<minPerSlide; i++) {
-            if (!next) {
-                // wrap carousel by using first child
-              next = items[0]
-            }
-            let cloneChild = next.cloneNode(true)
-            console.log(cloneChild);
-            //el.appendChild(cloneChild.children[0])
-            next = next.nextElementSibling
-        }
-    });*/
-
 
   }
 
   pushNews(){//push news into array News
     this.newsService.GetNews().subscribe(res => {
-    
-    console.log(res);
-    
-    this.News = Object.values(res);
-
+    //console.log(res);
+      this.News = Object.values(res);
     });
   }
 
   //this.windowRef=null;
   openWindow(id:any){
-    console.log(id);
+    //console.log(id);
     //this.windowRef= window.open("/newdetail","child", "toolbar=no,location=no,directories=no,status=no,menubar=no,titlebar=no,fullscreen=no,scrollbars=1,resizable=no,width=430,height=220,left=500,top=100");
     this.windowRef= window.open(`/newdetail/${id}`,"New Details");
 
@@ -61,7 +40,7 @@ export class HomeComponent {
 
   }
   receivemessage(evt:any){
-    console.log(evt.data);
+    //console.log(evt.data);
   }
   
   loadMore(){

@@ -12,24 +12,15 @@ export class NewsdetailComponent implements OnInit{
 
   News:any=[];
 
-  /* @Input() item:News;
-
-  @Input() i:number; */
-
   id!:any;
 
   constructor(private route: ActivatedRoute, private newsService: NewsService){}
 
   ngOnInit(): void{
-    //console.log(window.opener.provar());
-    /* var s = window.opener.;
-    console.log(s);
-    console.log(s.prova); */
-    //console.log(window.parent.provar());
-    //window.opener.provar();
+    
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
-      console.log(this.id);
+      //console.log(this.id);
     });
 
     this.showNews();
@@ -41,12 +32,14 @@ export class NewsdetailComponent implements OnInit{
   showNews(){
     this.newsService.ShowNews(this.id).subscribe(res => {
     
-    console.log(res);
-    
-    this.News = Object.values(res);
-    
+      //console.log(res);
+      
+      this.News = Object.values(res);
+      
       console.log(this.News);
 
     });
   }
+
+  
 }

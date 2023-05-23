@@ -27,6 +27,7 @@ import { PLTopComponent } from './components/pltop/pltop.component';
 import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.component';
 import { NewsaddComponent } from './components/newsadd/newsadd.component';
 import { RemoveQuotesPipe } from './pipes/remove-quotes.pipe';
+import { NewsupdateComponent } from './components/newsupdate/newsupdate.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { RemoveQuotesPipe } from './pipes/remove-quotes.pipe';
     LaLigaGamesComponent,
     NewsaddComponent,
     RemoveQuotesPipe,
+    NewsupdateComponent,
   ],
   imports: [
     HttpClientModule,
