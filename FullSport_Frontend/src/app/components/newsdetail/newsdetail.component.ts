@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, NgZone, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { tap } from 'rxjs';
 import { News } from 'src/app/model/news';
 import { NewsService } from 'src/app/services/news.service';
 
@@ -14,7 +15,7 @@ export class NewsdetailComponent implements OnInit{
 
   id!:any;
 
-  constructor(private route: ActivatedRoute, private newsService: NewsService){}
+  constructor(private route: ActivatedRoute, private newsService: NewsService, private router: Router,private ngZone: NgZone){}
 
   ngOnInit(): void{
     
@@ -36,10 +37,33 @@ export class NewsdetailComponent implements OnInit{
       
       this.News = Object.values(res);
       
-      console.log(this.News);
+      //console.log(this.News);
 
     });
   }
 
-  
+  //delete news from database
+  /* deleteNews(id:any) {
+    
+    if(window.confirm('Do you want to go ahead?')) {
+      this.newsService.DeleteNews(id).subscribe((res) => {
+        
+        this.News();
+        tap(() => {
+          // Redireccionar 
+          this.router.navigate(['/home']);
+        })
+        
+      })
+    }
+  } */
+  deleteNews(id: any) {
+    if (window.confirm('¿Quieres seguir con ello?')) {
+      this.newsService.DeleteNews(id).subscribe(() => {
+        // Redireccionar a la home despues del delete
+        this.router.navigate(['/home']);
+      });
+    }
+  }
+
 }

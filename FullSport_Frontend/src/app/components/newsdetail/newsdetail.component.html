@@ -4,12 +4,13 @@ las noticias en detalle-->
     <!--add new button-->
     <div class="col py-5">
         <a href="/newsupdate/{{id}}" class="btn btn-success" >Update</a>
+        <a (click)="deleteNews(id)" class="btn btn-danger ms-2" >Delete</a>
     </div>
     <div class="card mb-3" style="max-width: 100%;">
         <div class="row g-0">
             <div class="col-md-6" >
                 <div class="card-body" >
-                    {{News[1].id}}
+                    <!--{{News[1].id}}-->
                     <h5 class="card-title">{{News[1].new_title}}</h5>
                     <p class="card-text pt-5">{{News[1].new_description}}</p>
                     <p class="card-text"><small class="text-muted">Last updated: {{News[1].created_at | date:'short'}}</small></p>

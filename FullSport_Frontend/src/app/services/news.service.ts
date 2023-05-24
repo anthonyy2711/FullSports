@@ -41,6 +41,14 @@ export class NewsService {
       )
   }
 
+  // Delete News
+  DeleteNews(id:any): Observable<any> {
+    let API_URL = `${this.REST_API}news/${id}`;//news/{id} //delete-new/${id}
+    return this.httpClient.delete(API_URL, { headers: this.httpHeaders}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
