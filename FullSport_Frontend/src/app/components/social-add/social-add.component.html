@@ -1,11 +1,12 @@
 <section>
-  <form [formGroup]="postForm" class="w-25" (ngSubmit)="onSubmit()">
+  <div class="container py-5 mt-5 ">
+  <form [formGroup]="postForm" class="w-50" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <label for="exampleFormControlInput1" class="form-label">Titulo</label>
       <input class="form-control" type="text" id="title" name="title" formControlName="title">
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <label for="exampleFormControlTextarea1" class="form-label">Cuerpo</label>
       <textarea class="form-control" type="text" id="body" name="body" formControlName="body" rows="3"></textarea>
     </div>
     <div class="mb-3">
@@ -14,4 +15,5 @@
     </div>
     <button type="submit" class="btn btn-primary form-control mt-3 col-4">Añadir Post</button>
   </form>
+</div>
 </section>

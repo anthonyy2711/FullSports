@@ -1,3 +1,4 @@
+import { AuthInterceptorService } from './services/auth.interceptor.service';
 import { AuthGuard } from './auth.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { GamesComponent } from './components/games/games.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComparePasswordsDirective } from './directives/compare-passwords.directive';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CompetitionsComponent } from './components/competitions/competitions.component';
 import { SocialComponent } from './components/social/social.component';
 import { SocialAddComponent } from './components/social-add/social-add.component';
@@ -25,6 +26,7 @@ import { DashboardPLComponent } from './components/dashboard-pl/dashboard-pl.com
 import { LaLigaStandingsComponent } from './components/la-liga-standings/la-liga-standings.component';
 import { PLTopComponent } from './components/pltop/pltop.component';
 import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.c
     DashboardPLComponent,
     LaLigaStandingsComponent,
     PLTopComponent,
-    LaLigaGamesComponent
+    LaLigaGamesComponent,
+    ProfileComponent
   ],
   imports: [
     HttpClientModule,
@@ -56,7 +59,11 @@ import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.c
     ReactiveFormsModule,
     FontAwesomeModule
   ],
-  providers: [AuthGuard],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

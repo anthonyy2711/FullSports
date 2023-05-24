@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class FixturesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['getGames', 'getGamesByDate']]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -18,7 +22,7 @@ class FixturesController extends Controller
         //
         $fixtures=Fixtures::all();
         //$fixtures=DB::table('fixtures')->count();
-       
+
         return response()->json([
             'status'=> 'success',
             'fixtures'=> $fixtures,
@@ -184,7 +188,7 @@ class FixturesController extends Controller
         if (Schema::hasTable('fixtures')) {
             DB::table('fixtures')->truncate();
         }
-        
+
 
         for ($i=0; $i < 380; $i++){
             $fixtures = new Fixtures();

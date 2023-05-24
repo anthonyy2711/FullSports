@@ -7,6 +7,10 @@ use App\Models\news;
 
 class NewsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['getNews', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +25,7 @@ class NewsController extends Controller
     }
 
     /**
-     * 
+     *
      */
 
     /**

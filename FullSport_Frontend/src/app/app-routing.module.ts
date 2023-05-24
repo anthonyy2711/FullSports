@@ -1,3 +1,4 @@
+import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './auth.guard';
 import { SocialAddComponent } from './components/social-add/social-add.component';
 import { SocialComponent } from './components/social/social.component';
@@ -74,6 +75,10 @@ const routes: Routes = [
 {
   path:'newdetail/:id',
   component:NewsdetailComponent
+},
+{
+  path:'profile',
+  component:ProfileComponent
 },
 
 {

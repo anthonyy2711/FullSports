@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class PLFixturesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['getGames']]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -18,7 +22,7 @@ class PLFixturesController extends Controller
         //
         $fixtures=PLFixtures::all();
         //$fixtures=DB::table('fixtures')->count();
-       
+
         return response()->json([
             'status'=> 'success',
             'PLfixtures'=> $fixtures,
@@ -54,16 +58,16 @@ class PLFixturesController extends Controller
                 "X-Auth-Token: bfc8d231996a4c8f8a9ca3a9350d404b",
             ),
             ));
-    
+
             $response = curl_exec($curl);
-    
-    
+
+
             curl_close($curl);
             $result = json_decode($response, true);
-    
+
             //$result = $result['matches'];
             //var_dump($result);
-    
+
             // $all = $result["results"];
             for ($i=0; $i < 380; $i++){
             $fixtures = new PLFixtures();
@@ -140,7 +144,7 @@ class PLFixturesController extends Controller
         if (Schema::hasTable('fixtures')) {
             DB::table('fixtures')->truncate();
         }
-        
+
 
         for ($i=0; $i < 380; $i++){
             $fixtures = new PLFixtures();
