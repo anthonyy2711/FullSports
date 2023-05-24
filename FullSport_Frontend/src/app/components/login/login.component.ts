@@ -42,24 +42,19 @@ export class LoginComponent implements OnInit{
 
     this.user.validateLogin(data)
     .subscribe(res => {
-        if (res == "Unauthorized") {
+        if (res.message == "Unauthorized") {
           this.oculta = true;
         }
         else{
           this.oculta = false;
-          this.token = localStorage.setItem('token',JSON.stringify(res.authorisation.token));
+          this.token = localStorage.setItem('token',JSON.stringify(res.authorization.token).replace(/["']/g, ''));
           this.role = localStorage.setItem('role', JSON.stringify(res.roles))
-          this.username = localStorage.setItem('username', JSON.stringify(res.user.name + " "+res.user.last_name))
-          this.user_id = localStorage.setItem('user_id', JSON.stringify(res.user.id))
-          console.log(localStorage.getItem('token'))
-          console.log(localStorage.getItem('role'))
-          console.log(localStorage.getItem('username'))
-          console.log(localStorage.getItem('user_id'))
-
-
+          this.username = localStorage.setItem('username', JSON.stringify(res.user.name + " "+res.user.last_name).replace(/["']/g, ''))
+          this.user_id = localStorage.setItem('user_id', JSON.stringify(res.user.id).replace(/[\[\]"']+/g,''))
         }
 
         this.ngZone.run(() => this.router.navigate(['home'])) // if all good return to home
+
       }, (err) => {
 
     });

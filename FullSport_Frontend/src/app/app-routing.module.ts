@@ -1,3 +1,4 @@
+import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './auth.guard';
 import { SocialAddComponent } from './components/social-add/social-add.component';
 import { SocialComponent } from './components/social/social.component';
@@ -16,6 +17,7 @@ import { LaLigaStandingsComponent } from './components/la-liga-standings/la-liga
 import { PLTopComponent } from './components/pltop/pltop.component';
 import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.component';
 import { NewsaddComponent } from './components/newsadd/newsadd.component';
+import { NewsupdateComponent } from './components/newsupdate/newsupdate.component';
 
 const routes: Routes = [
 {
@@ -77,8 +79,16 @@ const routes: Routes = [
   component:NewsdetailComponent
 },
 {
+  path:'profile',
+  component:ProfileComponent
+},
+{
   path:'newsadd',
   component:NewsaddComponent
+},
+{
+  path:'newsupdate/:id',
+  component:NewsupdateComponent
 },
 
 {

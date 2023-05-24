@@ -44,6 +44,15 @@ export class UserService {
       )
 
   }
+  logout(){
+    localStorage.clear()
+    let API_URL = `${this.REST_API}logout`;
+    return this.httpClient.post(API_URL, { headers: this.httpHeaders })
+
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
 
   // Error
   handleError(error: HttpErrorResponse) {

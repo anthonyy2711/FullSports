@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, NgZone, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { tap } from 'rxjs';
 import { News } from 'src/app/model/news';
 import { NewsService } from 'src/app/services/news.service';
 
@@ -12,41 +13,37 @@ export class NewsdetailComponent implements OnInit{
 
   News:any=[];
 
-  /* @Input() item:News;
-
-  @Input() i:number; */
-
   id!:any;
 
-  constructor(private route: ActivatedRoute, private newsService: NewsService){}
+  constructor(private route: ActivatedRoute, private newsService: NewsService, private router: Router,private ngZone: NgZone){}
 
   ngOnInit(): void{
-    //console.log(window.opener.provar());
-    /* var s = window.opener.;
-    console.log(s);
-    console.log(s.prova); */
-    //console.log(window.parent.provar());
-    //window.opener.provar();
+    
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
-      console.log(this.id);
+      //console.log(this.id);
     });
-
     this.showNews();
-    
   }
 
   // llamar a la BD (metodo show) -> tipo get
   // recoger informacion de esa id y printarla en la pagina web 
   showNews(){
     this.newsService.ShowNews(this.id).subscribe(res => {
-    
-    console.log(res);
-    
-    this.News = Object.values(res);
-    
-      console.log(this.News);
-
+      //console.log(res);
+      this.News = Object.values(res);
+      //console.log(this.News);
     });
   }
+
+  //delete news from database
+  deleteNews(id: any) {
+    if (window.confirm('¿Quieres seguir con ello?')) {
+      this.newsService.DeleteNews(id).subscribe(() => {
+        // Redireccionar a la home despues del delete
+        this.router.navigate(['/home']);
+      });
+    }
+  }
+
 }

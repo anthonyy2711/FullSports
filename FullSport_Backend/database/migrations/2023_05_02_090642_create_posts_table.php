@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('body');
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('username')->nullable();
             $table->unsignedBigInteger('comments_id')->nullable();
 
             $table->foreign('user_id')

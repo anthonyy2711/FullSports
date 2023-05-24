@@ -14,6 +14,7 @@ class Post extends Model
         'title',
         'body',
         'user_id',
+        'username',
         'comments_id',
         'likes',
         'comments',

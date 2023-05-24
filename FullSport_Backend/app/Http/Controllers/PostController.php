@@ -10,13 +10,19 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['index','show']]);
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
+
         $posts=Post::all();
+        $posts=Post::orderBy('created_at', 'desc')->get();
         return response()->json([
             'status'=> 'success',
             'posts'=> $posts,
@@ -44,11 +50,12 @@ class PostController extends Controller
             'body'      =>'required',
 
         ]);
-        //$user = User::find ($request->user_id);
-        //$full_name = $user['id'];
-        $file = $request->file('image');//recojo la img
-        $filename = time() . '.' . $file->getClientOriginalExtension();//le pongo nombre
-        $file->move(public_path('storage/posts'), $filename);//lo pongo en la carpeta storage
+        $id =  $request->user_id;
+        $full_name = User::select('name')->where('id', $id)->value('name');
+
+        $file = $request->file('image');
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('storage/posts'), $filename);
         // $image = new Image;
         // $image= base64_encode(file_get_contents($request->file('image')));
         $post = Post::create([
@@ -56,6 +63,7 @@ class PostController extends Controller
             'title'=>$request->title,
             'body'=>$request->body,
             'user_id'=>$request->user_id,
+            'username'=>$full_name,
         ]);
     }
 

@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class CompetitionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['getCompetitions']]);
+    }
     /**
      * Display a listing of the resource.
      *

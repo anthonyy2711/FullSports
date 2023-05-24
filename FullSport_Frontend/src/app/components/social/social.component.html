@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="col py-5">
-      <div class="card mb-3" *ngFor="let item of Posts[1];">
+      <div class="card mb-3 " *ngFor="let item of Posts[1];">
         <div class="row g-0">
           <div class="col-md-4">
             <img src="http://127.0.0.1:8000/storage/posts/{{item.image}}" class="img-fluid rounded-start" alt="...">
@@ -15,9 +15,9 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">{{item.title}}</h5>
-              <p class="text-secondary">{{item.user_id}}</p>
+              <p class="text-secondary">{{item.username}}</p>
               <p class="card-text">{{item.body}}</p>
-              <p class="card-text"><small class="text-muted">{{item.created_at}}</small></p>
+              <p class="card-text"><small class="text-muted">{{item.created_at |date:'medium'}}</small></p>
             </div>
           </div>
         </div>

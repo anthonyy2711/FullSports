@@ -25,10 +25,28 @@ export class NewsService {
   AddNews(data:any): Observable<any> {
 
     let API_URL = `${this.REST_API}news`;
-    return this.httpClient.post(API_URL, data,{ responseType: 'blob' })
+    return this.httpClient.post(API_URL, data,{ responseType: 'blob' })//metodo post para añadir //tipo "blob" (Binary Large Object)
       .pipe(
         catchError(this.handleError)
       )
+  }
+  // Update news
+  UpdateNews(data:any): Observable<any> {
+
+    let API_URL = `${this.REST_API}news/update`;
+    console.log("API_URL: " + API_URL);
+    return this.httpClient.post(API_URL, data,{ responseType: 'blob' })//metodo put para update //tipo "blob" (Binary Large Object)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
+  // Delete News
+  DeleteNews(id:any): Observable<any> {
+    let API_URL = `${this.REST_API}news/${id}`;//news/{id} //delete-new/${id}
+    return this.httpClient.delete(API_URL, { headers: this.httpHeaders}).pipe(
+      catchError(this.handleError)
+    )
   }
 
   handleError(error: HttpErrorResponse) {

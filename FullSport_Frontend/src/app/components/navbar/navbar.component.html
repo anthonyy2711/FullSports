@@ -48,10 +48,26 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/social">Social</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login">Unete</a>
-        </li>
+
       </ul>
+      <span *ngIf="!isLoggedin" class="list-unstyled">
+        <li class="nav-item" *ngIf="!isLoggedin">
+          <a class="nav-link" routerLink="/login" *ngIf="!isLoggedin">Unete</a>
+        </li>
+      </span>
+      <span class="list-unstyled" *ngIf="isLoggedin">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{username}}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" routerLink="/profile">Perfil</a></li>
+            <li><button *ngIf="isLoggedin" (click)="logout()" class="btn btn-danger w-100">Logout</button></li>
+          </ul>
+        </li>
+
+      </span>
+
     </div>
   </div>
 </nav>
