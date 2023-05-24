@@ -16,11 +16,17 @@ export class HomeComponent {
   faInstagram=faInstagram;
   faTiktok=faTiktok;
 
+  isLoggedin: boolean = false;
+  token = localStorage.getItem('token');
+  token2:string = '';
+  username = localStorage.getItem('username');
+  usernamewithoutquotes: string = '';
+
   constructor(private newsService: NewsService){}
 
   ngOnInit(): void {
     this.pushNews();
-
+    this.createButtonVisibility();
   }
 
   pushNews(){//push news into array News
@@ -47,4 +53,11 @@ export class HomeComponent {
 
   }
 
+
+  createButtonVisibility() {
+    if(this.token){
+      this.isLoggedin = true;
+      this.usernamewithoutquotes = this.username!
+    }
+  }
 }
