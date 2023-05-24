@@ -23,40 +23,20 @@ export class NewsdetailComponent implements OnInit{
       this.id = params.get('id');
       //console.log(this.id);
     });
-
     this.showNews();
-    
   }
 
   // llamar a la BD (metodo show) -> tipo get
   // recoger informacion de esa id y printarla en la pagina web 
   showNews(){
     this.newsService.ShowNews(this.id).subscribe(res => {
-    
       //console.log(res);
-      
       this.News = Object.values(res);
-      
       //console.log(this.News);
-
     });
   }
 
   //delete news from database
-  /* deleteNews(id:any) {
-    
-    if(window.confirm('Do you want to go ahead?')) {
-      this.newsService.DeleteNews(id).subscribe((res) => {
-        
-        this.News();
-        tap(() => {
-          // Redireccionar 
-          this.router.navigate(['/home']);
-        })
-        
-      })
-    }
-  } */
   deleteNews(id: any) {
     if (window.confirm('¿Quieres seguir con ello?')) {
       this.newsService.DeleteNews(id).subscribe(() => {

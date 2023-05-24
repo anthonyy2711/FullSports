@@ -1,15 +1,15 @@
 <div class="margen container">
-    <p>news update</p>
+    
     <div class="row justify-content-center">
         <form [formGroup]="postForm" class="w-50" (ngSubmit)="onSubmit()">
             <div class="mb-3">
                 <label for="inputtitle" class="form-label">Nuevo titulo de la noticia:</label>
-                <input class="form-control" type="text" id="new_title" name="new_title" formControlName="new_title">
+                <input class="form-control" type="text" id="new_title" name="new_title" formControlName="new_title" placeholder="{{News[1]?.new_title}}">
             </div>
             <div class="mb-3">
                 <label for="textareadescription" class="form-label">Nueva descripcion de la noticia:</label>
                 <textarea class="form-control" type="text" id="new_description" name="new_description"
-                    formControlName="new_description" rows="3"></textarea>
+                    formControlName="new_description" rows="3" placeholder="{{News[1]?.new_description}}"></textarea>
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Nueva imagen de la noticia</label>

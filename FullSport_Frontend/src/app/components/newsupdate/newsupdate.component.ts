@@ -9,6 +9,7 @@ import { NewsService } from 'src/app/services/news.service';
   styleUrls: ['./newsupdate.component.css']
 })
 export class NewsupdateComponent {
+  News:any=[];
   file:any;
   id!:any;
   constructor(public formBuilder: FormBuilder,private router: Router,private ngZone: NgZone,private newsService: NewsService, private route: ActivatedRoute ) {}
@@ -29,6 +30,17 @@ export class NewsupdateComponent {
   ngOnInit() { 
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
+    });
+    this.showNews();
+  }
+
+  // llamar a la BD (metodo show) -> tipo get
+  // recoger informacion de esa id y printarla en la pagina web 
+  showNews(){
+    this.newsService.ShowNews(this.id).subscribe(res => {
+      //console.log(res);
+      this.News = Object.values(res);
+      //console.log(this.News);
     });
   }
 
