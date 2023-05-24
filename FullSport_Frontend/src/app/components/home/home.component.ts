@@ -16,6 +16,7 @@ export class HomeComponent {
   faInstagram=faInstagram;
   faTiktok=faTiktok;
 
+  //para la visibilidad del botton
   isLoggedin: boolean = false;
   token = localStorage.getItem('token');
   token2:string = '';
@@ -26,7 +27,7 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.pushNews();
-    this.createButtonVisibility();
+    this.createButtonVisibility();//para la visibilidad del botton 
   }
 
   pushNews(){//push news into array News
@@ -52,7 +53,6 @@ export class HomeComponent {
   loadMore(){
 
   }
-
 
   createButtonVisibility() {
     if(this.token){
