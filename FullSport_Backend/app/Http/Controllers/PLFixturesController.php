@@ -17,11 +17,15 @@ class PLFixturesController extends Controller
     {
         //
         $fixtures=PLFixtures::all();
+        $currentMatchday=PLFixtures::select('currentMatchday')
+        ->where('id', 1)
+        ->get();
         //$fixtures=DB::table('fixtures')->count();
        
         return response()->json([
             'status'=> 'success',
             'PLfixtures'=> $fixtures,
+            'currentMatchday'=> $currentMatchday
         ]);
     }
 

@@ -1,9 +1,9 @@
 <div class="container">
 
-  <div *ngFor="let item of Fixtures[1];let i = index" style="margin-top: 90px;">
+   <div *ngFor="let item of Fixtures[1];let i = index" style="margin-top: 90px;">
     <div *ngIf="i== 0">
         <img class="col-1" src="{{ item.logo_league }}"/>
-          <h4 class="col-3 display-6 linea ms-3">{{ item.name_league }}</h4> 
+          <h4 class="col-3 display-6 linea">{{ item.name_league }}</h4> 
     </div>
 </div>
 <app-dashboard-pl></app-dashboard-pl>
@@ -34,8 +34,7 @@ Jornada
                 </div>
               </div>
             </div> 
-        
-      </div>
+      </div> 
 </div>
 
 

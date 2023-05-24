@@ -17,11 +17,15 @@ class FixturesController extends Controller
     {
         //
         $fixtures=Fixtures::all();
+        $currentMatchday=Fixtures::select('currentMatchday')
+        ->where('id', 1)
+        ->get();
         //$fixtures=DB::table('fixtures')->count();
        
         return response()->json([
             'status'=> 'success',
             'fixtures'=> $fixtures,
+            'currentMatchday'=> $currentMatchday
         ]);
     }
 
@@ -110,6 +114,7 @@ class FixturesController extends Controller
         $fixtures->name_league = $result['competition']['name'];
         $fixtures->logo_league = $result['competition']['emblem'];
         $fixtures->round = $result['matches'][$i]['matchday'];
+        $fixtures->currentmatchday = $result['matches'][$i]['season']['currentMatchday'];
         $fixtures->date_event = $result['matches'][$i]['utcDate'];
         $fixtures->name_home = $result['matches'][$i]['homeTeam']['name'];
         $fixtures->name_away = $result['matches'][$i]['awayTeam']['name'];;
@@ -191,6 +196,7 @@ class FixturesController extends Controller
             $fixtures->name_league = $result['competition']['name'];
             $fixtures->logo_league = $result['competition']['emblem'];
             $fixtures->round = $result['matches'][$i]['matchday'];
+            $fixtures->currentmatchday = $result['matches'][$i]['season']['currentMatchday'];
             $fixtures->date_event = $result['matches'][$i]['utcDate'];
             $fixtures->name_home = $result['matches'][$i]['homeTeam']['name'];
             $fixtures->name_away = $result['matches'][$i]['awayTeam']['name'];;
