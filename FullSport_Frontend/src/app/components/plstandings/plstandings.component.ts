@@ -20,6 +20,7 @@ export class PLStandingsComponent implements OnInit{
 
   ngOnInit(): void {
     this.listCompetitions();
+    this.actualizar();
   }
 
 
@@ -36,6 +37,11 @@ export class PLStandingsComponent implements OnInit{
     this.PLStandingsService.PostCompetition().subscribe(res => {
     
       console.log(res);
+
+      setInterval(() => {
+        this.PLStandingsService.PostCompetition(); 
+      }, 60000);
+
       
       //this.Competitions = Object.values(res);
     });

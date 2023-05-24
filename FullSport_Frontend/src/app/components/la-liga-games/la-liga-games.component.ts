@@ -24,6 +24,7 @@ export class LaLigaGamesComponent implements OnInit{
 
   ngOnInit(): void {
     this.listFixtures();
+    this.actualizar();
   }
 
 
@@ -41,7 +42,9 @@ export class LaLigaGamesComponent implements OnInit{
     
       console.log(res);
 
-      this.ngZone.run(() => this.router.navigate(['games']))
+      setInterval(() => {
+        this.FixtureService.PutFixtures(); 
+      }, 60000);
   });
 }
 }

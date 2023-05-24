@@ -22,6 +22,7 @@ export class LaLigaStandingsComponent {
 
   ngOnInit(): void {
     this.listCompetitions();
+    this.actualizar();
   }
 
 
@@ -39,7 +40,9 @@ export class LaLigaStandingsComponent {
     
       console.log(res);
       
-      //this.Competitions = Object.values(res);
+      setInterval(() => {
+        this.CompetitionsService.PostCompetition(); 
+      }, 60000);
     });
   }
 

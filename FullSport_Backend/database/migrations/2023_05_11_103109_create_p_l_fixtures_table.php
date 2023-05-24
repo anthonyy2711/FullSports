@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name_league');
             $table->string('logo_league');
             $table->string('round');
+            $table->string('currentMatchday');
             $table->string('date_event');
             $table->string('name_home');
             $table->string('name_away');

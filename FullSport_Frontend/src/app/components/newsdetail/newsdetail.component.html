@@ -1,20 +1,24 @@
 <!--Componente hijo de la Home para mostrar 
 las noticias en detalle-->
 <div class="margen container">
-    <br><br><br>
-    
+    <!--add new button-->
+    <div class="col py-5">
+        <a href="/newsupdate/{{id}}" class="btn btn-success" >Update</a>
+        <a (click)="deleteNews(id)" class="btn btn-danger ms-2" >Delete</a>
+    </div>
     <div class="card mb-3" style="max-width: 100%;">
         <div class="row g-0">
             <div class="col-md-6" >
                 <div class="card-body" >
+                    <!--{{News[1].id}}-->
                     <h5 class="card-title">{{News[1].new_title}}</h5>
                     <p class="card-text pt-5">{{News[1].new_description}}</p>
-                    <p class="card-text"><small class="text-muted">Last updated: {{News[1].new_date}}</small></p>
-                    <p><img src="{{News[1].author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{News[1].author_name}}</small></p>
+                    <p class="card-text"><small class="text-muted">Last updated: {{News[1].created_at | date:'short'}}</small></p>
+                    <p><img src="{{News[1].author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{News[1].author_name | removeQuotes}}</small></p>
                 </div>
             </div>
             <div class="col-md-6">
-                <img src="{{News[1].new_img}}" class="img-fluid rounded float-end">
+                <img src="http://127.0.0.1:8000/storage/news/{{News[1].new_img}}" class="img-fluid rounded float-end">
             </div>
         </div>
     </div>

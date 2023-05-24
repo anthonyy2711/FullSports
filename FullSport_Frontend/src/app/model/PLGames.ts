@@ -3,6 +3,7 @@ export class PLGames{
     #_name_league:string;
     #_logo_league:string;
     #_round:number;
+    #_currentMatchday:number;
     #_date_event:Date; 	
     #_name_home:string;
     #_name_away:string;	
@@ -18,6 +19,7 @@ export class PLGames{
         name_league:string,
         logo_league:string,
         round:number,
+        currentMatchday:number,
         date_event:Date, 	
         name_home:string,
         name_away:string,	
@@ -31,6 +33,7 @@ export class PLGames{
         this.#_name_league=name_league;
         this.#_logo_league=logo_league;
         this.#_round=round;
+        this.#_currentMatchday=currentMatchday;
         this.#_date_event=date_event;
         this.#_name_home=name_home;
         this.#_name_away=name_away;
@@ -55,6 +58,10 @@ export class PLGames{
 
     public get round(){
         return this.#_round;
+    }
+
+    public get currentMatchday(){
+        return this.#_currentMatchday;
     }
 
     public get date_event(){
@@ -104,6 +111,10 @@ export class PLGames{
 
     public set round(value:number){
         this.#_round=value;
+    }
+
+    public set currentMatchday(value:number){
+        this.#_currentMatchday=value;
     }
 
     public set date_event(value:Date){

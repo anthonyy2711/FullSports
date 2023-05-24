@@ -1,0 +1,21 @@
+<div class=" margen container">
+  <div class="row justify-content-center">
+    <form [formGroup]="postForm" class="w-50" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="inputtitle" class="form-label">Titulo de la noticia:</label>
+        <input class="form-control" type="text" id="new_title" name="new_title" formControlName="new_title">
+      </div>
+      <div class="mb-3">
+        <label for="textareadescription" class="form-label">Descripcion de la noticia:</label>
+        <textarea class="form-control" type="text" id="new_description" name="new_description"
+          formControlName="new_description" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Imagen de la noticia</label>
+        <input class="form-control" type="file" id="formFile" (change)="imageUpload($event)" accept="image/*">
+      </div>
+      <button type="submit" class="btn btn-primary form-control mt-3 col-4">Añadir New</button>
+    </form>
+  </div>
+</div>
+<br>

@@ -3,25 +3,28 @@
     <div>
         <img src="" alt="">
     </div>
-
+    <!--add new button-->
+    <div class="col py-5">
+        <a href="/newsadd" class="btn btn-primary">Crear</a>
+    </div>
     <!--Noticias-->
     <!--Noticias principal-->
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-12 ">
             <div *ngFor="let item of News[1]; let i = index" ><!--[item]="item" [i]="i"-->
                 <!--Noticia grande-->
                 <div *ngIf="i === 0" class="card mb-3" style="max-width: 100%;">
                     <a href="" (click)="openWindow(item.id)" rel="noopener noreferrer" class="text-decoration-none text-black">
                         <div class="row g-0">
                             <div class="col-md-6">
-                                <img src="{{item.new_img}}" class="img-fluid rounded-start">
+                                <img src="http://127.0.0.1:8000/storage/news/{{item.new_img}}" class="img-fluid rounded-start">
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body">
                                     <h5 class="card-title text-center">{{item.new_title}}</h5>
                                     <p class="card-text pt-5">{{item.new_description}}</p>
-                                    <p class="card-text"><small class="text-muted">Last updated: {{item.new_date}}</small></p>
-                                    <p><img src="{{item.author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{item.author_name}}</small></p>
+                                    <p class="card-text"><small class="text-muted">Last updated: {{item.created_at | date:'short'}}</small></p>
+                                    <p><img src="{{item.author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{item.author_name | removeQuotes}}</small></p>
                                 </div>
                             </div>
                         </div>
@@ -30,27 +33,28 @@
             </div>
         </div>
     </div> 
+
     <!--Noticia pequeños-->
-    <div class="row ">       
-        <div *ngFor="let item of News[1]; let i = index" class="col-4">
-            <div *ngIf="i >= 0" class="card mb-3">    
+    <div class="row">       
+        <div *ngFor="let item of News[1]; let i = index" class="col-12 col-sm-6 col-lg-4 col-xl-4 ">
+            <div class="card mb-3">    
                 <a href="" (click)="openWindow(item.id)" rel="noopener noreferrer" class="text-decoration-none text-black">
-                    <img src="{{item.new_img}}" class="card-img-top">
+                    <img src="http://127.0.0.1:8000/storage/news/{{item.new_img}}" class="card-img-top img_height">
                     <div class="card-body">
                         <h5 class="card-title">{{item.new_title}}</h5>
-                        <p class="card-text"><small class="text-muted">Last updated: {{item.new_date}}</small></p>
-                        <p><img src="{{item.author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{item.author_name}}</small></p>
+                        <p class="card-text"><small class="text-muted">Last updated: {{item.created_at | date:'short'}}</small></p>
+                        <p><img src="{{item.author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{item.author_name | removeQuotes}}</small></p>
                     </div>
                 </a>
             </div>
         </div><!--Cierre ngfor-->
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-link" (click)="loadMore()">Mas noticias</button>
+        </div>
         
-    </div><!--Cierre container general noticias-->
+    </div> <!--Cierre Noticia pequeños-->
 
-    <!--News details test
-    <app-newsdetail></app-newsdetail>-->
-
-
+    
     <div class="text-center">
         <iframe src="https://www.scorebat.com/embed/?token=NjY0MDNfMTY4MzgwOTI0N19mNmRlMGM3NTQwMmQ3ODY3YzI2NGI4YmQ5MWFjYmI5YzM2N2JjZDM1" frameborder="0" width="1000" height="1250" allowfullscreen allow='autoplay; fullscreen'  class="_scorebatEmbeddedPlayer_"></iframe><script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -64,21 +68,6 @@
     <!-- Banner -->
 
     <!-- Icono logos --> 
-    <div class="container p-5">
-        <div class="row text-center justify-content-center">
-            <div class="col-1">
-                <h1><fa-icon [icon]="faTwitter"></fa-icon></h1>
-            </div>
-            <div class="col-1">
-                <h1 class="bi bi-twitter"><fa-icon [icon]="faFacebook"></fa-icon></h1>
-            </div>
-            <div class="col-1">
-                <h1 class="bi bi-facebook"><fa-icon [icon]="faInstagram"></fa-icon></h1>
-            </div>
-            <div class="col-1">
-                <h1 class="bi bi-tiktok"><fa-icon [icon]="faTiktok"></fa-icon></h1>
-            </div>
-        </div>
-    </div>
+    
 
 </div>

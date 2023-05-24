@@ -27,6 +27,9 @@ import { LaLigaStandingsComponent } from './components/la-liga-standings/la-liga
 import { PLTopComponent } from './components/pltop/pltop.component';
 import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { NewsaddComponent } from './components/newsadd/newsadd.component';
+import { RemoveQuotesPipe } from './pipes/remove-quotes.pipe';
+import { NewsupdateComponent } from './components/newsupdate/newsupdate.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     LaLigaStandingsComponent,
     PLTopComponent,
     LaLigaGamesComponent,
-    ProfileComponent
+    ProfileComponent,
+    NewsaddComponent,
+    RemoveQuotesPipe,
+    NewsupdateComponent,
   ],
   imports: [
     HttpClientModule,
