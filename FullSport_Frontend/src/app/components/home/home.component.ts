@@ -16,10 +16,9 @@ export class HomeComponent {
   faInstagram=faInstagram;
   faTiktok=faTiktok;
 
-  //para la visibilidad del botton
+  //For button visibility
   isLoggedin: boolean = false;
   token = localStorage.getItem('token');
-  token2:string = '';
   username = localStorage.getItem('username');
   usernamewithoutquotes: string = '';
 
@@ -27,24 +26,25 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.pushNews();
-    this.createButtonVisibility();//para la visibilidad del botton 
+    this.createButtonVisibility();
   }
 
-  pushNews(){//push news into array News
+  /**
+   * Push news into array News
+   */
+  pushNews(){
     this.newsService.GetNews().subscribe(res => {
-    //console.log(res);
       this.News = Object.values(res);
     });
   }
 
-  //this.windowRef=null;
+  /**
+   * Function which takes the id of the news item to open it in a new tab
+   * @param id 
+   */
   openWindow(id:any){
-    //console.log(id);
-    //this.windowRef= window.open("/newdetail","child", "toolbar=no,location=no,directories=no,status=no,menubar=no,titlebar=no,fullscreen=no,scrollbars=1,resizable=no,width=430,height=220,left=500,top=100");
     this.windowRef= window.open(`/newdetail/${id}`,"New Details");
-
     this.windowRef.addEventListener("message",this.receivemessage.bind(this), false);
-
   }
   receivemessage(evt:any){
     //console.log(evt.data);
@@ -54,6 +54,9 @@ export class HomeComponent {
 
   }
 
+  /**
+   * Function to control the visibility of the create news button for registered users 
+   */
   createButtonVisibility() {
     if(this.token){
       this.isLoggedin = true;
