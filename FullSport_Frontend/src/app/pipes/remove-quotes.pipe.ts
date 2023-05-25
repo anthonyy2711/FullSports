@@ -10,7 +10,7 @@ export class RemoveQuotesPipe implements PipeTransform {
       throw new Error('Invalid input. Only strings are supported.');
     }
 
-    return value.replace(/['"]/g, ''); // Elimina tanto las comillas simples como las comillas dobles
+    return value.replace(/['"]/g, ''); //Removes both single and double quotation marks
   }
 
 }

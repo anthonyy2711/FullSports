@@ -8,8 +8,11 @@ import { faBasketball } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  News:any=[];
   windowRef:any=null;
+
+  News:any=[];
+  loadedNews = this.News.slice(0, 3);
+  newsPreLoad = 3;
 
   faTwitter=faTwitter;
   faFacebook=faFacebookF;
@@ -54,8 +57,13 @@ export class HomeComponent {
     //console.log(evt.data);
   }
   
+  /**
+   * Function to load more news, this function is in the click of the More news button. 
+   */
   loadMore(){
-
+    const startIndex = this.loadedNews.length;
+    const endIndex = startIndex + this.newsPreLoad;
+    this.loadedNews.push(...this.News.slice(startIndex, endIndex));
   }
   
   /**

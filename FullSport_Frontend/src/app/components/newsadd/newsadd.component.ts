@@ -42,8 +42,6 @@ export class NewsaddComponent {
     formData.append('user_id',user_id!);
     formData.append('author_name',username!);
 
-
-    //console.log(data)
     this.newsService.AddNews(formData)
     .subscribe(() => {
 
