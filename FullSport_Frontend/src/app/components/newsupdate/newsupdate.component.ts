@@ -61,15 +61,6 @@ export class NewsupdateComponent {
     formData.append('user_id',user_id!);
     formData.append('author_name',username!);
 
-    /* console.log(this.id);
-    console.log(this.file);
-    console.log(new_title);
-    console.log(new_description);
-    console.log(user_id);
-    console.log(username);
-    */
-
-    //console.log(data)
     this.newsService.UpdateNews(formData)
     .subscribe(() => {
 
