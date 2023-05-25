@@ -27,28 +27,7 @@ use App\Models\User;
 |
 */
 
-//Route::apiResource('fixtures',FixturesController::class);
 
-// Route::controller(FixturesController::class)-> group(function(){
-
-// Route::get('games','getGames');
-
-
-// Route::post('games','pushGames');
-
-// });
-
-/* Route::middleware(['role:admin'])->group(function () {
-    Route::controller(FixturesController::class)-> group(function(){
-
-        Route::get('games','getGames');
-
-
-Route::post('games','pushGames');
-Route::get('games','getGamesByDate');
-
-    });
-}); */
 
 Route::controller(FixturesController::class)->group(function () {
 
@@ -91,7 +70,7 @@ Route::controller(PLTeamsController::class)-> group(function(){
     Route::get('PLTeams','getTeams');
     Route::post('PLTeams','postTeams');
 
-    Route::get('teams/{id}/players', 'TeamController@playersByTeam');
+    // Route::get('teams/{id}/players', 'TeamController@playersByTeam');
 
     //Route::put('teams','update');
     //Route::get('games','getGamesByDate');
@@ -133,18 +112,16 @@ Route::controller(PLStandingsController::class)->group(function () {
 //News
 Route::get('news', [NewsController::class, 'getNews']);
 Route::get('news/show/{id}', [NewsController::class, 'show']);
-Route::post('news', [NewsController::class, 'store']);
-Route::post('news/update', [NewsController::class, 'update']);
-Route::delete('news/{id}', [NewsController::class, 'destroy']);
+
 
 // USER
 Route::get('users', [UserController::class, 'index']);
 Route::post('users/update', [UserController::class, 'update']);
 Route::get('users/{id}', [UserController::class, 'show']);
 //POST
-Route::get('posts', [UserController::class, 'index']);
-Route::post('posts', [UserController::class, 'store']);
-Route::delete('posts/{idPost}/{idUser}', [UserController::class, 'destroy']);
+Route::get('posts', [PostController::class, 'index']);
+Route::post('posts', [PostController::class, 'store']);
+Route::delete('posts/{idPost}/{idUser}', [PostController::class, 'destroy']);
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'login');
@@ -156,10 +133,14 @@ Route::controller(AuthController::class)->group(function () {
 
 
 
-// Route::middleware(['role:journalist'])->group(function () {
+Route::middleware(['role:journalist'])->group(function () {
+    Route::post('news', [NewsController::class, 'store']);
+    Route::post('news/update', [NewsController::class, 'update']);
+    Route::delete('news/{id}', [NewsController::class, 'destroy']);
 
-// });
-// Route::middleware(['role:admin'])->group(function () {
 
-// });
+});
+Route::middleware(['role:admin'])->group(function () {
+
+});
 // Route::get('image/{path}', [PostController::class, 'getImage'])->where('path', '.*');
