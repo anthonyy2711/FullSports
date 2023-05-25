@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -47,7 +48,6 @@ class UserController extends Controller
         $user->password    = Hash::make($request->password);
 
         $user->save();
-        //Auth::login($user);
 
         return $user;
     }
@@ -75,21 +75,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
 
         $request->validate([
-            'name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'string|min:6',
+            'name' => 'string',
+            'last_name' => 'string',
+            'email' => 'string|email',
         ]);
 
-        
+        $id = $request->id;
+        $user = User::findOrFail($request->id);
+        $user->name = $request->name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->save();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'User updated successfully',
+            'colleague' => $user,
+        ]);
 
-        $user->update($request->all());
-
-        return $user;
     }
 
     /**
@@ -101,15 +107,5 @@ class UserController extends Controller
     public function destroy($id)
     {
 
-        $user = User::find($id);
-
-        if(is_null($user)){
-            return response()->json("No se pudo realizar correctamente borrado",404);
-        }
-
-        $user->delete();
-
-        return response()->noContent();
     }
-
 }

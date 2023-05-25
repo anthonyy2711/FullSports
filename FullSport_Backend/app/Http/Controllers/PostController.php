@@ -99,8 +99,22 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy($idPost, $idUser)
     {
-        //
-    }
+        // $post = Post::find($idPost);
+        // $user = User::find($idUser);
+
+
+    //     if ($post->user_id == $user->id) {
+    //         $post->delete();
+    //     }
+
+    //     return response()->json([
+    //         'status' => 'success',
+    //         'message' => 'User updated successfully',
+    //         'user' => $user,
+    //         'post' => $post
+    //     ]);
+    return "Deleted $idPost and $idUser";
+     }
 }

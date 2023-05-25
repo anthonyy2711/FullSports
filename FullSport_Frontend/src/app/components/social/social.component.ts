@@ -30,4 +30,13 @@ export class SocialComponent implements OnInit {
     this.Posts = Object.values(res);
     });
   }
+  limitCharacters(){
+    var paragraph = document.getElementById('myParagraph');
+    var maxLength = 50; // maximum number of characters to display
+
+    if (paragraph!.textContent!.length > maxLength) {
+      var shortenedText = paragraph!.textContent!.substr(0, maxLength) + '...';
+      paragraph!.textContent = shortenedText;
+    }
+  }
 }

@@ -34,13 +34,14 @@ export class NewsupdateComponent {
     this.showNews();
   }
 
-  // llamar a la BD (metodo show) -> tipo get
-  // recoger informacion de esa id y printarla en la pagina web 
+  /**
+   * Function that returns the specified news
+   * Call to the DB (show method) -> get type
+   * Collect information from that id and print it on the web page
+   */
   showNews(){
     this.newsService.ShowNews(this.id).subscribe(res => {
-      //console.log(res);
       this.News = Object.values(res);
-      //console.log(this.News);
     });
   }
 
@@ -60,13 +61,13 @@ export class NewsupdateComponent {
     formData.append('user_id',user_id!);
     formData.append('author_name',username!);
 
-    console.log(this.id);
+    /* console.log(this.id);
     console.log(this.file);
     console.log(new_title);
     console.log(new_description);
     console.log(user_id);
     console.log(username);
-
+    */
 
     //console.log(data)
     this.newsService.UpdateNews(formData)

@@ -3,16 +3,18 @@
     <div>
         <img src="" alt="">
     </div>
+
     <!--add new button-->
     <div class="col py-5">
-        <a href="/newsadd" class="btn btn-primary">Crear</a>
+        <a href="/newsadd" class="btn btn-primary" *ngIf="isLoggedin">Crear</a>
     </div>
-    <!--Noticias-->
-    <!--Noticias principal-->
+
+    <!--News-->
+    <!--News main-->
     <div class="row">
         <div class="col-12 col-sm-6 col-lg-4 col-xl-12 ">
-            <div *ngFor="let item of News[1]; let i = index" ><!--[item]="item" [i]="i"-->
-                <!--Noticia grande-->
+            <div *ngFor="let item of News[1]; let i = index" >
+                <!--New big-->
                 <div *ngIf="i === 0" class="card mb-3" style="max-width: 100%;">
                     <a href="" (click)="openWindow(item.id)" rel="noopener noreferrer" class="text-decoration-none text-black">
                         <div class="row g-0">
@@ -34,7 +36,7 @@
         </div>
     </div> 
 
-    <!--Noticia pequeños-->
+    <!--News small-->
     <div class="row">       
         <div *ngFor="let item of News[1]; let i = index" class="col-12 col-sm-6 col-lg-4 col-xl-4 ">
             <div class="card mb-3">    
@@ -47,12 +49,12 @@
                     </div>
                 </a>
             </div>
-        </div><!--Cierre ngfor-->
+        </div><!--Close ngfor-->
         <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-link" (click)="loadMore()">Mas noticias</button>
         </div>
         
-    </div> <!--Cierre Noticia pequeños-->
+    </div><!--Close News small-->
 
     
     <div class="text-center">
@@ -67,7 +69,7 @@
 
     <!-- Banner -->
 
-    <!-- Icono logos --> 
+    <!-- Icon logos --> 
     
 
 </div>
