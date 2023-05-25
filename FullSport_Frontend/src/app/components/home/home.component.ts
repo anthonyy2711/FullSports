@@ -19,8 +19,12 @@ export class HomeComponent {
   //For button visibility
   isLoggedin: boolean = false;
   token = localStorage.getItem('token');
-  username = localStorage.getItem('username');
+  username = localStorage.getItem('username');//Get from local storage username
   usernamewithoutquotes: string = '';
+  userrole = localStorage.getItem('role');//Get from local storage role where the format is like this: ["user"]
+  get role() {//Return role withiuot [" "]
+    return this.userrole?.replace('["', '').replace('"]', '');
+  }
 
   constructor(private newsService: NewsService){}
 
@@ -53,14 +57,17 @@ export class HomeComponent {
   loadMore(){
 
   }
-
+  
   /**
-   * Function to control the visibility of the create news button for registered users 
+   * Function to control the visibility of the create news button for registered and admin users 
    */
   createButtonVisibility() {
-    if(this.token){
-      this.isLoggedin = true;
-      this.usernamewithoutquotes = this.username!
+    if(this.token){//check if logget
+      if(this.role == 'journalist' || 'admin' && this.role != 'user'){//check if rol is journalist or admin and no user for show the button
+        this.isLoggedin = true;//Turn true and show de button create
+        this.usernamewithoutquotes = this.username!
+      }
     }
   }
+
 }

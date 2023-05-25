@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         //news::factory(5)->create();//create fake news
         $this->call(RoleSeeder::class);
         $this->call(AdminSeeder::class);
+        $this->call(JournalistSeeder::class);
     }
 }

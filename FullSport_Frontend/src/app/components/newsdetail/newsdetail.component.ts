@@ -19,6 +19,10 @@ export class NewsdetailComponent implements OnInit{
   token = localStorage.getItem('token');
   username = localStorage.getItem('username');
   usernamewithoutquotes: string = '';
+  userrole = localStorage.getItem('role');//Get from local storage role where the format is like this: ["user"]
+  get role() {//Return role withiuot [" "]
+    return this.userrole?.replace('["', '').replace('"]', '');
+  }
 
   constructor(private route: ActivatedRoute, private newsService: NewsService, private router: Router,private ngZone: NgZone){}
 
@@ -26,7 +30,6 @@ export class NewsdetailComponent implements OnInit{
     
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
-      //console.log(this.id);
     });
     this.showNews();
   }
@@ -38,11 +41,7 @@ export class NewsdetailComponent implements OnInit{
    */
   showNews(){
     this.newsService.ShowNews(this.id).subscribe(res => {
-      //console.log(res);
       this.News = Object.values(res);
-      //console.log(this.News);
-      //console.log("User name: " + this.username);
-      //console.log("Authir name: " + this.News[1].author_name);
       this.updateDeleteButtonVisibility();
     });
   }
@@ -57,11 +56,21 @@ export class NewsdetailComponent implements OnInit{
     }
   }
 
+  /**
+   * Function to control the visibility of the update and delete news button for journalist and admin users 
+   */
   updateDeleteButtonVisibility() {
-    if(this.token && this.News[1].author_name == this.username){
-    //If it has a token and the author name matches the user name, it is the owner of the news item and goes to true
-      this.isLoggedin = true;
-      this.usernamewithoutquotes = this.username!
+    if(this.token){//check if logget
+      if(this.role == 'journalist'){//check if rol is journalist
+        if(this.News[1].author_name == this.username){//check new authorname is same logged user name 
+          this.isLoggedin = true;
+          this.usernamewithoutquotes = this.username!
+        }
+      }
+      else if(this.role == 'admin'){//check if rol is admin
+        this.isLoggedin = true;
+      }
     }
+   
   }
 }
