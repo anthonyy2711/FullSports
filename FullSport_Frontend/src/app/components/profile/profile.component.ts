@@ -1,7 +1,8 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Post } from './../../model/post';
 import { ManagementService } from './../../services/management.service';
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -19,7 +20,9 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private managementService: ManagementService
+    private managementService: ManagementService,
+    private ngZone: NgZone,
+    private router:Router,
   ) {}
 
   ngOnInit(): void {
@@ -49,14 +52,19 @@ export class ProfileComponent implements OnInit {
     var name  = this.profileForm.get('name')?.value;
     var last_name  = this.profileForm.get('last_name')?.value;
     var email  = this.profileForm.get('email')?.value;
-    var password = this.profileForm.get('password')?.value;
-
+    var user_id = localStorage.getItem('user_id')
 
     const formData = new FormData();
-    formData.append('title',name!);
-    formData.append('body',last_name!);
-    formData.append('user_id',email!);
-    formData.append('user_id',password!);
-    alert('hola')
+    formData.append('name',name!);
+    formData.append('last_name',last_name!);
+    formData.append('email',email!);
+    formData.append('id',user_id!);
+    this.managementService.updateUser(formData)
+    .subscribe(() => {
+
+        this.ngZone.run(() => this.router.navigate(['social']))
+      }, (err) => {
+
+    });
   }
 }

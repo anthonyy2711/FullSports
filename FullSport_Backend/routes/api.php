@@ -7,7 +7,7 @@ use App\Models\Fixtures;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PLFixturesController;
 use App\Http\Controllers\PLStandingsController;
 use App\Http\Controllers\PostController;
@@ -76,7 +76,7 @@ Route::controller(TeamsController::class)-> group(function(){
     Route::get('teams','getTeams');
     Route::post('teams','postTeams');
 
-    Route::get('teams/{id}/players', 'TeamController@playersByTeam');
+    // Route::get('teams/{id}/players', 'TeamController@playersByTeam');
 
     //Route::put('teams','update');
     //Route::get('games','getGamesByDate');
@@ -121,19 +121,22 @@ Route::post('news', [NewsController::class, 'store']);
 Route::post('news/update', [NewsController::class, 'update']);
 Route::delete('news/{id}', [NewsController::class, 'destroy']);
 
-
-Route::apiResource('posts', PostController::class);
+// USER
+Route::get('users', [UserController::class, 'index']);
+Route::post('users/update', [UserController::class, 'update']);
+Route::get('users/{id}', [UserController::class, 'show']);
+//POST
+Route::get('posts', [UserController::class, 'index']);
+Route::post('posts', [UserController::class, 'store']);
+Route::delete('posts/{idPost}/{idUser}', [UserController::class, 'destroy']);
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'login');
     Route::post('register', 'register');
     Route::post('logout', 'logout');
-    Route::post('refresh', 'refresh');
 });
-Route::apiResource('users', UserController::class);
 
 
-Route::post('updateProfile', [UpdateController::class, 'updateProfile']);
 
 
 
@@ -143,4 +146,4 @@ Route::post('updateProfile', [UpdateController::class, 'updateProfile']);
 // Route::middleware(['role:admin'])->group(function () {
 
 // });
-Route::get('image/{path}', [PostController::class, 'getImage'])->where('path', '.*');
+// Route::get('image/{path}', [PostController::class, 'getImage'])->where('path', '.*');

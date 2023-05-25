@@ -37,22 +37,10 @@ export class ManagementService {
       .pipe(catchError(this.handleError));
   }
   //Update User
-  updateTournament(
-    id: any,
-    name: any,
-    last_name: any,
-    email: any
-  ): Observable<any> {
-    let data = {
-      id: id,
-      name: name,
-      last_name: last_name,
-      email: email,
-    };
-
-    let API_URL = `${this.REST_API}users/${id}`;
+  updateUser(data: any): Observable<any> {
+    let API_URL = `${this.REST_API}users/update`;
     return this.httpClient
-      .put(API_URL, data, { headers: this.httpHeaders })
+      .post(API_URL, data, { responseType: 'blob' })
       .pipe(catchError(this.handleError));
   }
   // Delete Tournament

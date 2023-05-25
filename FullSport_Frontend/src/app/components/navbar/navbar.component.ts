@@ -10,41 +10,47 @@ import { Token } from '@angular/compiler';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit{
-
-  faFutbol=faFutbol;
-  faBasketball=faBasketball;
+export class NavbarComponent implements OnInit {
+  faFutbol = faFutbol;
+  faBasketball = faBasketball;
 
   isLoggedin: boolean = false;
   token = localStorage.getItem('token');
-  token2:string = '';
-  username = localStorage.getItem('username')
-  usernamewithoutquotes: string = ''
-  constructor(private router: Router, private user:UserService, private ngZone: NgZone, private location: Location){}
+  token2: string = '';
+  username = localStorage.getItem('username');
+  usernamewithoutquotes: string = '';
+  constructor(
+    private router: Router,
+    private user: UserService,
+    private ngZone: NgZone,
+    private location: Location
+  ) {}
 
-  ngOnInit():void {
-    this.toggleButtonVisibility()
+  ngOnInit(): void {
+    this.toggleButtonVisibility();
   }
 
   toggleButtonVisibility() {
-
-
-    if(this.token){
+    if (this.token) {
       this.isLoggedin = true;
-      this.usernamewithoutquotes = this.username!
+      this.usernamewithoutquotes = this.username!;
     }
-
   }
-  logout(){
-    localStorage.clear()
+  logout() {
+    localStorage.clear();
     window.location.reload();
   }
-  ifUserExists(){
-    if(this.token){
-
+  ifUserExists() {
+    if (this.token) {
     }
   }
+  getIdToken() {
+    var str = atob(this.token!.split('.')[1]);
+    var jsonObject  =JSON.parse(str)
 
+    let sub = jsonObject.sub;
+    console.log(sub);
+  }
 }
