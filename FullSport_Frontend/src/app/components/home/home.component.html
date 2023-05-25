@@ -12,7 +12,7 @@
     <!--News-->
     <!--News main-->
     <div class="row">
-        <div class="col-12 col-sm-6 col-lg-4 col-xl-12 ">
+        <div class="col-12 col-sm-12 col-lg-12 col-xl-12 ">
             <div *ngFor="let item of News[1]; let i = index" >
                 <!--New big-->
                 <div *ngIf="i === 0" class="card mb-3" style="max-width: 100%;">
@@ -38,7 +38,7 @@
 
     <!--News small-->
     <div class="row">       
-        <div *ngFor="let item of News[1]; let i = index" class="col-12 col-sm-6 col-lg-4 col-xl-4 ">
+        <div *ngFor="let item of loadedNews[1]; let i = index" class="col-12 col-sm-6 col-lg-4 col-xl-4 ">
             <div class="card mb-3">    
                 <a href="" (click)="openWindow(item.id)" rel="noopener noreferrer" class="text-decoration-none text-black">
                     <img src="http://127.0.0.1:8000/storage/news/{{item.new_img}}" class="card-img-top img_height">
@@ -50,8 +50,9 @@
                 </a>
             </div>
         </div><!--Close ngfor-->
-        <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-link" (click)="loadMore()">Mas noticias</button>
+
+        <div class="d-flex justify-content-end mb-5">
+            <button type="button" class="btn btn-info" (click)="loadMore()">Mas noticias</button>
         </div>
         
     </div><!--Close News small-->

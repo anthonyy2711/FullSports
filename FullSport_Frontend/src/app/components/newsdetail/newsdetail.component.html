@@ -10,13 +10,13 @@
             <div class="col-md-6" >
                 <div class="card-body" >
                     <h5 class="card-title">{{News[1].new_title}}</h5>
-                    <p class="card-text pt-5">{{News[1].new_description}}</p>
+                    <p class="card-text">{{News[1].new_description}}</p>
                     <p class="card-text"><small class="text-muted">Last updated: {{News[1].created_at | date:'short'}}</small></p>
                     <p><img src="{{News[1].author_img}}" height="30" class="rounded-circle">&nbsp;<small>{{News[1].author_name | removeQuotes}}</small></p>
                 </div>
             </div>
             <div class="col-md-6">
-                <img src="http://127.0.0.1:8000/storage/news/{{News[1].new_img}}" class="img-fluid rounded float-end">
+                <img src="http://127.0.0.1:8000/storage/news/{{News[1].new_img}}" class="img-fluid rounded">
             </div>
         </div>
     </div>
