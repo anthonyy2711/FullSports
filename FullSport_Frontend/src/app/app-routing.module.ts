@@ -18,6 +18,8 @@ import { PLTopComponent } from './components/pltop/pltop.component';
 import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.component';
 import { NewsaddComponent } from './components/newsadd/newsadd.component';
 import { NewsupdateComponent } from './components/newsupdate/newsupdate.component';
+import { SpanishTeamsComponent } from './components/spanish-teams/spanish-teams.component';
+import { PLTeamsComponent } from './components/plteams/plteams.component';
 
 const routes: Routes = [
 {
@@ -43,6 +45,14 @@ const routes: Routes = [
 {
   path:'LaLigaStandings',
   component:LaLigaStandingsComponent
+},
+{
+  path:'spanishTeams',
+  component:SpanishTeamsComponent
+},
+{
+  path:'PLTeams',
+  component:PLTeamsComponent
 },
 {
   path:'LaLigaGames',

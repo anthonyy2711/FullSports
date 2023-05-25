@@ -11,8 +11,31 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/games">Partidos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#">Equipos</a>
+        <li class="nav-item dropdown dropdown-hover position-static">
+          <a class="nav-link dropdown-toggle" routerLink="#" id="navbarDropdown" role="button"
+            data-mdb-toggle="dropdown" aria-expanded="false">
+            Equipos
+          </a>
+          <div class="dropdown-menu w-50 mt-0" aria-labelledby="navbarDropdown">
+            <div class="container">
+              <div class="row my-4">
+                <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
+                  <div class="list-group list-group-flush">
+                    <h5 class="fa-solid fa-futbol "><fa-icon [icon]="faFutbol"></fa-icon>&nbsp; Futbol</h5>
+                    <a routerLink="/spanishTeams" class="list-group-item list-group-item-action"><img src="../../../assets/img/laliga-removebg-preview.png" height="30" alt="">&nbsp; LaLiga</a>
+                    <a routerLink="/PLTeams" class="list-group-item list-group-item-action"><img src="../../../assets/img/premier.png" height="30" alt="">&nbsp; Premier League</a>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
+                  <div class="list-group list-group-flush">
+                    <h5 class="fa-solid fa-futbol"><fa-icon [icon]="faBasketball"></fa-icon>&nbsp; Baloncesto</h5>
+                    <a routerLink="/games" class="list-group-item list-group-item-action"><img src="../../../assets/img/nba.png" height="30" alt="">&nbsp; NBA</a>
+                  </div>
+                </div>
+
+                </div>
+              </div>
+            </div>
         </li>
 
 

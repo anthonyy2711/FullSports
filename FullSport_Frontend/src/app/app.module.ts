@@ -30,6 +30,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { NewsaddComponent } from './components/newsadd/newsadd.component';
 import { RemoveQuotesPipe } from './pipes/remove-quotes.pipe';
 import { NewsupdateComponent } from './components/newsupdate/newsupdate.component';
+import { SpanishTeamsComponent } from './components/spanish-teams/spanish-teams.component';
+import { PLTeamsComponent } from './components/plteams/plteams.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { NewsupdateComponent } from './components/newsupdate/newsupdate.componen
     NewsaddComponent,
     RemoveQuotesPipe,
     NewsupdateComponent,
+    SpanishTeamsComponent,
+    PLTeamsComponent,
   ],
   imports: [
     HttpClientModule,

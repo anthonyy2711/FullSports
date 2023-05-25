@@ -12,6 +12,7 @@ use App\Http\Controllers\PLFixturesController;
 use App\Http\Controllers\PLStandingsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\PLTeamsController;
 use App\Http\Controllers\UpdateController;
 use App\Models\PLFixtures;
 use App\Models\User;
@@ -84,6 +85,21 @@ Route::controller(TeamsController::class)-> group(function(){
     // Route::get('PLgames','Fixture');
 
 });
+
+Route::controller(PLTeamsController::class)-> group(function(){
+
+    Route::get('PLTeams','getTeams');
+    Route::post('PLTeams','postTeams');
+
+    Route::get('teams/{id}/players', 'TeamController@playersByTeam');
+
+    //Route::put('teams','update');
+    //Route::get('games','getGamesByDate');
+
+    // Route::get('PLgames','Fixture');
+
+});
+
 
 
 Route::controller(CompetitionsController::class)->group(function () {

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\teams;
+use App\Models\PLTeams;
 use Illuminate\Http\Request;
 
-class TeamsController extends Controller
+class PLTeamsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,19 +13,11 @@ class TeamsController extends Controller
     public function getTeams()
     {
         //
-
-        $teams=teams::all();
+        $teams=PLTeams::all();
         return response()->json([
             'status'=> 'success',
             'teams'=> $teams,
         ]);
-    }
-
-    public function playersByTeam($id)
-    {
-        $teams = teams::findOrFail($id);
-        $players = $teams->players;
-        return response()->json(['players' => $players]);
     }
 
     /**
@@ -45,7 +37,7 @@ class TeamsController extends Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://v3.football.api-sports.io/teams?league=140&season=2022',
+        CURLOPT_URL => 'https://v3.football.api-sports.io/teams?league=39&season=2022',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -70,7 +62,7 @@ class TeamsController extends Controller
 
         // $all = $result["results"];
         for ($i=0; $i < 20; $i++){
-        $teams = new teams();
+        $teams = new PLTeams();
         $teams->name_team = $result['response'][$i]['team']['name'];
         $teams->team_logo = $result['response'][$i]['team']['logo'];
         $teams->team_founded = $result['response'][$i]['team']['founded'];
@@ -83,7 +75,7 @@ class TeamsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(teams $teams)
+    public function show(PLTeams $pLTeams)
     {
         //
     }
@@ -91,7 +83,7 @@ class TeamsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(teams $teams)
+    public function edit(PLTeams $pLTeams)
     {
         //
     }
@@ -99,7 +91,7 @@ class TeamsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, teams $teams)
+    public function update(Request $request, PLTeams $pLTeams)
     {
         //
     }
@@ -107,7 +99,7 @@ class TeamsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(teams $teams)
+    public function destroy(PLTeams $pLTeams)
     {
         //
     }

@@ -1,0 +1,33 @@
+<div class="container">
+<div class="accordion row" id="accordionExample" style="margin-top: 80px;">
+    <div *ngFor="let item of Teams[1]; let i = index" class="col-xl-4 col-12"><br>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <img src="{{item.team_logo}}" class="mx-auto d-block">
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show row" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body col-3">
+                <p>Nombre</p>
+                {{item.name_team}}
+              </div>
+              <div class="accordion-body col-3">
+                <p>Fundación</p>
+                {{item.team_founded}}
+              </div>
+              <div class="accordion-body col-3">
+                <p>Campo</p>
+                {{item.venue_name}}
+              </div>
+              <div class="accordion-body col-3">
+                <p>Capacidad</p>
+                {{item.venue_capacity}}
+              </div>
+            </div>
+          </div>
+        
+    </div>
+</div>
+
+</div>
