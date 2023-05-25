@@ -1,7 +1,7 @@
 <div class="container">
     
 
-
+<!-- ngFor and ngIf to take only 1 time the logo and name of the competition -->
     <div *ngFor="let item of Competitions[1];let i = index">
         <div *ngIf="i== 0" class="margen">
             <img class="col-1" src="{{ item.logo_league }}"/>
@@ -43,6 +43,16 @@
             </tbody>
         </table>
         <br>
+
+        <div>
+            <span class="badge rounded-pill bg-success fs-5">#</span> &nbsp;<i>Clasifican a UEFA Champions League</i><br><br>
+            <span class="badge rounded-pill bg-primary fs-5">#</span> &nbsp;<i>Clasifican a UEFA Europa League</i><br><br>
+            <span class="badge rounded-pill bg-info fs-5">#</span> &nbsp;<i>Clasifican a UEFA Europa Conference League</i><br><br>
+            <span class="badge rounded-pill bg-black fs-5">#</span> &nbsp;<i>Mantienen su plaza en LaLiga</i><br><br>
+            <span class="badge rounded-pill bg-danger fs-5">#</span> &nbsp;<i>Descienden a LaLiga2</i>
+        </div>
+        <br>
+
     </div>
 
 

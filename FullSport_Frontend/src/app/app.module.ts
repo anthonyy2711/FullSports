@@ -24,7 +24,6 @@ import { PLgamesComponent } from './components/plgames/plgames.component';
 import { PLStandingsComponent } from './components/plstandings/plstandings.component';
 import { DashboardPLComponent } from './components/dashboard-pl/dashboard-pl.component';
 import { LaLigaStandingsComponent } from './components/la-liga-standings/la-liga-standings.component';
-import { PLTopComponent } from './components/pltop/pltop.component';
 import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NewsaddComponent } from './components/newsadd/newsadd.component';
@@ -52,7 +51,6 @@ import { PLTeamsComponent } from './components/plteams/plteams.component';
     PLStandingsComponent,
     DashboardPLComponent,
     LaLigaStandingsComponent,
-    PLTopComponent,
     LaLigaGamesComponent,
     ProfileComponent,
     NewsaddComponent,

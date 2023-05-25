@@ -1,5 +1,5 @@
 <div class="container">
-
+<!-- ngFor and ngIf to take only 1 time the logo and name of the competition -->
    <div *ngFor="let item of Fixtures[1];let i = index" style="margin-top: 90px;">
     <div *ngIf="i== 0">
         <img class="col-1" src="{{ item.logo_league }}"/>
@@ -9,13 +9,14 @@
 <app-dashboard-pl></app-dashboard-pl>
 <br>
 Jornada
+<!-- Here we do a select to select only the game what we want to see -->
 <select [(ngModel)]="jornadaFilter">
   <option *ngFor="let option of jornadas">{{option}}</option>
 </select>
 <br>
 <br>
 
-  
+  <!-- ngFor to take the data of the games -->
     <div *ngFor="let item of Fixtures[1]; let i = index"> 
       
      

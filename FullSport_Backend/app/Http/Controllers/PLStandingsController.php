@@ -18,7 +18,7 @@ class PLStandingsController extends Controller
      */
     public function getCompetitions()
     {
-        //
+        //here we get the Standings from our database and we tranform into JSON to pass to Frontend.
         $competitions=PLStandings::all();
         return response()->json([
             'status'=> 'success',
@@ -39,9 +39,9 @@ class PLStandingsController extends Controller
      */
     public function pushCompetitions(Request $request)
     {
-        //
+        //this function is to post the all classification of the league.
         $curl = curl_init();
-
+        //here we do a petition to  the external API with the url and Token.
         curl_setopt_array($curl, array(
         CURLOPT_URL => 'http://api.football-data.org/v4/competitions/PL/standings',
         CURLOPT_RETURNTRANSFER => true,
@@ -67,6 +67,8 @@ class PLStandingsController extends Controller
         //dd($result);
 
         // $all = $result["results"];
+
+        //here we do a for to have the classification of the season and we save all this data in our database.
         for ($i=0; $i < 20; $i++){
         $competitions = new PLStandings();
         $competitions->name_league = $result['competition']['name'];

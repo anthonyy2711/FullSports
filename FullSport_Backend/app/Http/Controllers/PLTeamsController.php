@@ -12,7 +12,7 @@ class PLTeamsController extends Controller
      */
     public function getTeams()
     {
-        //
+        //here we get the teams from our database and we tranform into JSON to pass to Frontend.
         $teams=PLTeams::all();
         return response()->json([
             'status'=> 'success',
@@ -33,9 +33,9 @@ class PLTeamsController extends Controller
      */
     public function postTeams(Request $request)
     {
-        //
+        //this function is to post the all the teams of the league.
         $curl = curl_init();
-
+        //here we do a petition to  the external API with the url and Token.
         curl_setopt_array($curl, array(
         CURLOPT_URL => 'https://v3.football.api-sports.io/teams?league=39&season=2022',
         CURLOPT_RETURNTRANSFER => true,
@@ -61,6 +61,8 @@ class PLTeamsController extends Controller
         //var_dump($result);
 
         // $all = $result["results"];
+
+        //here we do a for to have the teams and we save all this data in our database.
         for ($i=0; $i < 20; $i++){
         $teams = new PLTeams();
         $teams->name_team = $result['response'][$i]['team']['name'];

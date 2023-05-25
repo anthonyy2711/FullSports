@@ -19,13 +19,13 @@ class PLFixturesController extends Controller
      */
     public function getGames()
     {
-        //
+        //Function to get all games of the table Fixtures and get the Current match of the league.
         $fixtures=PLFixtures::all();
         $currentMatchday=PLFixtures::select('currentMatchday')
         ->where('id', 1)
         ->get();
-        //$fixtures=DB::table('fixtures')->count();
 
+        //Return a json with the status, the fixtures and the current matchday. 
         return response()->json([
             'status'=> 'success',
             'PLfixtures'=> $fixtures,
@@ -46,8 +46,9 @@ class PLFixturesController extends Controller
      */
     public function pushgames(Request $request)
     {
+        //this function is to post the all games of the season of the league.
         $curl = curl_init();
-
+        //here we do a petition to  the external API with the url and Token.
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'http://api.football-data.org/v4/competitions/PL/matches',
             CURLOPT_RETURNTRANSFER => true,
@@ -72,7 +73,10 @@ class PLFixturesController extends Controller
             //$result = $result['matches'];
             //var_dump($result);
 
+
             // $all = $result["results"];
+
+            //here we do a for to have all the matches of the season and we save all this data in our database.
             for ($i=0; $i < 380; $i++){
             $fixtures = new PLFixtures();
             $fixtures->name_league = $result['competition']['name'];
@@ -145,12 +149,12 @@ class PLFixturesController extends Controller
         curl_close($curl);
         $result = json_decode($response, true);
 
-
+        // to update we first truncate the table 
         if (Schema::hasTable('pl_fixtures')) {
             DB::table('pl_fixtures')->truncate();
         }
 
-
+        //when the data is empty we do the same here than pushGames() and save again in the database.
         for ($i=0; $i < 380; $i++){
             $fixtures = new PLFixtures();
             $fixtures->name_league = $result['competition']['name'];

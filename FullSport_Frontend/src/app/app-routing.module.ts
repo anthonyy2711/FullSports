@@ -14,7 +14,6 @@ import { NewsdetailComponent } from './components/newsdetail/newsdetail.componen
 import { PLgamesComponent } from './components/plgames/plgames.component';
 import { PLStandingsComponent } from './components/plstandings/plstandings.component';
 import { LaLigaStandingsComponent } from './components/la-liga-standings/la-liga-standings.component';
-import { PLTopComponent } from './components/pltop/pltop.component';
 import { LaLigaGamesComponent } from './components/la-liga-games/la-liga-games.component';
 import { NewsaddComponent } from './components/newsadd/newsadd.component';
 import { NewsupdateComponent } from './components/newsupdate/newsupdate.component';
@@ -70,11 +69,6 @@ const routes: Routes = [
   path:'PLStandings',
   component:PLStandingsComponent
 },
-{
-  path:'PLTop',
-  component:PLTopComponent
-},
-
 {
   path:'social-add',
   component:SocialAddComponent,

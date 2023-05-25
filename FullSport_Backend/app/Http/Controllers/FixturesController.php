@@ -19,13 +19,13 @@ class FixturesController extends Controller
      */
     public function getGames()
     {
-        //
+        //Function to get all games of the table Fixtures and get the Current match of the league.
         $fixtures=Fixtures::all();
         $currentMatchday=Fixtures::select('currentMatchday')
         ->where('id', 1)
         ->get();
-        //$fixtures=DB::table('fixtures')->count();
-
+        
+        //Return a json with the status, the fixtures and the current matchday. 
         return response()->json([
             'status'=> 'success',
             'fixtures'=> $fixtures,
@@ -33,12 +33,6 @@ class FixturesController extends Controller
         ]);
     }
 
-    public function getGamesByDate($date_event)
-    {
-        $fixtures = Fixtures::find($date_event);
-
-        return $fixtures;
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -86,8 +80,9 @@ class FixturesController extends Controller
      */
     public function pushGames(Request $request)
     {
+        //this function is to post the all games of the season of the league.
         $curl = curl_init();
-
+        //here we do a petition to  the external API with the url and Token.
         curl_setopt_array($curl, array(
         CURLOPT_URL => 'http://api.football-data.org/v4/competitions/PD/matches',
         CURLOPT_RETURNTRANSFER => true,
@@ -113,6 +108,8 @@ class FixturesController extends Controller
         //var_dump($result);
 
         // $all = $result["results"];
+
+        //here we do a for to have all the matches of the season and we save all this data in our database.
         for ($i=0; $i < 380; $i++){
         $fixtures = new Fixtures();
         $fixtures->name_league = $result['competition']['name'];
@@ -189,12 +186,12 @@ class FixturesController extends Controller
         curl_close($curl);
         $result = json_decode($response, true);
 
-
+        // to update we first truncate the table 
         if (Schema::hasTable('fixtures')) {
             DB::table('fixtures')->truncate();
         }
 
-
+        //when the data is empty we do the same here than pushGames() and save again in the database.
         for ($i=0; $i < 380; $i++){
             $fixtures = new Fixtures();
             $fixtures->name_league = $result['competition']['name'];
