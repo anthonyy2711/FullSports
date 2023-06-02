@@ -49,9 +49,9 @@ class NewsController extends Controller
 
         ]);
        
-        $file = $request->file('new_img');//recojo la img
-        $filename = time() . '.' . $file->getClientOriginalExtension();//le pongo nombre
-        $file->move(public_path('storage/news'), $filename);//lo pongo en la carpeta storage
+        $file = $request->file('new_img');//Pick up the img
+        $filename = time() . '.' . $file->getClientOriginalExtension();//Name it
+        $file->move(public_path('storage/news'), $filename);//Put it in the storage folder
         
         $news = news::create([
             'new_img'           =>$filename,

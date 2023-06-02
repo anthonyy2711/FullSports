@@ -16,7 +16,7 @@
             <div *ngFor="let item of News[1]; let i = index" >
                 <!--New big-->
                 <div *ngIf="i === 0" class="card mb-3" style="max-width: 100%;">
-                    <a href="" (click)="openWindow(item.id)" rel="noopener noreferrer" class="text-decoration-none text-black">
+                    <a href="/newdetail/{{item.id}}"  rel="noopener noreferrer" class="text-decoration-none text-black"><!--(click)="openWindow(item.id)"-->
                         <div class="row g-0">
                             <div class="col-md-6">
                                 <img src="http://127.0.0.1:8000/storage/news/{{item.new_img}}" class="img-fluid rounded-start">
@@ -40,7 +40,7 @@
     <div class="row">       
         <div *ngFor="let item of loadedNews[1]; let i = index" class="col-12 col-sm-6 col-lg-4 col-xl-4 ">
             <div class="card mb-3">    
-                <a href="" (click)="openWindow(item.id)" rel="noopener noreferrer" class="text-decoration-none text-black">
+                <a href="/newdetail/{{item.id}}" rel="noopener noreferrer" class="text-decoration-none text-black"><!--/newdetail/{{item.id}}-->
                     <img src="http://127.0.0.1:8000/storage/news/{{item.new_img}}" class="card-img-top img_height">
                     <div class="card-body">
                         <h5 class="card-title">{{item.new_title}}</h5>

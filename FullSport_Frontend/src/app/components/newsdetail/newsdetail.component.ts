@@ -46,16 +46,6 @@ export class NewsdetailComponent implements OnInit{
     });
   }
 
-  //Delete news from database
-  deleteNews(id: any) {
-    if (window.confirm('¿Quieres seguir con ello?')) {
-      this.newsService.DeleteNews(id).subscribe(() => {
-        // Redirect to home after delete
-        this.router.navigate(['/home']);
-      });
-    }
-  }
-
   /**
    * Function to control the visibility of the update and delete news button for journalist and admin users 
    */
@@ -72,5 +62,18 @@ export class NewsdetailComponent implements OnInit{
       }
     }
    
+  }
+
+  /**
+   * Delete news from database
+   * @param id 
+   */
+  deleteNews(id: any) {
+    if (window.confirm('¿Quieres seguir con ello?')) {
+      this.newsService.DeleteNews(id).subscribe(() => {
+        // Redirect to home after delete
+        this.router.navigate(['/home']);
+      });
+    }
   }
 }
