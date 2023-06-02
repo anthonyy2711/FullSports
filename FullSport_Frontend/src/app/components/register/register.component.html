@@ -7,53 +7,81 @@
                 <h3>Unete a nosotros</h3>
                 <!-- Nombre y Apellido -->
                 <div class="col-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Nombre" id="name" name="name" formControlName="name">
+                    <div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Nombre" id="name" name="name" formControlName="name">
+                            <span *ngIf="this.registerForm.get('name')?.errors?.['required'] && this.registerForm.get('name')?.pristine" class="text-danger">
+                                &nbsp; * 
+                            </span>
+                        </div>
                         <span *ngIf="this.registerForm.get('name')?.errors?.['required'] && this.registerForm.get('name')?.touched" class="text-danger">
-                            * Campo requerido
+                            Campo requerido
                         </span>
                         <span *ngIf="this.registerForm.get('name')?.errors?.['pattern'] && this.registerForm.get('name')?.touched" class="text-danger">
-                            * Solo letras
+                            Solo letras
                         </span>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Apellidos" id="last_name" name="last_name" formControlName="lastname">
+                    <div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Apellidos" id="last_name" name="last_name" formControlName="lastname">
+                            <span *ngIf="this.registerForm.get('lastname')?.errors?.['required'] && this.registerForm.get('lastname')?.pristine" class="text-danger">
+                                &nbsp; *
+                            </span>
+                        </div>
                         <span *ngIf="this.registerForm.get('lastname')?.errors?.['required'] && this.registerForm.get('lastname')?.touched" class="text-danger">
-                            * Campo requerido
+                            Campo requerido
                         </span>
                         <span *ngIf="this.registerForm.get('lastname')?.errors?.['pattern'] && this.registerForm.get('lastname')?.touched" class="text-danger">
-                            * Solo letras
+                            Solo letras
                         </span>
                     </div>
                 </div>
                 <!-- Email -->
                 <div class="col-12">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Email" id="email" name="email" formControlName="email">
+                    <div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Email" id="email" name="email" formControlName="email">
+                            <span *ngIf="this.registerForm.get('email')?.errors?.['required'] && this.registerForm.get('email')?.pristine" class="text-danger">
+                                &nbsp; *
+                            </span>
+                        </div>
                         <span *ngIf="this.registerForm.get('email')?.errors?.['required'] && this.registerForm.get('email')?.touched" class="text-danger">
-                            * Campo requerido
+                            Campo requerido
                         </span>
                         <span *ngIf="this.registerForm.get('email')?.errors?.['pattern'] && this.registerForm.get('email')?.touched" class="text-danger">
-                            * Formato de email incorrecto
+                            Formato de email incorrecto
                         </span>
                     </div>
                 </div>
                 <!-- Contraseña y Repetir Contraseña -->
                 <div class="col-6">
-                    <div class="input-group">
-                        <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+                    <div>
+                        <div class="input-group">
+                            <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+                        <span *ngIf="this.registerForm.get('password')?.errors?.['required'] && this.registerForm.get('password')?.pristine" class="text-danger">
+                            &nbsp; *
+                        </span>
+                        </div>
                         <span *ngIf="this.registerForm.get('password')?.errors?.['required'] && this.registerForm.get('password')?.touched" class="text-danger">
-                            * Campo requerido
+                            Campo requerido
+                        </span>
+                        <span *ngIf="this.registerForm.get('password')?.errors?.['minlength'] && this.registerForm.get('password')?.touched" class="text-danger mt-2">
+                            Longitud minima es 6
                         </span>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="input-group">
-                        <input type="password" class="form-control" placeholder="Repite Contraseña" formControlName="repeatpassword" comparar [parametro]="this.registerForm.value.password">
+                    <div>
+                        <div class="input-group">
+                            <input type="password" class="form-control" placeholder="Repite Contraseña" formControlName="repeatpassword" comparar [parametro]="this.registerForm.value.password">
+                            <span *ngIf="this.registerForm.get('repeatpassword')?.errors?.['required'] && this.registerForm.get('repeatpassword')?.pristine" class="text-danger">
+                                &nbsp; *
+                            </span>
+                        </div>
                         <span *ngIf="this.registerForm.get('repeatpassword')?.errors?.['required'] && this.registerForm.get('repeatpassword')?.touched" class="text-danger">
-                            * Campo requerido
+                            Campo requerido
                         </span>
                         <span *ngIf="this.registerForm.get('repeatpassword')?.errors?.['custom'] && this.registerForm.get('repeatpassword')?.touched" class="text-danger">
                             Debe coincidir con las contraseña

@@ -14,10 +14,10 @@
                             </span>
                         </div>
                         <span *ngIf="this.login.get('email')?.errors?.['required'] && this.login.get('email')?.touched" class="text-danger mt-2">
-                            &nbsp; Este campo es obligatorio
+                            Este campo es obligatorio
                         </span>
                         <span *ngIf="this.login.get('email')?.errors?.['pattern'] && this.login.get('email')?.touched" class="text-danger mt-2">
-                            &nbsp; Tiene que tener formato email
+                            Tiene que tener formato email
                         </span>
                     </div>
                 </div>
@@ -31,10 +31,10 @@
                             </span>
                         </div>
                         <span *ngIf="this.login.get('pass')?.errors?.['required'] && this.login.get('pass')?.touched" class="text-danger mt-2">
-                            &nbsp; Este campo es obligatorio &nbsp;
+                            Este campo es obligatorio 
                         </span>
                         <span *ngIf="this.login.get('pass')?.errors?.['minlength'] && this.login.get('pass')?.touched" class="text-danger mt-2">
-                            &nbsp; Longitud minima es 6 &nbsp;
+                            Longitud minima es 6 
                         </span>
                     </div>
                 </div>
