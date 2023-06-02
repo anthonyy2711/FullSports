@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit{
       Validators.required
     ]),
     pass:new FormControl('',[
-      Validators.required
+      Validators.required,
+      Validators.minLength(6)
     ])
   })
 
