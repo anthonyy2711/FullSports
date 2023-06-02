@@ -8,8 +8,14 @@
                 <div class="col-12">
                     <div class="input-group">
                         <input type="text" class="form-control" formControlName="email" placeholder="Email">
+                        <span *ngIf="this.login.get('email')?.errors?.['required'] && this.login.get('email')?.pristine" class="text-danger mt-2">
+                            &nbsp; *
+                        </span>
                         <span *ngIf="this.login.get('email')?.errors?.['required'] && this.login.get('email')?.touched" class="text-danger mt-2">
-                            Este campo es obligatorio*
+                            &nbsp; Este campo es obligatorio
+                        </span>
+                        <span *ngIf="this.login.get('email')?.errors?.['pattern'] && this.login.get('email')?.touched" class="text-danger mt-2">
+                            &nbsp; Tiene que tener formato email
                         </span>
                     </div>
                 </div>
@@ -17,11 +23,14 @@
                 <div class="col-12">
                     <div class="input-group">
                         <input type="password" formControlName="pass" class="form-control" placeholder="Contraseña">
+                        <span *ngIf="this.login.get('pass')?.errors?.['required'] && this.login.get('pass')?.pristine" class="text-danger mt-2">
+                            &nbsp; *
+                        </span>
                         <span *ngIf="this.login.get('pass')?.errors?.['required'] && this.login.get('pass')?.touched" class="text-danger mt-2">
-                            Este campo es obligatorio* &nbsp;
+                            &nbsp; Este campo es obligatorio &nbsp;
                         </span>
                         <span *ngIf="this.login.get('pass')?.errors?.['minlength'] && this.login.get('pass')?.touched" class="text-danger mt-2">
-                            Longitud minima es 6 &nbsp;
+                            &nbsp; Longitud minima es 6 &nbsp;
                         </span>
                     </div>
                 </div>

@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit{
 
   login=new FormGroup({
     email:new FormControl('',[
-      Validators.required
+      Validators.required,
+      Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')//email format pattern
     ]),
     pass:new FormControl('',[
       Validators.required,
