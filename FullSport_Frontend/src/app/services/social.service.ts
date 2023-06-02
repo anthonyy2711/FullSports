@@ -17,8 +17,8 @@ export class SocialService {
 
     return this.httpClient.get<Post>(`${this.REST_API}posts`);
   }
-  ShowPost(id:any): Observable<Post> {
-    return this.httpClient.get<Post>(`${this.REST_API}posts/${id}`);
+  ShowPost(id:any): Observable<any> {
+    return this.httpClient.get<any>(`${this.REST_API}posts/${id}`);
   }
 
   // Add Posts
@@ -29,6 +29,22 @@ export class SocialService {
     .pipe(
       catchError(this.handleError)
     )
+  }
+  //delete post
+  DeletePost(id:any): Observable<any> {
+    let API_URL = `${this.REST_API}posts/${id}`;
+    return this.httpClient.delete(API_URL, { headers: this.httpHeaders}).pipe(//Method delete to delete
+      catchError(this.handleError)
+    )
+  }
+  //udpate posts
+  UpdatePost(data:any): Observable<any> {
+
+    let API_URL = `${this.REST_API}posts/update`;
+    return this.httpClient.post(API_URL, data,{ responseType: 'blob' })//Method put to update //Type "blob" (Binary Large Object)
+      .pipe(
+        catchError(this.handleError)
+      )
   }
 
 

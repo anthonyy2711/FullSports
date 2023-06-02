@@ -93,7 +93,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'User updated successfully',
-            'colleague' => $user,
+            'user' => $user,
         ]);
 
     }

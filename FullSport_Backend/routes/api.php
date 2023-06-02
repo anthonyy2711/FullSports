@@ -122,7 +122,11 @@ Route::get('users/{id}', [UserController::class, 'show']);
 Route::get('posts', [PostController::class, 'index']);
 Route::get('posts/{id}', [PostController::class, 'show']);
 Route::post('posts', [PostController::class, 'store']);
-Route::delete('posts/{idPost}/{idUser}', [PostController::class, 'destroy']);
+Route::delete('posts/{idPost}', [PostController::class, 'destroy']);
+Route::post('posts/update', [PostController::class, 'update']);
+
+
+
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'login');

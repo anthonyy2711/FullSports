@@ -32,6 +32,7 @@ import { NewsupdateComponent } from './components/newsupdate/newsupdate.componen
 import { SpanishTeamsComponent } from './components/spanish-teams/spanish-teams.component';
 import { PLTeamsComponent } from './components/plteams/plteams.component';
 import { SocialDetailComponent } from './components/social-detail/social-detail.component';
+import { SocialUpdateComponent } from './components/social-update/social-update.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { SocialDetailComponent } from './components/social-detail/social-detail.
     SpanishTeamsComponent,
     PLTeamsComponent,
     SocialDetailComponent,
+    SocialUpdateComponent,
   ],
   imports: [
     HttpClientModule,

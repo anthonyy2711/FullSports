@@ -91,30 +91,36 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+        $post = Post::findOrFail($request->id);
+        $post->title = $request->title;
+        $post->body = $request->body;
+        if ($request->hasFile('img')) {
+            $destination = "storage/posts".$post->image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+            $file = $request->file('img');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/img'), $filename);
+            $news->new_img = $filename;
+        }
+        $post->save();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'User updated successfully',
+            'post' => $post,
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($idPost, $idUser)
+    public function destroy($id)
     {
-        // $post = Post::find($idPost);
-        // $user = User::find($idUser);
-
-
-    //     if ($post->user_id == $user->id) {
-    //         $post->delete();
-    //     }
-
-    //     return response()->json([
-    //         'status' => 'success',
-    //         'message' => 'User updated successfully',
-    //         'user' => $user,
-    //         'post' => $post
-    //     ]);
-    return "Deleted $idPost and $idUser";
-     }
+        $post = Post::find($id);
+        $post->delete();
+    }
 }

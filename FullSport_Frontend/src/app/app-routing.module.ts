@@ -1,3 +1,4 @@
+import { SocialUpdateComponent } from './components/social-update/social-update.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './auth.guard';
 import { SocialAddComponent } from './components/social-add/social-add.component';
@@ -78,6 +79,10 @@ const routes: Routes = [
 {
   path:'social-detail/:id',
   component:SocialDetailComponent,
+},
+{
+  path:'social-update/:id',
+  component:SocialUpdateComponent,
 },
 {
   path:'Laliga',
