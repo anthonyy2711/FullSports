@@ -31,6 +31,7 @@ import { RemoveQuotesPipe } from './pipes/remove-quotes.pipe';
 import { NewsupdateComponent } from './components/newsupdate/newsupdate.component';
 import { SpanishTeamsComponent } from './components/spanish-teams/spanish-teams.component';
 import { PLTeamsComponent } from './components/plteams/plteams.component';
+import { SocialDetailComponent } from './components/social-detail/social-detail.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { PLTeamsComponent } from './components/plteams/plteams.component';
     NewsupdateComponent,
     SpanishTeamsComponent,
     PLTeamsComponent,
+    SocialDetailComponent,
   ],
   imports: [
     HttpClientModule,

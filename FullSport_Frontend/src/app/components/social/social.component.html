@@ -7,10 +7,12 @@
   </div>
   <div class="row">
     <div class="col py-5">
+
       <div class="card mb-3 " *ngFor="let item of Posts[1];">
+        <a routerLink="/social-detail/{{item.id}}">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="http://127.0.0.1:8000/storage/posts/{{item.image}}" class="img-fluid rounded-start" alt="...">
+            <img src="http://127.0.0.1:8000/storage/posts/{{item.image}}" class="img-fluid w-100" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -21,7 +23,9 @@
             </div>
           </div>
         </div>
+      </a>
       </div>
     </div>
+
   </div>
 </div>

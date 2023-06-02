@@ -47,7 +47,7 @@ export class HomeComponent {
 
   /**
    * Function which takes the id of the news item to open it in a new tab
-   * @param id 
+   * @param id
    */
   openWindow(id:any){
     this.windowRef= window.open(`/newdetail/${id}`,"New Details");
@@ -56,18 +56,18 @@ export class HomeComponent {
   receivemessage(evt:any){
     //console.log(evt.data);
   }
-  
+
   /**
-   * Function to load more news, this function is in the click of the More news button. 
+   * Function to load more news, this function is in the click of the More news button.
    */
   loadMore(){
     const startIndex = this.loadedNews.length;
     const endIndex = startIndex + this.newsPreLoad;
     this.loadedNews.push(...this.News.slice(startIndex, endIndex));
   }
-  
+
   /**
-   * Function to control the visibility of the create news button for registered and admin users 
+   * Function to control the visibility of the create news button for registered and admin users
    */
   createButtonVisibility() {
     if(this.token){//check if logget

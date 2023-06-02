@@ -120,6 +120,7 @@ Route::post('users/update', [UserController::class, 'update']);
 Route::get('users/{id}', [UserController::class, 'show']);
 //POST
 Route::get('posts', [PostController::class, 'index']);
+Route::get('posts/{id}', [PostController::class, 'show']);
 Route::post('posts', [PostController::class, 'store']);
 Route::delete('posts/{idPost}/{idUser}', [PostController::class, 'destroy']);
 

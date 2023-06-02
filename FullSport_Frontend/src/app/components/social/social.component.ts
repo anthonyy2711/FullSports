@@ -14,6 +14,7 @@ export class SocialComponent implements OnInit {
   logo:any;
   itemFormulario!:any;
 
+  windowRef:any=null;
 
   constructor(private socialService: SocialService){}
 

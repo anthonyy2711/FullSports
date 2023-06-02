@@ -1,0 +1,26 @@
+<section class="w-100">
+  <div class="container py-5">
+    <div>
+
+    </div>
+    <div class="row">
+      <div class="col py-5">
+        <div class="card mb-3" >
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="http://127.0.0.1:8000/storage/posts/{{Post[1]?.image}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{Post[1]?.title}}</h5>
+                <p class="text-secondary">{{Post[1]?.username}}</p>
+                <p class="card-text">{{Post[1]?.body}}</p>
+                <p class="card-text"><small class="text-muted"></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

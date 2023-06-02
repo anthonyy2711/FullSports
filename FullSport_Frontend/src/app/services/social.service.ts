@@ -15,18 +15,22 @@ export class SocialService {
 
   GetPosts(): Observable<Post> {
 
-    return this.httpClient.get<Post>("http://127.0.0.1:8000/api/posts");
+    return this.httpClient.get<Post>(`${this.REST_API}posts`);
+  }
+  ShowPost(id:any): Observable<Post> {
+    return this.httpClient.get<Post>(`${this.REST_API}posts/${id}`);
   }
 
-    // Add Posts
-    AddPost(data:any): Observable<any> {
+  // Add Posts
+  AddPost(data:any): Observable<any> {
 
-      let API_URL = `${this.REST_API}posts`;
-      return this.httpClient.post(API_URL, data,{ responseType: 'blob' })
-        .pipe(
-          catchError(this.handleError)
-        )
-    }
+    let API_URL = `${this.REST_API}posts`;
+    return this.httpClient.post(API_URL, data,{ responseType: 'blob' })
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';

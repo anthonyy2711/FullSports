@@ -19,6 +19,7 @@ import { NewsaddComponent } from './components/newsadd/newsadd.component';
 import { NewsupdateComponent } from './components/newsupdate/newsupdate.component';
 import { SpanishTeamsComponent } from './components/spanish-teams/spanish-teams.component';
 import { PLTeamsComponent } from './components/plteams/plteams.component';
+import { SocialDetailComponent } from './components/social-detail/social-detail.component';
 
 const routes: Routes = [
 {
@@ -73,6 +74,10 @@ const routes: Routes = [
   path:'social-add',
   component:SocialAddComponent,
   canActivate: [AuthGuard]
+},
+{
+  path:'social-detail/:id',
+  component:SocialDetailComponent,
 },
 {
   path:'Laliga',
