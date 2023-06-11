@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit{
         this.ngZone.run(() => this.router.navigate(['home'])) // if all good return to home
 
       }, (err) => {
-
+        this.oculta = true;
     });
 
   }
