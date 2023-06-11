@@ -6,6 +6,7 @@ import { faFutbol } from '@fortawesome/free-solid-svg-icons';
 import { faBasketball } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { Token } from '@angular/compiler';
+import { AuthService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,20 +17,21 @@ export class NavbarComponent implements OnInit {
   faFutbol = faFutbol;
   faBasketball = faBasketball;
 
-  isLoggedin: boolean = false;
+  isLoggedin!: boolean;
   token = localStorage.getItem('token');
   token2: string = '';
   username = localStorage.getItem('username');
   usernamewithoutquotes: string = '';
   constructor(
-    private router: Router,
-    private user: UserService,
-    private ngZone: NgZone,
-    private location: Location
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
     this.toggleButtonVisibility();
+    this.auth.isLoggedIn().subscribe((loggedIn: boolean) => {
+      this.isLoggedin = loggedIn;
+    });
+    
   }
 
   toggleButtonVisibility() {
@@ -39,8 +41,8 @@ export class NavbarComponent implements OnInit {
     }
   }
   logout() {
+    this.auth.setLoggedIn(false);
     localStorage.clear();
-    window.location.reload();
   }
   ifUserExists() {
     if (this.token) {

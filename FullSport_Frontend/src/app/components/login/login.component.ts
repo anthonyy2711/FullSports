@@ -3,6 +3,7 @@ import { User } from './../../model/user';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit{
   role!:any;
   username!:any;
   user_id!:any;
-  constructor(private router: Router, private user:UserService, private ngZone: NgZone) {}
+  constructor(private router: Router, private user:UserService, private ngZone: NgZone, private auth: AuthService) {}
 
   login=new FormGroup({
     email:new FormControl('',[
@@ -53,6 +54,7 @@ export class LoginComponent implements OnInit{
           this.role = localStorage.setItem('role', JSON.stringify(res.roles))
           this.username = localStorage.setItem('username', JSON.stringify(res.user.name + " "+res.user.last_name).replace(/["']/g, ''))
           this.user_id = localStorage.setItem('user_id', JSON.stringify(res.user.id).replace(/[\[\]"']+/g,''))
+          this.auth.setLoggedIn(true);
         }
 
         this.ngZone.run(() => this.router.navigate(['home'])) // if all good return to home
