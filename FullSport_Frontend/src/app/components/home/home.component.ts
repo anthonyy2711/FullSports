@@ -19,6 +19,9 @@ export class HomeComponent {
   faInstagram=faInstagram;
   faTiktok=faTiktok;
 
+  //paginate
+  page!: number;
+
   //For button visibility
   isLoggedin: boolean = false;
   token = localStorage.getItem('token');
