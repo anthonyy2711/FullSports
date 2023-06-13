@@ -118,6 +118,7 @@ Route::get('news/show/{id}', [NewsController::class, 'show']);
 Route::get('users', [UserController::class, 'index']);
 Route::post('users/update', [UserController::class, 'update']);
 Route::get('users/{id}', [UserController::class, 'show']);
+Route::get('users/getRole/{id}', [UserController::class, 'getRole']);
 //POST
 Route::get('posts', [PostController::class, 'index']);
 Route::get('posts/{id}', [PostController::class, 'show']);

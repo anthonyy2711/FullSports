@@ -19,6 +19,16 @@ export class ManagementService {
     return this.httpClient.get<Post>(`${this.REST_API}users`);
   }
 
+  GetRole(id:any): Observable<Post> {
+    let API_URL = `${this.REST_API}users/getRole/${id}`;
+    return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
+      map((res: any) => {
+        return res || {};
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   GetUserById(id: any): Observable<any> {
     let API_URL = `${this.REST_API}users/${id}`;
     return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
@@ -30,7 +40,7 @@ export class ManagementService {
   }
 
   // Add User
-  AddUser(data: any): Observable<any> {
+  addUser(data: any): Observable<any> {
     let API_URL = `${this.REST_API}users`;
     return this.httpClient
       .post(API_URL, data, { responseType: 'blob' })

@@ -1,3 +1,4 @@
+import { ManagementService } from './../../services/management.service';
 import { TokenService } from './../../services/token.service';
 import { FormGroup } from '@angular/forms';
 import { SocialService } from 'src/app/services/social.service';
@@ -16,11 +17,13 @@ export class SocialDetailComponent implements OnInit{
   idPost!:any;
   Post:any=[];
   ownPost:boolean = true;
+  isAdmin:boolean = false;
+  role!:any;
   socialDetailForm!: FormGroup;
-  constructor(private route: ActivatedRoute, private tokenService: TokenService,private socialService: SocialService, private router: Router,private ngZone: NgZone){}
+  constructor(private route: ActivatedRoute, private tokenService: TokenService,private socialService: SocialService, private router: Router,private ngZone: NgZone, private managementService:ManagementService){}
   ngOnInit(){
     this.listPost()
-
+    this.checkAdmin()
   }
   listPost(){
     this.route.paramMap.subscribe((params) => {
@@ -47,6 +50,17 @@ export class SocialDetailComponent implements OnInit{
         this.router.navigate(['/social']);
       });
     }
+  }
+  checkAdmin(){
+    var id = this.tokenService.getIdToken();
+
+      this.managementService.GetRole(id).subscribe(res => {
+        this.role = res.toString(); ;
+        if(this.role == 'admin'){
+          this.isAdmin = true;
+        }
+      });
+
   }
 
 }

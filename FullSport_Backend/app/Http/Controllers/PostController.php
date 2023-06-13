@@ -94,25 +94,49 @@ class PostController extends Controller
     public function update(Request $request)
     {
         $id = $request->id;
+        $user_id = (int)$request->user_id;
         $post = Post::findOrFail($request->id);
+        if($post->user_id == $user_id){
+            $post->title = $request->title;
+            $post->body = $request->body;
+             if ($request->hasFile('image')) {
+                $destination = public_path('storage/posts/').$post->image;
+                if(\File::exists($destination)){
+                    \File::delete($destination);
+
+                }
+                $file = $request->file('image');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('storage/posts'), $filename);
+                $post->image = $filename;
+             }
+
+            $post->save();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Post updated successfully',
+                'post' => $post,
+            ]);
+        } else{
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Unauthorized',
+            ]);
+        }
         $post->title = $request->title;
         $post->body = $request->body;
-        if ($request->hasFile('img')) {
-            $destination = "storage/posts".$post->image;
+        if ($request->hasFile('image')) {
+            $destination = public_path('storage/posts').$post->image;
             if(File::exists($destination)){
                 File::delete($destination);
             }
-            $file = $request->file('img');
+            $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('storage/img'), $filename);
+            $file->move(public_path('storage/posts'), $filename);
             $news->new_img = $filename;
         }
         $post->save();
-        return response()->json([
-            'status' => 'success',
-            'message' => 'User updated successfully',
-            'post' => $post,
-        ]);
+
     }
 
     /**
@@ -121,6 +145,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        $destination = public_path('storage/posts/').$post->image;
+        \File::delete($destination);
         $post->delete();
     }
 }

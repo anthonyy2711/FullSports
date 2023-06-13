@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
     this.auth.isLoggedIn().subscribe((loggedIn: boolean) => {
       this.isLoggedin = loggedIn;
     });
-    
+
   }
 
   toggleButtonVisibility() {
@@ -43,6 +43,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.auth.setLoggedIn(false);
     localStorage.clear();
+    window.localStorage.clear();
   }
   ifUserExists() {
     if (this.token) {

@@ -83,17 +83,40 @@ class UserController extends Controller
             'last_name' => 'string',
             'email' => 'string|email',
         ]);
-
         $id = $request->id;
         $user = User::findOrFail($request->id);
+        if(password_verify($request->new_password,$user->password)){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Same password as current password',
+            ]);
+        }
+
         $user->name = $request->name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
+
+        if(password_verify($request->actual_password,$user->password)){
+
+        } else{
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Actual password incorrect',
+            ]);
+        }
+        if($request->new_password != $request->repeat_new_password){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'New password does not match',
+            ]);
+        }
+
+        $user->password = Hash::make($request->new_password);
         $user->save();
         return response()->json([
             'status' => 'success',
             'message' => 'User updated successfully',
-            'user' => $user,
+            'user' => $user
         ]);
 
     }
@@ -107,5 +130,10 @@ class UserController extends Controller
     public function destroy($id)
     {
 
+    }
+    public function getRole($id){
+
+        $user = User::findOrFail($id);
+        return  $user->roles->pluck('name')??[];
     }
 }

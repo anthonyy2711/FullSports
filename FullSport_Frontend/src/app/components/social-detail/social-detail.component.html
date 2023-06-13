@@ -5,6 +5,9 @@
         <a routerLink="/social-update/{{Post[1]?.id}}" class="btn btn-success">Editar</a>
         <button class="btn btn-danger" (click)="deletePost()">Eliminar</button>
       </div>
+      <div class="col p-5" *ngIf="isAdmin">
+        <button class="btn btn-danger" (click)="deletePost()">Eliminar</button>
+      </div>
 
     </div>
     <div class="row">

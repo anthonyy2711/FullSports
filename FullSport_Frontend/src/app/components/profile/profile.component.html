@@ -41,29 +41,29 @@
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="form-group">
-                    <label for="eMail">Email</label>
+                    <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" formControlName="email">
                   </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <button type="button" class="btn btn-success mt-4">Cambiar contraseña</button>
+                  <button (click)="showChangePassword()" type="button" class="btn btn-success mt-4">Cambiar contraseña</button>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div *ngIf="isChangePassword" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="form-group">
-                    <label for="website">Contraseña Actual</label>
-                    <input type="url" class="form-control" id="website" placeholder="Website url">
+                    <label for="actual_password">Contraseña Actual</label>
+                    <input type="password" class="form-control" id="actual_password" formControlName="actual_password">
                   </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group">
-                    <label for="website">Contraseña Actual</label>
-                    <input type="url" class="form-control" id="website" placeholder="Website url">
+                <div *ngIf="isChangePassword" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div  class="form-group">
+                    <label for="new_password">Cambiar Contraseña</label>
+                    <input type="password" class="form-control" id="new_password" formControlName="new_password">
                   </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div *ngIf="isChangePassword" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="form-group">
-                    <label for="website">Contraseña Actual</label>
-                    <input type="url" class="form-control" id="website" placeholder="Website url">
+                    <label for="repeat_new_password">Repetir Contraseña</label>
+                    <input type="password" class="form-control" id="repeat_new_password" formControlName="repeat_new_password">
                   </div>
                 </div>
 

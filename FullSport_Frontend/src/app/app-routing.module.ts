@@ -1,3 +1,4 @@
+import { ManagementUsersComponent } from './components/management-users/management-users.component';
 import { SocialUpdateComponent } from './components/social-update/social-update.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './auth.guard';
@@ -21,6 +22,7 @@ import { NewsupdateComponent } from './components/newsupdate/newsupdate.componen
 import { SpanishTeamsComponent } from './components/spanish-teams/spanish-teams.component';
 import { PLTeamsComponent } from './components/plteams/plteams.component';
 import { SocialDetailComponent } from './components/social-detail/social-detail.component';
+import { ManagementService } from './services/management.service';
 
 const routes: Routes = [
 {
@@ -103,6 +105,10 @@ const routes: Routes = [
 {
   path:'newsupdate/:id',
   component:NewsupdateComponent
+},
+{
+  path:'users',
+  component:ManagementUsersComponent
 },
 
 {

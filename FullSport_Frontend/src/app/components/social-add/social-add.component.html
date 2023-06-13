@@ -4,14 +4,39 @@
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Titulo</label>
       <input class="form-control" type="text" id="title" name="title" formControlName="title">
+      <span *ngIf="this.postForm.get('title')?.errors?.['required'] && this.postForm.get('title')?.pristine" class="text-danger mt-2">
+        &nbsp; *
+      </span>
+      <span *ngIf="this.postForm.get('title')?.errors?.['required'] && this.postForm.get('title')?.touched" class="text-danger mt-2">
+        Este campo es obligatorio
+      </span>
+      <span *ngIf="this.postForm.get('title')?.errors?.['maxlength'] && this.postForm.get('title')?.touched" class="text-danger mt-2">
+      Longitud maxima es de 20 caracteres
+      </span>
     </div>
+
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Cuerpo</label>
       <textarea class="form-control" type="text" id="body" name="body" formControlName="body" rows="3"></textarea>
+      <span *ngIf="this.postForm.get('body')?.errors?.['required'] && this.postForm.get('body')?.pristine" class="text-danger mt-2">
+        &nbsp; *
+      </span>
+      <span *ngIf="this.postForm.get('body')?.errors?.['required'] && this.postForm.get('body')?.touched" class="text-danger mt-2">
+        Este campo es obligatorio
+      </span>
+      <span *ngIf="this.postForm.get('body')?.errors?.['maxlength'] && this.postForm.get('body')?.touched" class="text-danger mt-2">
+      Longitud maxima es de 255 caracteres
+      </span>
     </div>
     <div class="mb-3">
       <label for="formFile" class="form-label">Default file input example</label>
       <input class="form-control" type="file" id= "formFile" (change)= "imageUpload($event)" accept="image/*">
+      <span *ngIf="this.postForm.get('formFile')?.errors?.['required'] && this.postForm.get('formFile')?.pristine" class="text-danger mt-2">
+        &nbsp; *
+      </span>
+      <span *ngIf="this.postForm.get('formFile')?.errors?.['required'] && this.postForm.get('formFile')?.touched" class="text-danger mt-2">
+        Este campo es obligatorio
+      </span>
     </div>
     <button type="submit" class="btn btn-primary form-control mt-3 col-4">Añadir Post</button>
   </form>

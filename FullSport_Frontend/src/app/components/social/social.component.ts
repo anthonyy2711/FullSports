@@ -13,13 +13,15 @@ export class SocialComponent implements OnInit {
   imageUrl: any;
   logo:any;
   itemFormulario!:any;
-
+  isLoggedin!: boolean;
   windowRef:any=null;
+  token = localStorage.getItem('token');
 
   constructor(private socialService: SocialService){}
 
   ngOnInit(): void {
     this.listPosts();
+    this.toggleButtonVisibility();
   }
 
 
@@ -39,5 +41,11 @@ export class SocialComponent implements OnInit {
       var shortenedText = paragraph!.textContent!.substr(0, maxLength) + '...';
       paragraph!.textContent = shortenedText;
     }
+  }
+  toggleButtonVisibility() {
+    if (this.token) {
+      this.isLoggedin = true;
+    }
+
   }
 }

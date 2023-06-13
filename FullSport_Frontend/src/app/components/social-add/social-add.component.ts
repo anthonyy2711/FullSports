@@ -19,9 +19,10 @@ export class SocialAddComponent implements OnInit {
       Validators.maxLength(20)
     ]),
     body:new FormControl('',[
-      Validators.required
+      Validators.required,
+      Validators.maxLength(255)
     ]),
-    image:new FormControl('',[
+    formFile:new FormControl('',[
       Validators.required
     ]),
   })
