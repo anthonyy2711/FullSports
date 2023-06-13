@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.toggleButtonVisibility();
+    //this.toggleButtonVisibility();
     this.auth.isLoggedIn().subscribe((loggedIn: boolean) => {
       this.isLoggedin = loggedIn;
     });
@@ -38,6 +38,7 @@ export class NavbarComponent implements OnInit {
     if (this.token) {
       this.isLoggedin = true;
       this.usernamewithoutquotes = this.username!;
+      localStorage.getItem(this.usernamewithoutquotes);
     }
   }
   logout() {

@@ -35,6 +35,7 @@ import { SocialDetailComponent } from './components/social-detail/social-detail.
 import { SocialUpdateComponent } from './components/social-update/social-update.component';
 import { ManagementUsersComponent } from './components/management-users/management-users.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,8 +72,10 @@ import { ManagementUsersComponent } from './components/management-users/manageme
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxPaginationModule
   ],
+
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,

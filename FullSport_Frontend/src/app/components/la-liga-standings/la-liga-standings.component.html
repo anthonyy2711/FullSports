@@ -11,12 +11,12 @@
     
     <app-dashboard-la-liga-competition></app-dashboard-la-liga-competition>
     
-        <table class="table">
+        <table class="table table-borderless">
             <thead class="thead-light">
                 <tr>
                     <th class="text-center">Posición</th>
                     <th></th>
-                    <th>Equipo</th>
+                    <th class="d-none d-sm-block">Equipo</th>
                     <th>PJ</th>
                     <th>PG</th>
                     <th>PE</th>
@@ -33,7 +33,7 @@
                     <td class="text-center" *ngIf="item.position>7 && item.position<=17"><span class="badge rounded-pill bg-dark fs-5">{{item.position}}</span></td>
                     <td class="text-center" *ngIf="item.position>17 && item.position<=20"><span class="badge rounded-pill bg-danger fs-5">{{item.position}}</span></td>
                     <td class="text-center"><img src="{{item.team_logo}}" alt="" height="30" width="30"></td>
-                    <td>{{item.name_team}}</td>
+                    <td class="d-none d-sm-block">{{item.name_team}}</td>
                     <td>{{item.played_games}}</td>
                     <td>{{item.games_win}}</td>
                     <td class="ps-2">{{item.games_draw}}</td>

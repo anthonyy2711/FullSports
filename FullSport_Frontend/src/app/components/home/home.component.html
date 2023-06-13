@@ -37,8 +37,8 @@
     </div> 
 
     <!--News small-->
-    <div class="row">       
-        <div *ngFor="let item of loadedNews[1]; let i = index" class="col-12 col-sm-6 col-lg-4 col-xl-4 ">
+    <div class="row">   
+        <div *ngFor="let item of News[1] | paginate: { itemsPerPage: 3, currentPage: page} ; let i = index" class="col-12 col-sm-6 col-lg-4 col-xl-4 ">
             <div class="card mb-3">    
                 <a href="/newdetail/{{item.id}}" rel="noopener noreferrer" class="text-decoration-none text-black"><!--/newdetail/{{item.id}}-->
                     <img src="http://127.0.0.1:8000/storage/news/{{item.new_img}}" class="card-img-top img_height">
@@ -50,22 +50,24 @@
                 </a>
             </div>
         </div><!--Close ngfor-->
-
-        <div class="d-flex justify-content-end mb-5">
+        <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" class="text-center"></pagination-controls>
+        <!-- 
+            <div class="d-flex justify-content-end mb-5">
             <button type="button" class="btn btn-info" (click)="loadMore()">Mas noticias</button>
-        </div>
+        </div> -->
         
     </div><!--Close News small-->
 
-    
-    <div class="text-center">
-        <iframe src="https://www.scorebat.com/embed/?token=NjY0MDNfMTY4MzgwOTI0N19mNmRlMGM3NTQwMmQ3ODY3YzI2NGI4YmQ5MWFjYmI5YzM2N2JjZDM1" frameborder="0" width="1000" height="1250" allowfullscreen allow='autoplay; fullscreen'  class="_scorebatEmbeddedPlayer_"></iframe><script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://www.scorebat.com/embed/embed.js?v=arrv';
-            fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'scorebat-jssdk'));</script>
+    <div class="row">
+        <div class="text-center">
+            <iframe src="https://www.scorebat.com/embed/?token=NjY0MDNfMTY4MzgwOTI0N19mNmRlMGM3NTQwMmQ3ODY3YzI2NGI4YmQ5MWFjYmI5YzM2N2JjZDM1" frameborder="0" allowfullscreen allow='autoplay; fullscreen'  class="_scorebatEmbeddedPlayer_ widget"></iframe><script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://www.scorebat.com/embed/embed.js?v=arrv';
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'scorebat-jssdk'));</script>
+        </div>
     </div>
 
     <!-- Banner -->
