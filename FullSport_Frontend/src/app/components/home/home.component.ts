@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NewsService } from 'src/app/services/news.service';
 import { faTwitter,  faFacebookF, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { faBasketball } from '@fortawesome/free-solid-svg-icons';
+import { News } from 'src/app/model/news';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,6 +19,9 @@ export class HomeComponent {
   faFacebook=faFacebookF;
   faInstagram=faInstagram;
   faTiktok=faTiktok;
+
+  //paginate
+  page!: number;
 
   //For button visibility
   isLoggedin: boolean = false;
@@ -77,5 +81,4 @@ export class HomeComponent {
       }
     }
   }
-
 }
