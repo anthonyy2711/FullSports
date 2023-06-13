@@ -23,6 +23,7 @@ import { SpanishTeamsComponent } from './components/spanish-teams/spanish-teams.
 import { PLTeamsComponent } from './components/plteams/plteams.component';
 import { SocialDetailComponent } from './components/social-detail/social-detail.component';
 import { ManagementService } from './services/management.service';
+import { JournalistGuardGuard } from './journalist.guard.guard';
 
 const routes: Routes = [
 {
@@ -104,12 +105,12 @@ const routes: Routes = [
 {
   path:'newsadd',
   component:NewsaddComponent,
-  canActivate: [AuthGuard]
+  canActivate: [JournalistGuardGuard]
 },
 {
   path:'newsupdate/:id',
   component:NewsupdateComponent,
-  canActivate: [AuthGuard]
+  canActivate: [JournalistGuardGuard]
 },
 {
   path:'users',
