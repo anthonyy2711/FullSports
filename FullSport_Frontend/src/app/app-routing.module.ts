@@ -79,10 +79,12 @@ const routes: Routes = [
 {
   path:'social-detail/:id',
   component:SocialDetailComponent,
+  canActivate: [AuthGuard]
 },
 {
   path:'social-update/:id',
   component:SocialUpdateComponent,
+  canActivate: [AuthGuard]
 },
 {
   path:'Laliga',
@@ -94,15 +96,18 @@ const routes: Routes = [
 },
 {
   path:'profile',
-  component:ProfileComponent
+  component:ProfileComponent,
+  canActivate: [AuthGuard]
 },
 {
   path:'newsadd',
-  component:NewsaddComponent
+  component:NewsaddComponent,
+  canActivate: [AuthGuard]
 },
 {
   path:'newsupdate/:id',
-  component:NewsupdateComponent
+  component:NewsupdateComponent,
+  canActivate: [AuthGuard]
 },
 
 {
