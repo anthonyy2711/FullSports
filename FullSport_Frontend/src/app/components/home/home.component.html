@@ -37,8 +37,8 @@
     </div> 
 
     <!--News small-->
-    <div class="row">       
-        <div *ngFor="let item of News[1] | paginate: { itemsPerPage: 3, currentPage: page}; let i = index" class="col-12 col-sm-6 col-lg-4 col-xl-4 ">
+    <div class="row">   
+        <div *ngFor="let item of News[1] | paginate: { itemsPerPage: 3, currentPage: page} ; let i = index" class="col-12 col-sm-6 col-lg-4 col-xl-4 ">
             <div class="card mb-3">    
                 <a href="/newdetail/{{item.id}}" rel="noopener noreferrer" class="text-decoration-none text-black"><!--/newdetail/{{item.id}}-->
                     <img src="http://127.0.0.1:8000/storage/news/{{item.new_img}}" class="card-img-top img_height">
